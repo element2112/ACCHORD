@@ -8,3 +8,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 * Rebecca Englehart
 * Omar Kalam
 
+# SPRINT 1
+
+[PRODUCT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/product_backlog.md)
+
