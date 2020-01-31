@@ -10,3 +10,4 @@
 | 07 | As a drummer, I want to find songs with a unique rhythm so I can practice along. | 7 | 3 | A user can insert drum patters and get a list with songs with those drum patterns | WORKING |
 | 08 | As a music writer, I want to find popular variations on a chord progression so I can explore creative ways to write a song. | 5 | 3 | A user can insert different chord inversions and find songs that use those inversions | WORKING |
 | 09 | As a user I want to be able to update my profile so I can keep my information accurate | 5 | 1 | The user can edit/delete information from their profile | WORKING |
+| 10 | As a user I want to be able to login to my profile | 5 | 1 | The user can login into their profile with a username and password | WORKING |
