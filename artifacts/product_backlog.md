@@ -8,5 +8,5 @@
 | 05 | As a music teacher I want to leave feedback on music made by others | 5 | 1 | Users can comment on their friend's mp3 uploads | WORKING |
 | 06 | As a general user, I want to post messages so I can communicate with others | 5 | 1 | Users can direct message each other | WORKING |
 | 07 | As a drummer, I want to find songs with a unique rhythm so I can practice along. | 7 | 3 | A user can insert drum patters and get a list with songs with those drum patterns | WORKING |
-| 08 | As a music writer, I want to find popular variations on a chord progression so I can explore creative ways to write a song. | A user can insert different chord inversions and find songs that use those inversions | 5 | 3 | WORKING |
-| 09 | As a user I want to be able to update my profile so I can keep my information accurate | The user can edit/delete information from their profile | 5 | 1 | WORKING |
+| 08 | As a music writer, I want to find popular variations on a chord progression so I can explore creative ways to write a song. | 5 | 3 | A user can insert different chord inversions and find songs that use those inversions | WORKING |
+| 09 | As a user I want to be able to update my profile so I can keep my information accurate | 5 | 1 | The user can edit/delete information from their profile | WORKING |
