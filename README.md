@@ -4,7 +4,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 # [LINK TO PROJECT WEBSITE](http://acchord.herokuapp.com/)
 
-* The website is hosted on a free hosting service called Heroku. Due to using the free tier, the website takes several seconds to load at first if the server has not been recently pinged.
+* [IMPORTANT] The website is hosted on a free hosting service called Heroku. Due to using the free tier, the website takes several seconds to load at first if the server has not been recently pinged.
 
 ## Team Members
 * Brittanie Staton
