@@ -16,4 +16,6 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 [SPRINT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/sprint1_backlog.md)
 
+[BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1jwY23aKp-SBeTWEQvvxbFxrARaL_17rtB4vL2Oa2BW4/edit?usp=sharing)
 
+[VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit?usp=sharing)
