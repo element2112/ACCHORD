@@ -17,7 +17,7 @@
 
 body {
   background: gray;
-  background-image: url("./images/drumset_background.jpg");
+  background-image: url("../images/drumset_background.jpg");
   background-repeat: none;
   background-position: center;
 }

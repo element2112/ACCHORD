@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  background-color: blue;
+}
+
+#profile-bio {
+  display: block;
+  justify-content: center;
+  width: 20rem;
+  height: 30rem;
+}
