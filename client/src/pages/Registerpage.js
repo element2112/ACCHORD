@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import {Col, Row, Container} from 'react-bootstrap'
-import Login from '../components/Login';
+import Register from '../components/Register';
 
 export class Homepage extends Component {
   render() {
     return (
       <Container>
-        <Login />
+        <Register />
       </Container>
     )
   }
 }
 
-export default Homepage
+export default Register
