@@ -17,13 +17,15 @@ app.use(express.json());
 // it restarts the server. This is easier so you don't have to run "npm run server" every time you make a change
 // * npm run start runs both the frontend and backend servers together
 
-// const uri = process.env.ATLAS_URI;
-// mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-// );
-// const connection = mongoose.connection;
-// connection.once('open', () => {
-//     console.log("MongoDB database connection established successfully");
-// })
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+);
+
+const connection = mongoose.connection;
+
+connection.once('open', () => {
+    console.log("MongoDB database connection established successfully");
+})
 
 app.listen(port, () => {
     console.log('Server is running on port: ' + port);
