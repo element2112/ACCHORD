@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbarcomp from '../components/Navbarcomp'
 
 export class Dashboard extends Component {
   render() {

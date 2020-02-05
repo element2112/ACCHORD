@@ -6,6 +6,10 @@ import { Redirect, Link } from 'react-router-dom';
 // import Row from 'react-bootstrap/Row'
 // import CenterView from './CenterView'
 
+const headers = {
+  "Content-Type": "appliaction/json",
+}
+
 export class Login extends Component {
 
   state = {
@@ -13,8 +17,21 @@ export class Login extends Component {
     password: ""
   }
 
-  handleClick(e) {
+  handleSubmit(e) {
+
+    fetch("http://localhost:4000/api/?",
+    {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      })
+    })
+    . then((res) => res.json())
+
     e.preventDefault();
+    
   }
 
   render() {
@@ -22,7 +39,7 @@ export class Login extends Component {
       <Form style={{
         position: 'absolute', left: '50%', top: '50%',
         transform: 'translate(-50%, -50%)'
-      }}>
+      }} onSubmit={this.handleSubmit}>
         <h1>Login to Acchord</h1>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>

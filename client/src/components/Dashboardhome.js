@@ -1,13 +1,15 @@
 import React from 'react'
 import { Card, Col, Row, ListGroup, ListGroupItem } from 'react-bootstrap'
+import Navbarcomp from './Navbarcomp'
 import '../styles/Dash.css'
 
 export default function Dashboardhome(props) {
   return (
     <>
+      <Navbarcomp />
       <Row>
         <Col md={4}></Col>
-        <Col md={{ span: 4, offset: 4 }}>
+        <Col md={{ span: 4, offset: 4 }} style={{marginLeft: "82%"}}>
           <Card id='profile-bio'>
             <Card.Body>
               <Card.Title>props.name goes here</Card.Title>
@@ -25,3 +27,4 @@ export default function Dashboardhome(props) {
     </>
   )
 }
+
