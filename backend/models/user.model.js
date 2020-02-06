@@ -17,6 +17,18 @@ const userSchema = new Schema({
         trim: false,
         minlength: 5
     }, 
+    firstName: {
+        type: String,
+        required: true,
+        unique: false,
+        trim: true
+    },
+    lastName: {
+        type: String,
+        required: true,
+        unique: false,
+        trim: true
+    },
     timestamps: true,
 });
 
