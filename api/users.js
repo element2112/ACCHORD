@@ -7,7 +7,7 @@ const User = require('../models/user.model');
 // @route GET api/users
 // @desc Get all users
 // @access Public
-router.get('/', (req, res) => {
+router.get('/searchuser', (req, res) => {
 	User.find()
 		.sort({date: -1})
 		.then(users => res.json(users))
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 // @route POST api/users
 // @desc Create an user
 // @access Public - normally private
-router.post('/', (req, res) => {
+router.post('/adduser', (req, res) => {
 	const newUser = new User({
 		name: req.body.name
 	});
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 // @route DELETE api/users/:id
 // @desc Delete an user
 // @access Public
-router.delete('/:id', (req, res) => {
+router.delete('/removeuser/:id', (req, res) => {
 	User.findById(req.params.id)
 		.then(user => user.remove().then(() => res.json({success: true})))
 		.catch(err => res.status(404).json({success: false}));
