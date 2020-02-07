@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import { Redirect, Link } from 'react-router-dom';
+// import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom';
 // import Row from 'react-bootstrap/Row'
 // import CenterView from './CenterView'
 
