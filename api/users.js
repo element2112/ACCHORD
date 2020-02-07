@@ -9,7 +9,7 @@ const User = require('./models/user.model');
 // @access Public
 router.get('/searchuser', (req, res) => {
 	User.find()
-		.sort({date: -1})
+		.sort({firstName: 1})
 		.then(users => res.json(users))
 });
 
@@ -18,7 +18,11 @@ router.get('/searchuser', (req, res) => {
 // @access Public - normally private
 router.post('/adduser', (req, res) => {
 	const newUser = new User({
-		name: req.body.name
+		email: req.body.email,
+		password: req.body.password,
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		timestamps: true
 	});
 
 	newUser.save().then(user => res.json(user));
