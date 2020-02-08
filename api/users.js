@@ -17,7 +17,7 @@ router.get('/searchuser', (req, res) => {
 // @route POST api/users
 // @desc Create an user
 // @access Public - normally private
-router.post('/registeruser', (req, res) => {
+router.post('/registeruser', async (req, res) => {
 	console.log("ADDING USER");
 	const newUser = new User({
 		email: req.body.email,
@@ -27,7 +27,9 @@ router.post('/registeruser', (req, res) => {
 		timestamps: true
 	});
 
-	newUser.save().then(user => res.json(user));
+	// may need to add an error or check if theres a duplicate user
+
+	await newUser.save().then(user => res.json(user));
 	console.log("USER ADDED");
 });
 
