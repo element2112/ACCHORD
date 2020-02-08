@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+const users = require('./api/users');
+
 require('dotenv').config();
 
 const app = express();
@@ -9,6 +11,9 @@ const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
+
+// Use routes
+app.use('/api/users', users);
 
 // commented out mongoose until db is connected
 
