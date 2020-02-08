@@ -7,17 +7,17 @@ const Register = () => {
     firstName: '',
     lastName: '',
     email: '',
-    password1: '',
+    password: '',
     password2: ''
   });
 
-  const { firstName, lastName, email, password1, password2 } = formData;
+  const { firstName, lastName, email, password, password2 } = formData;
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
-    if (password1 !== password2)
+    if (password !== password2)
     {
       alert('passwords do not match');
     } else {
@@ -42,7 +42,7 @@ const Register = () => {
           
           <Form.Group controlId="formBasicPassword">
             <Form.Label className="formLabel">Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" name='password1' defaultValue={password1} onChange={e => onChange(e)} required />
+            <Form.Control type="password" placeholder="Password" name='password' defaultValue={password} onChange={e => onChange(e)} required />
           </Form.Group>
           
           <Form.Group controlId="formBasicPassword">
