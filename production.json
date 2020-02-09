@@ -1,0 +1,3 @@
+{
+  "mongoURI": "ATLAS_URI=mongodb+srv://dbAcchord:acchord123@cluster0-wqzx6.mongodb.net/test?retryWrites=true&w=majority"
+}
