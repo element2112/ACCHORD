@@ -1,4 +1,4 @@
-# SPRINT 1 BACKLOG (2020-01-26 to 2020-02-01)
+# SPRINT 2 BACKLOG (2020-02-02 to 2020-02-09)
 
 | ID            | USER STORY            | EFFORT  | PRIORITY | VALIDATION CRITERIA | OWNER|
 | ------------- |:---------------------:| -------:|---------:|--------------------:|------:|

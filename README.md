@@ -18,10 +18,31 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 [PRODUCT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/product_backlog.md)
 
-[SPRINT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/sprint1_backlog.md)
+[SPRINT 1 BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/sprint1_backlog.md)
 
 [REQUIREMENTS](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements.md)
 
 [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1jwY23aKp-SBeTWEQvvxbFxrARaL_17rtB4vL2Oa2BW4/edit?usp=sharing)
 
 [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit?usp=sharing)
+
+# SPRINT 2
+
+* [PRODUCT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/product_backlog.md)
+
+* [SPRINT 2 BACKLOG](https://github.com/element2112/ACCHORD/blob/master/artifacts/sprint2_backlog.md)
+
+* [REQUIREMENTS](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements.md)
+
+* [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1yK5-0wIXfEaJPpLl3a02o0i_WUHYtXOKvfO3BedfQ7o/edit?usp=sharing)
+
+* [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit?usp=sharing)
+
+* Design Documents
+
+  * [System Architecture](https://github.com/element2112/ACCHORD/blob/master/artifacts/architecture.md)
+
+  * [Class Diagram](https://docs.google.com/document/d/1QmQ4vstHDbX0tCWerAWfRIcJvhlxMB-IRFBjGlemHw0/edit?usp=sharing)
+
+  * [Sequence Diagrams]()
+
