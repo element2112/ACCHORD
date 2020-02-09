@@ -39,7 +39,10 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 * [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit?usp=sharing)
 
 * Design Documents
-* [System Architecture]()
-* [Class Diagram]()
+
+* [System Architecture](https://github.com/element2112/ACCHORD/blob/master/artifacts/architecture.md)
+
+* [Class Diagram](https://docs.google.com/document/d/1QmQ4vstHDbX0tCWerAWfRIcJvhlxMB-IRFBjGlemHw0/edit?usp=sharing)
+
 * [Sequence Diagrams]()
 
