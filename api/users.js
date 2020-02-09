@@ -4,6 +4,11 @@ const router = express.Router();
 // User model
 const User = require('./models/user.model');
 
+
+router.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
+
 // @route GET api/users
 // @desc Get all users
 // @access Public
