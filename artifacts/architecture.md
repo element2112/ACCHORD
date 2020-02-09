@@ -4,6 +4,8 @@
 
 # Major Classes
 
+The major classes in Acchord are registerPage, loginPage, and dashboardPage.  loginPage and dashboardPage are subclasses of registerPage, since they are sharing the user information data.  The link to the UML class diagram is below.
+
 * https://docs.google.com/document/d/1QmQ4vstHDbX0tCWerAWfRIcJvhlxMB-IRFBjGlemHw0/edit?usp=sharing
 
 # Data Design
