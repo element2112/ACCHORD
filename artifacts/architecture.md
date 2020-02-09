@@ -16,7 +16,7 @@ The Acchord website will store all user data, including first name, last name, e
 
 # Business Rules
 
-# User Interface Design
+# User Interface Design (Descriptions and table are within the document)
 
 * https://docs.google.com/document/d/1i8sUkb_lvJayRaxq9Wzg5nWz46eU-wb24Y_wntDmVsY/edit
 
