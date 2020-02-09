@@ -40,8 +40,14 @@ const Register = () => {
         const body = JSON.stringify(newUser);
 
         const res = await axios.post('http://localhost:4000/api/users/registeruser', body, config);
-        localStorage.setItem("email", res.email);
+        localStorage.setItem("email", email);
+        localStorage.setItem("firstName", firstName);
+        localStorage.setItem("lastName", lastName);
+        localStorage.setItem("password", password);
+    
         setFormData({authenticated: true});
+        localStorage.setItem("authenticated", authenticated);
+        
         console.log(res.data);
       } catch(err) {
         console.error(err.res.data);

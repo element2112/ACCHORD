@@ -10,6 +10,8 @@ function Navbarcomp() {
           <Nav.Link href="#home">Home</Nav.Link>
           <Nav.Link href="#features">Playlists</Nav.Link>
           <Nav.Link href="#pricing">My Friends</Nav.Link>
+          <Nav.Link href="#My Account">My Account</Nav.Link>
+          <Nav.Link href="#logout">Logout</Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
