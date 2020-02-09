@@ -8,7 +8,7 @@
     "client": "cd ./client && npm run start",
     "server": "node server.js",
     "dev-server": "nodemon server.js",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "concurrently \"npm run dev-server\" \"npm run client\""
   },
   "keywords": [
     "acchord",
@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "concurrently": "^5.1.0",
     "cors": "^2.8.5",
