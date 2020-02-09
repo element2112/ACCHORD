@@ -32,7 +32,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 * [SPRINT 2 BACKLOG](https://github.com/element2112/ACCHORD/blob/master/artifacts/sprint2_backlog.md)
 
-* [REQUIREMENTS](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements.md)
+* [REQUIREMENTS](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint2.md)
 
 * [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1yK5-0wIXfEaJPpLl3a02o0i_WUHYtXOKvfO3BedfQ7o/edit?usp=sharing)
 
