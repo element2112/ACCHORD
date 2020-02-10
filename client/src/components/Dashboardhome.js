@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
-import Navbarcomp from './Navbarcomp'
+// import Navbarcomp from './Navbarcomp'
 import '../styles/Dash.css'
 
 export class Dashboardhome extends Component {
@@ -32,7 +32,6 @@ export class Dashboardhome extends Component {
   render() {
     return (
       <>
-        <Navbarcomp />
         <Row>
           <Col md={4}></Col>
           <Col md={{ span: 4, offset: 4 }} style={{marginLeft: "82%"}}>
