@@ -16,6 +16,10 @@ function Navbarcomp() {
   //   console.log('HERE')
   //   return <Redirect to="/" />
   // }
+
+  const handleClick = () => {
+    localStorage.clear();
+  }
   
   return (
     <>
@@ -26,7 +30,7 @@ function Navbarcomp() {
           <Nav.Link href="#features">Playlists</Nav.Link>
           <Nav.Link href="#pricing">My Friends</Nav.Link>
           <Nav.Link href="#My Account">My Account</Nav.Link>
-          <Nav.Link href="/">Logout</Nav.Link>
+          <Nav.Link href="/" onClick={handleClick}>Logout</Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
