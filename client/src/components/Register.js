@@ -46,7 +46,7 @@ const Register = () => {
         localStorage.setItem("password", password);
     
         setFormData({authenticated: true});
-        localStorage.setItem("authenticated", authenticated);
+        localStorage.setItem("authenticated", true);
         
         console.log(res.data);
       } catch(err) {
