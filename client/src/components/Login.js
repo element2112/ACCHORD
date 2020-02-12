@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import Container from 'react-bootstrap/Container'
-import { Redirect, Link } from 'react-router-dom';
+// import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom';
 // import Row from 'react-bootstrap/Row'
 // import CenterView from './CenterView'
+
+const headers = {
+  "Content-Type": "appliaction/json",
+}
 
 export class Login extends Component {
   
@@ -12,10 +16,22 @@ export class Login extends Component {
     email: "",
     password: ""
   }
-  
-  submitForm = (e) => {
-    console.log(this.state);
+
+  handleSubmit(e) {
+
+    fetch("http://localhost:4000/api/?",
+    {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      })
+    })
+    . then((res) => res.json())
+
     e.preventDefault();
+    
   }
   
   update = (e) => {
@@ -46,8 +62,8 @@ export class Login extends Component {
     return (
       <Form style={{
         position: 'absolute', left: '50%', top: '50%',
-        transform: 'translate(-50%, -50%)', 
-      }} onSubmit={this.submitForm}>
+        transform: 'translate(-50%, -50%)'
+      }} onSubmit={this.handleSubmit}>
         <h1>Login to Acchord</h1>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
