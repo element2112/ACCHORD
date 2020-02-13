@@ -3,8 +3,7 @@
 | REQUIREMENT ID            | USER STORY ID            | REQUIREMENT  | ACCEPTANCE CRITERIA |	EFFORT |	PRIORITY | STATUS |
 | ------------- |---------------------| -------|---------------------|-----------|----------|:---------:|
 | 000 | 09 | Each user shall be required to create a new password after 3 unsuccessful logins. | Given the user has an acchord profile, when the user enters the wrong password 3 times, then they will be alerted that the need to reset their password | 3 | IMPORTANT | PLANNED |
-| 001 | 09 | Each user shall be able to access their profile at all times. | Given the user has an acchord profile, when the user wants to use their page, then they will be able to access to their profile
- | 3 |	NECESSARY | PLANNED |
+| 001 | 09 | Each user shall be able to access their profile at all times. | Given the user has an acchord profile, when the user wants to use their page, then they will be able to access to their profile | 3 |	NECESSARY | PLANNED |
 | 002 | 09 | Each user shall confirm their password before updating account information | Given the user has an acchord profile, when the user wants to update their account information, then they will have to confirm their password | 3 |	NECESSARY | PLANNED |
 | 003 | 10 | The user shall be able to edit information from their profile. | Given the user has an acchord profile, when the user wants to edit their profile, then they must be able to click a button that allows the user to edit the dashboard |	3 |	NECESSARY | WORKING |
 | 004 | 10 | The user shall be able to delete information from their profile. | Given the user has an acchord profile, when the user wants to delete their profile, then they must be able to click a button that allows the user to delete their profile |	3 |	NECESSARY | WORKING |
