@@ -1,6 +1,6 @@
 # REQUIREMENTS FOR SPRINT 3 (2020-02-09 to 2020-02-16)
 
-| REQUIREMENT ID            | USER STORY ID            | REQUIREMENT  | Acceptance Criteria |	Effort |	Priority | STATUS |
+| REQUIREMENT ID            | USER STORY ID            | REQUIREMENT  | Acceptance Criteria |	Effort |	Priority | Status |
 | ------------- |---------------------| -------|---------------------|-----------|----------|:---------:|
 | 000 | 09 | Each user shall be required to create a new password after 3 unsuccessful logins. | Each user must create a new password after 3 unsuccessful logins. | 3 | IMPORTANT | PLANNED |
 | 001 | 09 | Each user shall be able to access their profile at all times. | Each user has access to their profile at all times. | 3 |	NECESSARY | PLANNED |
