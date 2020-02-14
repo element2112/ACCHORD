@@ -1,17 +1,27 @@
 import React from 'react'
 import Register from '../components/Register'
+import App from '../app'
 // import {  shallow, configure } from 'enzyme'
 // import Adapter from 'enzyme-adapter-react-16'
 import '@testing-library/jest-dom/extend-expect'
 import {render, fireEvent, waitForElement } from '@testing-library/react'
 
-import axiosMock from 'axios'
-
-jest.mock('axios');
-
-test('receives stuff', async () => {
-  const url = 'http://localhost:4000/api/users/registeruser'
+// app renders
+it('renders without crashing', () => {
+  const div = document.createElement('div')
+  render(<App />, div)
 })
+
+// import axiosMock from 'axios'
+
+// jest.mock('axios');
+
+// test('receives stuff', async () => {
+//   const url = 'http://localhost:4000/api/users/registeruser'
+
+//   const { getBy }
+
+// })
 
 // test('allows the user to regisrer', async () => {
 //   const fakeResponse = {
