@@ -2,42 +2,50 @@ import React from 'react'
 import Register from '../components/Register'
 // import {  shallow, configure } from 'enzyme'
 // import Adapter from 'enzyme-adapter-react-16'
-import '@testing-library/jes-dom/extend-expect'
-import {render, fireEvent, screen} from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+import {render, fireEvent, waitForElement } from '@testing-library/react'
 
-test('allows the user to regisrer', async () => {
-  const fakeResponse = {
-    firstName: 'fake name',
-    lastName: 'fake name',
-    email: 'fake@test.com',
-    password: '123456',
-    password2: '123456',
-    authenticated: false
-  }
+import axiosMock from 'axios'
 
-  jest.spyOn(axios, 'post').mockImplementationOnce(() => {
-    return Promise.resolve({
-      json: () => Promise.resolve(fakeResponse),
-    })
-  })
+jest.mock('axios');
 
-  render(<Register />)
-
-  fireEvent.change(screen.getByLabelText(/First Name/i), {
-    target: {value: 'chuck'},
-  })
-  fireEvent.change(screen.getByLabelText(/Last Name/), {
-    target: {value: 'norris'}
-  })
-
-  const alert = await screen.findByRole('alert')
-
-  expect(alert).toHaveContent(/Welcome/i)
-
-  expect(localStorage.get('firstName')).toEqual(fakeResponse.firstName)
-
-  expect(localStorage.get('lastName')).toEqual(fakeResponse.lastName)
+test('receives stuff', async () => {
+  const url = 'http://localhost:4000/api/users/registeruser'
 })
+
+// test('allows the user to regisrer', async () => {
+//   const fakeResponse = {
+//     firstName: 'fake name',
+//     lastName: 'fake name',
+//     email: 'fake@test.com',
+//     password: '123456',
+//     password2: '123456',
+//     authenticated: false
+//   }
+
+//   jest.spyOn(onSubmit, 'axios.post').mockImplementationOnce(() => {
+//     return Promise.resolve({
+//       json: () => Promise.resolve(fakeResponse),
+//     })
+//   })
+
+//   render(<Register />)
+
+//   fireEvent.change(screen.getByLabelText(/First Name/i), {
+//     target: {value: 'chuck'},
+//   })
+//   fireEvent.change(screen.getByLabelText(/Last Name/), {
+//     target: {value: 'norris'}
+//   })
+
+//   const alert = await screen.findByRole('alert')
+
+//   expect(alert).toHaveContent(/Welcome/i)
+
+//   expect(localStorage.get('firstName')).toEqual(fakeResponse.firstName)
+
+//   expect(localStorage.get('lastName')).toEqual(fakeResponse.lastName)
+// })
 
 
 
