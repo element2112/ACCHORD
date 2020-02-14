@@ -57,7 +57,13 @@ const Register = () => {
 
   if (authenticated)
   {
-    return (<Redirect to="/dashboard" />)
+    return (
+      <>
+        <div role="alert">Welcome</div>
+        <Redirect to="/dashboard" />
+      </>
+    
+    )
   } else {
 
     return (
