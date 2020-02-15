@@ -19,6 +19,7 @@ function Navbarcomp() {
   // }
 
   const handleClick = () => {
+    console.log('logging out')
     localStorage.clear();
   }
   
@@ -26,12 +27,12 @@ function Navbarcomp() {
     <>
       <Navbar bg="primary" variant="dark">
         <Navbar.Brand href="#home">My Acchord Home</Navbar.Brand>
-        <Nav className="mr-auto">
+        <Nav className="mr-auto" data-testid="nav">
           <Nav.Link href="/dashboard">Home</Nav.Link>
           <Nav.Link href="#features">Playlists</Nav.Link>
           <Nav.Link href="#pricing">My Friends</Nav.Link>
           <Nav.Link href="#My Account">My Account</Nav.Link>
-          <Nav.Link href="/" onClick={handleClick}>Logout</Nav.Link>
+          <Nav.Link href="/" onClick={handleClick} data-testid="logout">Logout</Nav.Link>
         </Nav>
         {/* <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
