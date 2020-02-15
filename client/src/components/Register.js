@@ -18,6 +18,7 @@ const Register = () => {
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
+    console.log('submitting');
     e.preventDefault();
     if (password !== password2)
     {
@@ -48,7 +49,8 @@ const Register = () => {
         setFormData({authenticated: true});
         localStorage.setItem("authenticated", true);
         
-        console.log(res.data);
+        // console.log(res.data);
+        
       } catch(err) {
         console.error(err.res.data);
       }
@@ -69,7 +71,7 @@ const Register = () => {
     return (
       <Fragment>
         <Form style={{position: 'absolute', left: '50%', top: '50%',
-          transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={e => onSubmit(e)} >
+          transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={e => onSubmit(e)} data-testid="form">
             <Form.Group controlId="Name">
               <Form.Label>First Name</Form.Label>
               <Form.Control type="text" placeholder="Enter first name" name='firstName' defaultValue={firstName} onChange={e => onChange(e)} required />
@@ -91,7 +93,7 @@ const Register = () => {
               <Form.Label className="formLabel">Confirm Password</Form.Label>
               <Form.Control type="password" placeholder="Confirm password" name='password2' defaultValue={password2} onChange={e => onChange(e)} required />
             </Form.Group>
-            <Button variant="primary" type="submit"  >
+            <Button variant="primary" type="submit" data-testid="submitBtn">
               Submit
             </Button>
         </Form>
