@@ -95,6 +95,6 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
     > 9. Refresh the database collection in mongodb cloud to see if the user has been inserted
     > The test has passed if the user has been inserted into the database
   
- * ### Source code is in the root github folder above. It cannot be put into a seperate folder due to hosting on heroku.
+ * ### Source code is in the current root folder up above. It cannot be put into a seperate folder due to hosting on heroku.
  
  * [DEMO]()
