@@ -42,14 +42,16 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
   * [System Architecture](https://github.com/element2112/ACCHORD/blob/master/artifacts/architecture.md)
 
-  * Class Diagram
+  * ## Class Diagram
   
   
       ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_architecture.png)
 
-  * Sequence Diagram
+  * ## Sequence Diagram
   
    ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
+   
+   
   
  * [DEMO](https://www.youtube.com/watch?v=HwR01Kzx-SM)
 
