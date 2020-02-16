@@ -18,10 +18,81 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 [PRODUCT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/product_backlog.md)
 
-[SPRINT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/sprint1_backlog.md)
+[SPRINT 1 BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/sprint1_backlog.md)
 
-[REQUIREMENTS](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements.md)
+[REQUIREMENTS](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint2.md)
 
 [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1jwY23aKp-SBeTWEQvvxbFxrARaL_17rtB4vL2Oa2BW4/edit?usp=sharing)
 
 [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit?usp=sharing)
+
+# SPRINT 2
+
+* [PRODUCT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/product_backlog.md)
+
+* [SPRINT 2 BACKLOG](https://github.com/element2112/ACCHORD/blob/master/artifacts/sprint2_backlog.md)
+
+* [REQUIREMENTS SPRINT 2](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint2.md)
+
+* [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1yK5-0wIXfEaJPpLl3a02o0i_WUHYtXOKvfO3BedfQ7o/edit?usp=sharing)
+
+* [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit?usp=sharing)
+
+* Design Documents
+
+  * [System Architecture](https://github.com/element2112/ACCHORD/blob/master/artifacts/architecture.md)
+
+  * ## Class Diagram
+  
+  
+      ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_architecture.png)
+
+  * ## Sequence Diagram
+  
+   ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
+   
+   
+  
+ * [DEMO](https://www.youtube.com/watch?v=HwR01Kzx-SM)
+
+# SPRINT 3
+
+* [PRODUCT BACKLOG](https://github.com/element2112/ACCHORD/blob/master/artifacts/product_backlog.md)
+
+* [SPRINT 3 BACKLOG](https://github.com/element2112/ACCHORD/blob/master/artifacts/sprint3_backlog.md)
+
+* [REQUIREMENTS SPRINT 3](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint3.md)
+
+* [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=564703038)
+
+* [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=0)
+
+* Design Documents
+
+  * [System Architecture](https://github.com/element2112/ACCHORD/blob/master/artifacts/architecture.md)
+
+  * ## Class Diagram
+  
+      ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_architecture.png)
+
+  * ## Sequence Diagram
+  
+   ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
+   
+ * ### Testing 
+   * Manual Testing
+    > Test Scenario: Registering an account=
+    > Steps:
+    > 0. Open the database collection in mongodb cloud
+    > 1. From the login page, click register user
+    > 2. Once the register page appears, Enter in a first name
+    > 3. Then enter a last name
+    > 4. Then enter an email
+    > 5. Then enter a password
+    > 6. Enter in the exact same password as you did in step 5
+    > 7. Press submit
+    > 8. The user dashboard should appear
+    > 9. Refresh the database collection in mongodb cloud to see if the user has been inserted
+    > The test has passed if the user has been inserted into the database
+    
+ * [DEMO]()

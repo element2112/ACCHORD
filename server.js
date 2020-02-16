@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const users = require('./api/users');
 
@@ -15,16 +16,26 @@ app.use(express.json());
 // Use routes
 app.use('/api/users', users);
 
-// commented out mongoose until db is connected
+// serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+    // set static folder
+    app.use(express.static('client/build'));
 
-// in the package.json for backend, I added scripts that do the following
-// * npm run dev-server keeps the backend server running on port 4000. everytime you save
-// it restarts the server. This is easier so you don't have to run "npm run server" every time you make a change
-// * npm run start runs both the frontend and backend servers together
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
+
+
+
+// const path = require('path');
+// app.get('*', (req, res) => {
+// 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 const connection = mongoose.connection;
 
