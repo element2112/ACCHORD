@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "cd ./client && npm run test",
+    "frontend_test": "cd ./client && npm run test",
     "client": "cd ./client && npm run start",
     "server": "node server.js",
     "dev-server": "nodemon server.js",

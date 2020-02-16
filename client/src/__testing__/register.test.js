@@ -4,6 +4,7 @@ import Navbarcomp from '../components/Navbarcomp'
 import App from '../app'
 import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent, waitForElement } from '@testing-library/react'
+import Dashboardhome from '../components/Dashboardhome'
 
 // app renders
 it('renders app without crashing', () => {
@@ -12,12 +13,11 @@ it('renders app without crashing', () => {
 })
 
 // app renders
-it('renders without crashing', () => {
+it('renders register page without crashing', () => {
   render(<Register />)
 })
 
 it('should not submit', () => {
-
   const logSpy = jest.spyOn(console, "log");
   const { getByTestId } = render(<Register />);
   expect(getByTestId("submitBtn")).toBeTruthy();
