@@ -55,3 +55,30 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
   
  * [DEMO](https://www.youtube.com/watch?v=HwR01Kzx-SM)
 
+# SPRINT 3
+
+* [PRODUCT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/product_backlog.md)
+
+* [SPRINT 3 BACKLOG](https://github.com/element2112/ACCHORD/blob/master/artifacts/sprint2_backlog.md)
+
+* [REQUIREMENTS SPRINT 3](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint2.md)
+
+* [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=564703038)
+
+* [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=0)
+
+* Design Documents
+
+  * [System Architecture](https://github.com/element2112/ACCHORD/blob/master/artifacts/architecture.md)
+
+  * ## Class Diagram
+  
+      ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_architecture.png)
+
+  * ## Sequence Diagram
+  
+   ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
+   
+   
+  
+ * [DEMO]()
