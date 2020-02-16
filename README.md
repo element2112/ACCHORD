@@ -57,7 +57,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 # SPRINT 3
 
-* [PRODUCT BACKLOG](https://github.com/element2112/ACCHORD/blob/brittanie/artifacts/product_backlog.md)
+* [PRODUCT BACKLOG](https://github.com/element2112/ACCHORD/blob/master/artifacts/product_backlog.md)
 
 * [SPRINT 3 BACKLOG](https://github.com/element2112/ACCHORD/blob/master/artifacts/sprint2_backlog.md)
 
