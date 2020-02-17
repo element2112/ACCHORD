@@ -80,6 +80,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
    ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
    
  * ### Testing 
+   * [Automated Testing](https://github.com/element2112/ACCHORD/tree/master/client/src/__testing__)
    * Manual Testing
     > Test Scenario: Registering an account=
     > Steps:
