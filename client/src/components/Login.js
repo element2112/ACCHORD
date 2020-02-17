@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 // import CenterView from './CenterView'
 
 const headers = {
-  "Content-Type": "appliaction/json",
+  'Content-Type': 'application/json'
 }
 
 export class Login extends Component {
@@ -17,27 +17,33 @@ export class Login extends Component {
     password: ""
   }
 
-  handleSubmit(e) {
-
-    fetch("http://localhost:4000/api/?",
+  handleSubmit = (e) => {
+    let state = this.state;
+    fetch("http://localhost:4000/api/users/login",
     {
       method: "POST",
       headers: headers,
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
+      body: JSON.stringify(state)
     })
-    . then((res) => res.json())
-
+    .then(res => res.json())
+    .then(res => {
+      console.log("login: " + res.login);
+      // TODO:
+      // handle the response
+      // if login successful, go to Dashboard page
+      // if login successful, go to Dashboard page
+      // also, store data in LocalStorage (figure out how to do this)
+      //
+      // if login unsuccessful, go to login page with an error
+      // TODO in users.js:
+      // confirm the source of this request through CORS (if possible)
+    });
     e.preventDefault();
-    
   }
   
   update = (e) => {
     let name = e.target.name;
     let value = e.target.value;
-    let errorstate = '';
     switch(name){
     case "email":
       // validate the email to prevent some attacks
@@ -48,14 +54,9 @@ export class Login extends Component {
         value = value.substr(20);
       }
       break;
+    default:
     }
-    console.log(value);
     this.setState({[name]: value});
-    console.log(this.state);
-  }
-  
-  handleClick(e) {
-    //e.preventDefault();
   }
 
   render() {
@@ -74,7 +75,7 @@ export class Login extends Component {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" name="password" onChange={this.update} />
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={this.handleClick}>
+        <Button variant="primary" type="submit">
           Login
         </Button>
         <br/>

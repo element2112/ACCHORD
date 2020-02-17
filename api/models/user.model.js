@@ -33,6 +33,18 @@ const userSchema = new Schema({
     timestamps: true,
 });
 
+userSchema.statics.findByEmail = function(email){
+  console.log("HI " + email);
+  return this.findOne({email: email})
+  .then(user => {
+    if (user == null) {
+      return Promise.reject("User with email [" + email + "] not found.");
+    } else {
+      return Promise.resolve(user);
+    }
+  });
+};
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
