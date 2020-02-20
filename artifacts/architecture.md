@@ -2,9 +2,15 @@
 
 [High Level Architecture](https://docs.google.com/document/d/1fRGJO0WuWy_onGmUY-X_2tus0E5H_XLB17wOOISiAd0/edit?usp=sharing)
 
+* Sequence Diagram
+[alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
+
 # Major Classes
 
 The major classes in Acchord are registerPage, loginPage, and dashboardPage.  loginPage and dashboardPage are subclasses of registerPage, since they are sharing the user information data.  The link to the UML class diagram is below.
+
+* Class Diagram
+![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_architecture.png)
 
 * UML Class Diagram
 
