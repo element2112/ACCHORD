@@ -3,7 +3,7 @@
 [High Level Architecture](https://docs.google.com/document/d/1fRGJO0WuWy_onGmUY-X_2tus0E5H_XLB17wOOISiAd0/edit?usp=sharing)
 
 * Sequence Diagram
-[alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
+![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
 
 # Major Classes
 
