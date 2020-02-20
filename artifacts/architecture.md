@@ -22,7 +22,7 @@ The Acchord website will store all user data, including first name, last name, e
 
 # Business Rules
 
-Due to our web application not being used for business purposes, business rules does not apply.
+Due to our web application not being used for business purposes, business rules do not apply.
 
 # User Interface Design 
 ##### Descriptions and table are within the document
