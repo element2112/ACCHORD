@@ -22,12 +22,15 @@ The Acchord website will store all user data, including first name, last name, e
 
 # Business Rules
 
+Due to our web application not being used for business purposes, business rules does not apply.
+
 # User Interface Design 
 ##### Descriptions and table are within the document
 
 * https://docs.google.com/document/d/1i8sUkb_lvJayRaxq9Wzg5nWz46eU-wb24Y_wntDmVsY/edit
 
 # Resource Management
+By using Mongodb Atlas Cloud, all resources are managed by MongoDB and AWS.
 
 # Security
 
