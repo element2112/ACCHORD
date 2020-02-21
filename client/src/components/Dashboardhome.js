@@ -8,6 +8,7 @@ export class Dashboardhome extends Component {
 
   constructor(){
     super()
+    // original state of component
     this.state = {
       firstName: '',
       lastName: '',
@@ -24,6 +25,7 @@ export class Dashboardhome extends Component {
     console.log('test ' + localStorage.getItem('authenticated'));
     if (localStorage.getItem('authenticated'))
     {
+      // changing the state from values in local storage
       this.setState({
         firstName: localStorage.getItem('firstName'),
         lastName: localStorage.getItem('lastName'),
@@ -35,8 +37,10 @@ export class Dashboardhome extends Component {
   }
 
   render() {
+    // checks if user has been authenticated
     if (this.state.authenticated == true)
     {
+      // jsx returned to show on screen
       return (
         <>
           <Row>

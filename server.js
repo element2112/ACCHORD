@@ -30,15 +30,9 @@ const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 );
 
-
-
-// const path = require('path');
-// app.get('*', (req, res) => {
-// 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-
 const connection = mongoose.connection;
 
+// db connection
 connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 })

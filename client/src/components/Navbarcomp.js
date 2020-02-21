@@ -3,26 +3,23 @@ import { Navbar, FormControl, Button, Form, Nav } from 'react-bootstrap'
 // import { Redirect } from 'react-router-dom'
 
 function Navbarcomp() {
-
-  // let isBye = false;
-
+  
+  // clicking the logout button clears local storage of
+  // all user information
   const clear = () => {
     console.log("here")
     localStorage.clear();
     console.log("cleared");
   }
 
-  // if (isBye)
-  // {
-  //   console.log('HERE')
-  //   return <Redirect to="/" />
-  // }
-
+  // clicking the logout button clears local storage of
+  // all user information
   const handleClick = () => {
     console.log('logging out')
     localStorage.clear();
   }
   
+  // returning element to parent component
   return (
     <>
       <Navbar bg="primary" variant="dark">
@@ -34,10 +31,6 @@ function Navbarcomp() {
           <Nav.Link href="#My Account">My Account</Nav.Link>
           <Nav.Link href="/" onClick={handleClick} data-testid="logout">Logout</Nav.Link>
         </Nav>
-        {/* <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-light">Search</Button>
-        </Form> */}
       </Navbar>
     </>
   )

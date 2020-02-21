@@ -4,6 +4,7 @@ import Login from '../components/Login';
 
 export class Homepage extends Component {
   render() {
+    // landing page parent layout
     return (
       <Container>
         <Login />

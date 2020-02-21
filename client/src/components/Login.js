@@ -12,11 +12,13 @@ const headers = {
 
 export class Login extends Component {
 
+  // initial state
   state = {
     email: "",
     password: ""
   }
 
+  // handle submit by sending user info to database
   handleSubmit(e) {
 
     fetch("http://localhost:4000/api/?",
@@ -35,6 +37,7 @@ export class Login extends Component {
   }
 
   render() {
+    // rendering component
     return (
       <Form style={{
         position: 'absolute', left: '50%', top: '50%',
