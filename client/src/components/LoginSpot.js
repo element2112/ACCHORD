@@ -14,7 +14,7 @@ export default class LoginSpot extends Component {
   
   
   handleClick = () => {
-   console.log('test')
+   
   }
 
   render() {
