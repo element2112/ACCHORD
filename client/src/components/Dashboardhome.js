@@ -20,7 +20,7 @@ export class Dashboardhome extends Component {
   
 
   componentWillMount() {
-    // localStorage.setItem('authenticated', true);
+    localStorage.setItem('authenticated', true);
     console.log('test ' + localStorage.getItem('authenticated'));
     if (localStorage.getItem('authenticated'))
     {
@@ -35,7 +35,7 @@ export class Dashboardhome extends Component {
   }
 
   render() {
-    if (this.state.authenticated == true)
+    if (this.state.authenticated === true)
     {
       return (
         <>

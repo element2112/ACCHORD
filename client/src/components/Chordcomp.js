@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
+import { Dropdown } from 'react-bootstrap'
 
 export class Chordcomp extends Component {
 
@@ -39,6 +40,10 @@ export class Chordcomp extends Component {
     e.preventDefault();
     console.log(this.state);
 
+    // fetch(/api/spotify)
+
+    //  var chords = [this.state.chord1, this.state.chord2, this.state.chord3];
+
     // here we'll fetch
   }
 
@@ -53,6 +58,7 @@ export class Chordcomp extends Component {
               <input  type="text" name="chord2" placeholder="chord 2" onChange={this.handleChord2Change} />
               <input  type="text" name="chord3" placeholder="chord 3" onChange={this.handleChord3Change}/>
               <button type="submit">Get Playlist</button>
+              
             </Col>
           </Row>
       </Form>

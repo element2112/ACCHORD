@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 // import CenterView from './CenterView'
 
 const headers = {
-  "Content-Type": "appliaction/json",
+  "Content-Type": "application/json",
 }
 
 export class Login extends Component {
