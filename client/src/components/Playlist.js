@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
 function Playlist(props) {
+  // splitting URL
   var parts = `${props.playlists}`.split('/');
   var lastSegment = parts.pop() || parts.pop();
 
+  // link to embedd playlist
   var link = 'https://open.spotify.com/embed/playlist/' + lastSegment;
 
   console.log('playlist embedded')

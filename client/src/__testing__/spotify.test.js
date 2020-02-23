@@ -14,7 +14,7 @@ it('renders app without crashing', () => {
   render(<Chordcomp />)
 })
 
-// chordcomp
+// playlist
 it('renders playlist without crashing', () => {
   render(<Playlist />)
 })
