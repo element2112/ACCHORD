@@ -4,6 +4,7 @@ import Register from '../components/Register';
 
 export class Homepage extends Component {
   render() {
+    // register page parent layout
     return (
       <Container>
         <Register />

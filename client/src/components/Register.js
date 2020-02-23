@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
 const Register = () => {
+  // initial state
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -13,11 +14,15 @@ const Register = () => {
     authenticated: false
   });
 
+  // array destructure for state
   const { firstName, lastName, email, password, password2, authenticated } = formData;
 
+  // change the state as input is being typed
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // sending form data to API on submit
   const onSubmit = async e => {
+    console.log('submitting');
     e.preventDefault();
     if (password !== password2)
     {
@@ -40,6 +45,7 @@ const Register = () => {
         const body = JSON.stringify(newUser);
 
         const res = await axios.post('http://localhost:4000/api/users/registeruser', body, config);
+        // setting values to local storage to be used in dashboard
         localStorage.setItem("email", email);
         localStorage.setItem("firstName", firstName);
         localStorage.setItem("lastName", lastName);
@@ -48,22 +54,32 @@ const Register = () => {
         setFormData({authenticated: true});
         localStorage.setItem("authenticated", true);
         
-        console.log(res.data);
+        // console.log(res.data);
+        
       } catch(err) {
+        // error catching
         console.error(err.res.data);
       }
     }
   }
 
+  // checks if user is authenticated before routing to dashbaord
   if (authenticated)
   {
-    return (<Redirect to="/dashboard" />)
+    return (
+      <>
+        <div role="alert">Welcome</div>
+        <Redirect to="/dashboard" />
+      </>
+    
+    )
   } else {
 
+    // returning component
     return (
       <Fragment>
         <Form style={{position: 'absolute', left: '50%', top: '50%',
-          transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={e => onSubmit(e)} >
+          transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={e => onSubmit(e)} data-testid="form">
             <Form.Group controlId="Name">
               <Form.Label>First Name</Form.Label>
               <Form.Control type="text" placeholder="Enter first name" name='firstName' defaultValue={firstName} onChange={e => onChange(e)} required />
@@ -85,7 +101,7 @@ const Register = () => {
               <Form.Label className="formLabel">Confirm Password</Form.Label>
               <Form.Control type="password" placeholder="Confirm password" name='password2' defaultValue={password2} onChange={e => onChange(e)} required />
             </Form.Group>
-            <Button variant="primary" type="submit"  >
+            <Button variant="primary" type="submit" data-testid="submitBtn">
               Submit
             </Button>
         </Form>

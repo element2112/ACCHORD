@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+// setting schema for user model
 const userSchema = new Schema({
     email: {
         type: String,

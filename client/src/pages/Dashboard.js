@@ -5,6 +5,7 @@ import Dashboardhome from '../components/Dashboardhome';
 
 export class Dashboard extends Component {
   render() {
+    // dashboard parent layout
     return (
       <>
         <Navbarcomp />
