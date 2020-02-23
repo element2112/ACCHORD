@@ -46,11 +46,19 @@ Database: Currently we are using the free tier of MongoDB Atlas which provides s
 
 # Internationalization/Localization
 
+The website will be done in English and based in the United States.
+
 # Input/Output
+
+Due to the nature of the website, reading is mostly based on a just-in-time reading scheme. Input errors are detected immediately with initial requirements for specific inputs and checked again with the database where data is found or not found. Output errors are then detected once data from the database has been collected to verify that the correct information was returned.
 
 # Error Processing
 
+Error processing is handled correctively, stopping to require new input, and actively, checking the validity of input. Errors don’t propagate through the architecture because it discards the invalid data and takes new data to try.
+
 # Fault Tolerance
+
+The fault tolerance of our system is minimal as most of our error processing is where input is given.
 
 # Architectural Feasibility
 
@@ -58,6 +66,10 @@ Database: Currently we are using the free tier of MongoDB Atlas which provides s
 
 # Build-vs-Buy Decisions
 
+The architecture doesn’t use many off-the-shelf components due to the simplicity and specificity of the required components.
+
 # Reuse
+
+Due to the nature of the project, there will be no reuse of pre-existing software. However there will be a use of resources such as the Spotify API.
 
 # Change Strategy
