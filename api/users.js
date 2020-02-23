@@ -35,6 +35,7 @@ router.post('/registeruser', async (req, res) => {
   User.findByEmail(req.body.email)
 		.then(user => {
         console.log("USER NOT ADDED, FOUND USER IN DB");
+        res.status(500).json({error: "Email already registered."});
     }, err => {
       newUser.save()
       .then(user => {
@@ -55,11 +56,9 @@ router.post('/login', async (req, res) => {
   let returnJson = {login: false, user: {}};
   await User.findByEmail(email)
 		.then(user => {
-      console.log("EMAIL MATCH FOUND IN DB");
-      console.log(user);
+  // TODO: use req.body.remember to remember user
       if (user.password === password) {
         // proceed to login
-        console.log("login match! part 1");
         returnJson.login = true;
         
         // for security, we don't return the whole user object from db
@@ -68,9 +67,12 @@ router.post('/login', async (req, res) => {
         returnJson.user.firstName = user.firstName;
         returnJson.user.lastName = user.lastName;
       }else{
-        console.log("INCORRECT PASSWORD");
+        // handle password incorrect (no action necessary)
       }
-    }, err => console.log("ERROR: " + err));
+    }, err => {
+      // handle email not found error (no action necessary)
+      console.log("ERROR: " + err);
+  });
   // end await
   res.json(returnJson);
 });
