@@ -10,11 +10,11 @@ export class Dashboardhome extends Component {
     super()
     // original state of component
     this.state = {
-      firstName: '',
+      firstName: 'test',
       lastName: '',
       email: '',
       password: '',
-      authenticated: false
+      authenticated: true
     }
   }
 
@@ -47,10 +47,10 @@ export class Dashboardhome extends Component {
             <Col md={{ span: 4, offset: 9 }} style={{marginLeft: "82%"}}>
               <Card id='profile-bio'>
                 <Card.Body>
-                  <Card.Title>{this.state.firstName}</Card.Title>
+                  <Card.Title style={{color: "black"}}>{this.state.firstName}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">
                   </Card.Subtitle>
-                  <Card.Text>
+                  <Card.Text style={{color: "black"}}>
                     BIO
                   </Card.Text>
                   <Card.Link href="#">MY spotify profile</Card.Link>

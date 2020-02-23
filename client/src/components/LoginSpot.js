@@ -25,6 +25,7 @@ export default class LoginSpot extends Component {
   }
 
   async componentDidMount() {
+    console.log('COMPONENT MOUNTED')
     let parsed = queryString.parse(window.location.search);
     let accessToken = parsed.access_token;
 
@@ -48,13 +49,14 @@ export default class LoginSpot extends Component {
       })
     }).then((res) => res.json())
       .then((data) => this.setState({ playlistID: data.id, link: data.external_urls.spotify }))
+      .then(() => console.log('FETCHING PLAYLIST'))
+      .catch((err) => console.error('ERROR'))
 
     await fetch(`https://api.spotify.com/v1/search?q=track:${this.state.track}%20artist:${this.state.artist}&type=track`, {
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
     }).then((res) => res.json())
       .then(data => this.setState({ trackID: data.tracks.items[0].id, uri: data.tracks.items[0].uri }))
-      .then(() => console.log('uri ' + this.state.uri))
-      .then(() => console.log('state ' + this.state.username))
+      .then(() => console.log('SEARCHING TRACK'))
 
     await fetch(`https://api.spotify.com/v1/users/${this.state.username}/playlists/${this.state.playlistID}/tracks`, {
       method: 'POST',
@@ -64,7 +66,7 @@ export default class LoginSpot extends Component {
       })
     }).then((res) => res.json())
       .then((data) => this.setState({ playlistID: data.snapshot_id}))
-      .then(() => console.log('TEST ' + this.state.link))
+      .then(() => console.log('FETCHING TRACK'))
     
   }
 
@@ -73,7 +75,7 @@ export default class LoginSpot extends Component {
       <div>
         <Playlist playlists={this.state.link} />
         <Button id="login" onClick={() => window.location = 'http://localhost:8888/spotifylogin'}>Login with Spotify</Button>
-        <Button id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
+        <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
       </div>
     )
   }
