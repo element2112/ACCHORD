@@ -21,6 +21,7 @@
     "@react-mock/localstorage": "^0.1.2",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.4.1",
     "concurrently": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -29,6 +30,7 @@
     "mongoose": "^5.8.10",
     "nodemon": "^2.0.2",
     "query-string": "^6.11.0",
+    "react-bootstrap": "^1.0.0-beta.16",
     "react-router-dom": "^5.1.2",
     "request": "^2.88.2",
     "spotify-web-api-node": "^4.0.0"

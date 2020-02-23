@@ -18,13 +18,13 @@ export class Account extends Component {
       }
 
       componentWillMount() {
-        // localStorage.setItem('authenticated', true);
+        localStorage.setItem('authenticated', true);
         console.log('test ' + localStorage.getItem('authenticated'));
         if (localStorage.getItem('authenticated'))
         {
           // changing the state from values in local storage
           this.setState({
-            firstName: localStorage.getItem('firstName'),
+            firstName: 'rebecca',
             lastName: localStorage.getItem('lastName'),
             email: localStorage.getItem('email'),
             password: localStorage.getItem('password'),
@@ -34,13 +34,21 @@ export class Account extends Component {
       }
       render() {
           return (
-            <div>
-                <p>User Account Information:</p>
-                <p>First name: {this.state.firstName}</p>
-                <p>Last name: {this.state.lastName}</p>
-                <p>Email: {this.state.email}</p>
-                {/* <p>Password: {this.state.password}</p> */}
-            </div>
+            <Card style={{ width: '100rem' }}>
+            <Card.Body style={{color: "black"}}>
+              <Card.Title>User Account Information</Card.Title>
+                <Card.Text >
+                    First name: {this.state.firstName}
+                </Card.Text>
+                <Card.Text >
+                    Last name: {this.state.lastName}
+                </Card.Text>
+                <Card.Text >
+                    Email: {this.state.email}
+                </Card.Text>
+              <a href="#" class="btn btn-primary">Update account</a>
+            </Card.Body>
+          </Card>
           )
       }
     }
