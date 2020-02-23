@@ -104,9 +104,9 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 * [REQUIREMENTS SPRINT 4](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint4.md)
 
-* [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1yK5-0wIXfEaJPpLl3a02o0i_WUHYtXOKvfO3BedfQ7o/edit?usp=sharing)
+* [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=461865848)
 
-* [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit?usp=sharing)
+* [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=0)
 
 * [DESIGN DOCUMENT]()
 
@@ -134,10 +134,10 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
  
 ## Responsibilities
 * Brittanie Staton
-    - Description
+    - Connect with Spotify account and prepare input for chords. Test spotify connections. Work on documentation.
 * Alexandra Arriola
-    - Description
+    - Work on documentation.
 * Rebecca Englehart
-    - Description
+    - Create account page. Work on documentation.
 * Omar Kalam
-    - Description
+    - Create login functionality. Work on documentation.
