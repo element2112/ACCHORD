@@ -15,8 +15,8 @@ export default class LoginSpot extends Component {
       link: '',
       playlistID: '',
       trackID: '',
-      track: 'alison',
-      artist: 'elvis+costello',
+      track: 'feelings',
+      artist: 'hayley+kiyoko',
       market: 'US',
       uri: ''
     }
@@ -28,10 +28,28 @@ export default class LoginSpot extends Component {
     let parsed = queryString.parse(window.location.search);
     let accessToken = parsed.access_token;
 
-    await fetch('https://api.spotify.com/v1/me', {
+    let res = await fetch('https://api.spotify.com/v1/me', {
       headers: { 'Authorization': 'Bearer ' + accessToken}
-    }).then((res) => res.json())
-      . then(data => this.setState({ username: data.display_name, spotifyToken: accessToken }))
+    })
+
+    let data = await res.json()
+    this.setState({ username: data.display_name, spotifyToken: accessToken });
+
+    // res = await fetch(`https://api.spotify.com/v1/me/playlists`, {
+    //   method: 'POST',
+    //   headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json'},
+    //   body: JSON.stringify({
+    //     "name": "test playlist",
+    //     "description": "my description",
+    //     "public": true
+    //   })
+    // })
+    
+    // data = await res.json();
+    // this.setState({ playlistID: data.id, link: data.external_urls.spotify });
+  }
+
+  async handlePlaylists() {
 
     await fetch(`https://api.spotify.com/v1/me/playlists`, {
       method: 'POST',
@@ -42,10 +60,8 @@ export default class LoginSpot extends Component {
         "public": true
       })
     }).then((res) => res.json())
-      .then(data => this.setState({ playlistID: data.id, link: data.external_urls.spotify }))
-  }
-
-  async handlePlaylists() {
+      .then((data) => this.setState({ playlistID: data.id, link: data.external_urls.spotify }))
+      // .then((data) => console.log())
 
     await fetch(`https://api.spotify.com/v1/search?q=track:${this.state.track}%20artist:${this.state.artist}&type=track`, {
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
@@ -61,7 +77,12 @@ export default class LoginSpot extends Component {
         "uris": [this.state.uri]
       })
     }).then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => this.setState({ playlistID: data.snapshot_id}))
+      .then(() => console.log('TEST ' + this.state.link))
+
+      // .then((data) => console.log(data))
+
+    
   }
 
   render() {
