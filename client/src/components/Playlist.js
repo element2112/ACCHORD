@@ -7,15 +7,10 @@ function Playlist(props) {
 
   var link = 'https://open.spotify.com/embed/playlist/' + lastSegment;
 
-  console.log('link ' + link)
-  console.log('last ' + lastSegment)
-
-  const parse = () => {
-
-  }
+  console.log('playlist embedded')
   
   return (
-    <div>
+    <div data-testid="playlist">
       <iframe src={link} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
   )
