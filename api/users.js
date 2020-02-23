@@ -31,9 +31,50 @@ router.post('/registeruser', async (req, res) => {
 	});
 
 	// may need to add an error or check if theres a duplicate user
+  
+  User.findByEmail(req.body.email)
+		.then(user => {
+        console.log("USER NOT ADDED, FOUND USER IN DB");
+        res.status(500).json({error: "Email already registered."});
+    }, err => {
+      newUser.save()
+      .then(user => {
+        console.log("USER ADDED");
+        res.json(user)
+      });
+    });
+});
 
-	await newUser.save().then(user => res.json(user));
-	console.log("USER ADDED");
+// @route POST api/users
+// @desc Attempt login as existing user
+// @access Public - normally private
+router.post('/login', async (req, res) => {
+	console.log("ATTEMPTING LOGIN");
+  console.log(req.body);
+  let email = req.body.email;
+  let password = req.body.password;
+  let returnJson = {login: false, user: {}};
+  await User.findByEmail(email)
+		.then(user => {
+  // TODO: use req.body.remember to remember user
+      if (user.password === password) {
+        // proceed to login
+        returnJson.login = true;
+        
+        // for security, we don't return the whole user object from db
+        returnJson.user.email = user.email;
+        returnJson.user.password = user.password;
+        returnJson.user.firstName = user.firstName;
+        returnJson.user.lastName = user.lastName;
+      }else{
+        // handle password incorrect (no action necessary)
+      }
+    }, err => {
+      // handle email not found error (no action necessary)
+      console.log("ERROR: " + err);
+  });
+  // end await
+  res.json(returnJson);
 });
 
 // @route DELETE api/users/:id
