@@ -23,7 +23,7 @@ app.use(express.json());
 app.use('/api/users', users);
 // app.use('/api/spotify', spotify);
 
-// ------------------------------------------------- //
+// --------------------SPOTIFY SERVER----------------------------- //
 
 let redirect_uri = 'http://localhost:8888/callback';
 
@@ -69,8 +69,10 @@ app.get('/callback', function(req, res) {
   })
 
 
-// -------------------------------------------------- //
+// -------------------END OF SPOTIFY SERVER------------------------------- //
 
+
+// ------------------------DATABASE CONENCTION----------------------------//
 // serve static assets in production
 if (process.env.NODE_ENV === 'production') {
     // set static folder
@@ -95,7 +97,3 @@ connection.once('open', () => {
 app.listen(port, () => {
     console.log('Server is running on port: ' + port);
 });
-
-// app.listen(spotPort, () => {
-//     console.log('Spotify auth port is running on port: ' + spotPort);
-// })
