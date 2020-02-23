@@ -24,7 +24,7 @@ export class Account extends Component {
         {
           // changing the state from values in local storage
           this.setState({
-            firstName: 'rebecca',
+            firstName: localStorage.getItem('firstName'),
             lastName: localStorage.getItem('lastName'),
             email: localStorage.getItem('email'),
             password: localStorage.getItem('password'),
