@@ -28,7 +28,7 @@ function Navbarcomp() {
           <Nav.Link href="/dashboard">Home</Nav.Link>
           <Nav.Link href="#features">Playlists</Nav.Link>
           <Nav.Link href="#pricing">My Friends</Nav.Link>
-          <Nav.Link href="#My Account">My Account</Nav.Link>
+          <Nav.Link href=" /account">My Account</Nav.Link>
           <Nav.Link href="/" onClick={handleClick} data-testid="logout">Logout</Nav.Link>
         </Nav>
       </Navbar>

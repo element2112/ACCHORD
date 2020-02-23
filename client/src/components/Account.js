@@ -39,7 +39,7 @@ export class Account extends Component {
                 <p>First name: {this.state.firstName}</p>
                 <p>Last name: {this.state.lastName}</p>
                 <p>Email: {this.state.email}</p>
-                <p>Password: {this.state.password}</p>
+                {/* <p>Password: {this.state.password}</p> */}
             </div>
           )
       }
