@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import Register from './pages/Registerpage';
 import Dashboard from './pages/Dashboard';
+import Accountpage from './pages/Accountpage';
 // import Dashboardhome from './components/Dashboardhome';
 // import Navbarcomp from './components/Navbarcomp'
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" exact component={Homepage} />
         <Route path="/register" exact component={Register} />
         <Route path="/dashboard" exact component={Dashboard} />
+        <Route path="/account" exact component={Accountpage} />
       </Fragment>
     </Router>
   );
