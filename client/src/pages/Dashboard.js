@@ -4,7 +4,6 @@ import { Container } from 'react-bootstrap'
 import Dashboardhome from '../components/Dashboardhome';
 import Chordcomp from '../components/Chordcomp';
 import LoginSpot from '../components/LoginSpot';
-import Playlist from '../components/Playlist';
 
 export class Dashboard extends Component {
   render() {
@@ -12,7 +11,6 @@ export class Dashboard extends Component {
       <>
         <Navbarcomp />
         <Container>
-          <Playlist />
           <LoginSpot />
         </Container>
         <Container>
