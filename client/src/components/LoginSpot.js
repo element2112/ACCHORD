@@ -24,6 +24,7 @@ export default class LoginSpot extends Component {
     this.handlePlaylists = this.handlePlaylists.bind(this)
   }
 
+  // mounting component
   async componentDidMount() {
     console.log('COMPONENT MOUNTED')
     let parsed = queryString.parse(window.location.search);
@@ -37,8 +38,10 @@ export default class LoginSpot extends Component {
     this.setState({ username: data.display_name, spotifyToken: accessToken });
   }
 
+  // all playlist fetching
   async handlePlaylists() {
-
+    
+    // creating playlist
     await fetch(`https://api.spotify.com/v1/me/playlists`, {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json'},
@@ -52,12 +55,14 @@ export default class LoginSpot extends Component {
       .then(() => console.log('FETCHING PLAYLIST'))
       .catch((err) => console.error('ERROR'))
 
+    // searching for track
     await fetch(`https://api.spotify.com/v1/search?q=track:${this.state.track}%20artist:${this.state.artist}&type=track`, {
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
     }).then((res) => res.json())
       .then(data => this.setState({ trackID: data.tracks.items[0].id, uri: data.tracks.items[0].uri }))
       .then(() => console.log('SEARCHING TRACK'))
 
+    // adding track to playlist
     await fetch(`https://api.spotify.com/v1/users/${this.state.username}/playlists/${this.state.playlistID}/tracks`, {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json'},
@@ -70,6 +75,7 @@ export default class LoginSpot extends Component {
     
   }
 
+  // render
   render() {
     return (
       <div>
