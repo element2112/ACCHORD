@@ -21,6 +21,7 @@ app.use(express.json());
 
 // Use routes
 app.use('/api/users', users);
+// app.use('/api/spotify', spotify);
 
 // ------------------------------------------------- //
 

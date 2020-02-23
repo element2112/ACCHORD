@@ -1,7 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
-const path = require('path');
 let request = require('request')
 let querystring = require('querystring')
 
@@ -19,19 +17,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Use routes
-// app.use('/api/users', users);
-
 // ------------------------------------------------- //
 
-let redirect_uri = 'http://localhost:8888/callback';
+let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:8888/callback';
 
 app.get('/spotifylogin', function(req, res) {
     res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
       client_id: process.env.SPOTIFY_CLIENT_ID,
-      scope: 'user-read-private user-read-email',
+      scope: 'playlist-modify-public playlist-read-public playlist-read-private playlist-modify-private',
       redirect_uri
     }))
 })
@@ -54,9 +49,9 @@ app.get('/callback', function(req, res) {
     }
     request.post(authOptions, function(error, response, body) {
       var access_token = body.access_token
-      let uri = process.env.FRONTEND_URI || 'http://localhost:3000/dashboard'
+      let uri = process.env.FRONTEND_URI || 'http://localhost:3000'
       res.redirect(uri + '?access_token=' + access_token)
-      console.log(`Access token: ${access_token}`)
+      console.log(`response: ${response.body}`
     })
   })
 
@@ -64,5 +59,5 @@ app.get('/callback', function(req, res) {
 
 
   app.listen(spotPort, () => {
-    console.log(`Spotify auth server runnong on port ${spotPort}`)
+    console.log(`Spotify auth server running on port ${spotPort}`)
   })

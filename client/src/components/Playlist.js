@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min'
 
-function Playlist() {
+function Playlist(props) {
   var link = "https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3"
   return (
     <div>
