@@ -24,14 +24,14 @@ export default class LoginSpot extends Component {
     }).then((res) => res.json())
       . then(data => this.setState({ username: data.display_name, spotifyToken: accessToken }))
     
-    fetch(`https://api.spotify.com/v1/${this.state.username}/playlists`, {
+    fetch(`https://api.spotify.com/v1/me/playlists`, {
         method: 'POST',
         headers: { 'Authorization': 'Bearer ' + accessToken, 'Content-Type': 'application/json'},
-        body: {
+        body: JSON.stringify({
           "name": "new playlist",
           "description": "my description",
           "public": true
-        }
+        })
       }).then((res) => res.json())
         .then(data => console.log(data))
 
