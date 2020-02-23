@@ -45,14 +45,14 @@ router.post('/registeruser', async (req, res) => {
 });
 
 // @route POST api/users
-// @desc Create an user
+// @desc Attempt login as existing user
 // @access Public - normally private
 router.post('/login', async (req, res) => {
 	console.log("ATTEMPTING LOGIN");
   console.log(req.body);
   let email = req.body.email;
   let password = req.body.password;
-  let login = false;
+  let returnJson = {login: false, user: {}};
   await User.findByEmail(email)
 		.then(user => {
       console.log("EMAIL MATCH FOUND IN DB");
@@ -60,13 +60,19 @@ router.post('/login', async (req, res) => {
       if (user.password === password) {
         // proceed to login
         console.log("login match! part 1");
-        login = true;
+        returnJson.login = true;
+        
+        // for security, we don't return the whole user object from db
+        returnJson.user.email = user.email;
+        returnJson.user.password = user.password;
+        returnJson.user.firstName = user.firstName;
+        returnJson.user.lastName = user.lastName;
       }else{
         console.log("INCORRECT PASSWORD");
       }
     }, err => console.log("ERROR: " + err));
-  console.log(login);
-  res.json({login: login});
+  // end await
+  res.json(returnJson);
 });
 
 // @route DELETE api/users/:id
