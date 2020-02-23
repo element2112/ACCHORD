@@ -34,19 +34,6 @@ export default class LoginSpot extends Component {
 
     let data = await res.json()
     this.setState({ username: data.display_name, spotifyToken: accessToken });
-
-    // res = await fetch(`https://api.spotify.com/v1/me/playlists`, {
-    //   method: 'POST',
-    //   headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json'},
-    //   body: JSON.stringify({
-    //     "name": "test playlist",
-    //     "description": "my description",
-    //     "public": true
-    //   })
-    // })
-    
-    // data = await res.json();
-    // this.setState({ playlistID: data.id, link: data.external_urls.spotify });
   }
 
   async handlePlaylists() {
@@ -61,7 +48,6 @@ export default class LoginSpot extends Component {
       })
     }).then((res) => res.json())
       .then((data) => this.setState({ playlistID: data.id, link: data.external_urls.spotify }))
-      // .then((data) => console.log())
 
     await fetch(`https://api.spotify.com/v1/search?q=track:${this.state.track}%20artist:${this.state.artist}&type=track`, {
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
@@ -79,9 +65,6 @@ export default class LoginSpot extends Component {
     }).then((res) => res.json())
       .then((data) => this.setState({ playlistID: data.snapshot_id}))
       .then(() => console.log('TEST ' + this.state.link))
-
-      // .then((data) => console.log(data))
-
     
   }
 
