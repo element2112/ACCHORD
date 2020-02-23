@@ -58,7 +58,7 @@ const Register = () => {
         
       } catch(err) {
         // error catching
-        console.error(err.res.data);
+        console.error(err);
       }
     }
   }
