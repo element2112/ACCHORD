@@ -79,22 +79,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
   
    ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
    
- * ### Testing 
-   * [Automated Testing](https://github.com/element2112/ACCHORD/tree/master/client/src/__testing__)
-   * Manual Testing
-    > Test Scenario: Registering an account=
-    > Steps:
-    > 0. Open the database collection in mongodb cloud
-    > 1. From the login page, click register user
-    > 2. Once the register page appears, Enter in a first name
-    > 3. Then enter a last name
-    > 4. Then enter an email
-    > 5. Then enter a password
-    > 6. Enter in the exact same password as you did in step 5
-    > 7. Press submit
-    > 8. The user dashboard should appear
-    > 9. Refresh the database collection in mongodb cloud to see if the user has been inserted
-    > The test has passed if the user has been inserted into the database
+ * [TESTING](https://github.com/element2112/ACCHORD/blob/master/artifacts/testing.md)
   
  * ### Source code is in the current root folder up above. It cannot be put into a seperate folder due to hosting on heroku.
  
@@ -110,27 +95,16 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 * [DESIGN DOCUMENT]()
 
- * ### Testing 
-   * [Automated Testing](https://github.com/element2112/ACCHORD/tree/master/client/src/__testing__)
-   * Manual Testing
-    > Test Scenario: Registering an account=
-    > Steps:
-    > 0. Open the database collection in mongodb cloud
-    > 1. From the login page, click register user
-    > 2. Once the register page appears, Enter in a first name
-    > 3. Then enter a last name
-    > 4. Then enter an email
-    > 5. Then enter a password
-    > 6. Enter in the exact same password as you did in step 5
-    > 7. Press submit
-    > 8. The user dashboard should appear
-    > 9. Refresh the database collection in mongodb cloud to see if the user has been inserted
-    > The test has passed if the user has been inserted into the database
+* [TESTING](https://github.com/element2112/ACCHORD/blob/master/artifacts/testing.md)
+
+* [DEMO](https://youtu.be/M_-O_bU3_QE)
+ [
+* Responsibilities](https://github.com/element2112/ACCHORD/blob/master/artifacts/responsibilities_sprint_4.md)
   
  * ### Source code is in the current root folder up above. It cannot be put into a seperate folder due to hosting on heroku.
   
-* [DEMO](https://youtu.be/M_-O_bU3_QE)
+
  
  
-[Responsibilities](https://github.com/element2112/ACCHORD/blob/master/artifacts/responsibilities_sprint_4.md)
+
 
