@@ -15,8 +15,8 @@ export default class LoginSpot extends Component {
       link: '',
       playlistID: '',
       trackID: '',
-      track: 'feelings',
-      artist: 'hayley kiyoko',
+      track: 'alison',
+      artist: 'elvis costello',
       market: 'US',
       uri: ''
     }
@@ -25,8 +25,14 @@ export default class LoginSpot extends Component {
   }
 
   // mounting component
-  async componentDidMount() {
-    console.log('COMPONENT MOUNTED')
+  // async componentDidMount() {
+  //   console.log('COMPONENT MOUNTED')
+    
+  // }
+
+  // all playlist fetching
+  async handlePlaylists() {
+
     let parsed = queryString.parse(window.location.search);
     let accessToken = parsed.access_token;
 
@@ -35,10 +41,6 @@ export default class LoginSpot extends Component {
     }).then((res) => res.json())
       .then((data) => this.setState({ username: data.display_name, spotifyToken: accessToken }))
       .catch((err) => alert(`Cannot login due to ${err}`))
-  }
-
-  // all playlist fetching
-  async handlePlaylists() {
     
     // creating playlist
     await fetch(`https://api.spotify.com/v1/me/playlists`, {
