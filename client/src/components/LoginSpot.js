@@ -16,7 +16,7 @@ export default class LoginSpot extends Component {
       playlistID: '',
       trackID: '',
       track: 'feelings',
-      artist: 'hayley+kiyoko',
+      artist: 'hayley kiyoko',
       market: 'US',
       uri: ''
     }
@@ -32,10 +32,9 @@ export default class LoginSpot extends Component {
 
     let res = await fetch('https://api.spotify.com/v1/me', {
       headers: { 'Authorization': 'Bearer ' + accessToken}
-    })
-
-    let data = await res.json()
-    this.setState({ username: data.display_name, spotifyToken: accessToken });
+    }).then((res) => res.json())
+      .then((data) => this.setState({ username: data.display_name, spotifyToken: accessToken }))
+      .catch((err) => alert(`Cannot login due to ${err}`))
   }
 
   // all playlist fetching
@@ -52,15 +51,15 @@ export default class LoginSpot extends Component {
       })
     }).then((res) => res.json())
       .then((data) => this.setState({ playlistID: data.id, link: data.external_urls.spotify }))
-      .then(() => console.log('FETCHING PLAYLIST'))
-      .catch((err) => console.error('ERROR'))
+      .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
 
     // searching for track
     await fetch(`https://api.spotify.com/v1/search?q=track:${this.state.track}%20artist:${this.state.artist}&type=track`, {
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
     }).then((res) => res.json())
       .then(data => this.setState({ trackID: data.tracks.items[0].id, uri: data.tracks.items[0].uri }))
-      .then(() => console.log('SEARCHING TRACK'))
+      .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
+      .then(() => console.log(`artist: ${this.state.trackID}`))
 
     // adding track to playlist
     await fetch(`https://api.spotify.com/v1/users/${this.state.username}/playlists/${this.state.playlistID}/tracks`, {
@@ -72,14 +71,16 @@ export default class LoginSpot extends Component {
     }).then((res) => res.json())
       .then((data) => this.setState({ playlistID: data.snapshot_id}))
       .then(() => console.log('FETCHING TRACK'))
+      .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
     
   }
 
   // render
   render() {
+    const { link } = this.state;
     return (
       <div>
-        <Playlist playlists={this.state.link} />
+        <Playlist playlists={link} />
         <Button id="login" onClick={() => window.location = 'http://localhost:8888/spotifylogin'}>Login with Spotify</Button>
         <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
       </div>
