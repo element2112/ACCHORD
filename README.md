@@ -94,6 +94,8 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 * [DEMO](https://youtu.be/M_-O_bU3_QE)
 
 * [RESPONSIBILITIES](https://github.com/element2112/ACCHORD/blob/master/artifacts/responsibilities_sprint_4.md)
+
+* [Trello Board](https://trello.com/b/8bv1SEPT/acchord-cop4331c)
   
  * ### Source code is in the current root folder up above. It cannot be put into a seperate folder due to hosting on heroku.
   
