@@ -132,12 +132,5 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 * [DEMO](https://youtu.be/M_-O_bU3_QE)
  
  
-## Responsibilities
-* Brittanie Staton
-    - Connect with Spotify account and prepare input for chords. Test spotify connections. Work on documentation.
-* Alexandra Arriola
-    - Work on documentation.
-* Rebecca Englehart
-    - Create account page. Work on documentation.
-* Omar Kalam
-    - Create login functionality. Work on documentation.
+[Responsibilities](https://github.com/element2112/ACCHORD/blob/master/artifacts/responsibilities_sprint_4.md)
+
