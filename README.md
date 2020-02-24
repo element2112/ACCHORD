@@ -42,14 +42,10 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
   * [System Architecture](https://github.com/element2112/ACCHORD/blob/master/artifacts/architecture.md)
 
-  * ## Class Diagram
-  
-  
-      ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_architecture.png)
+  * [CLASS DIAGRAM](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_diagram.md)
 
-  * ## Sequence Diagram
-  
-   ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
+  * [SEQUENCE DIAGRAM](https://github.com/element2112/ACCHORD/blob/master/artifacts/sequence_diagram.md)
+
    
    
   
@@ -71,19 +67,17 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
   * [System Architecture](https://github.com/element2112/ACCHORD/blob/master/artifacts/architecture.md)
 
-  * ## Class Diagram
-  
-      ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_architecture.png)
+  * [CLASS DIAGRAM](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_diagram.md)
 
-  * ## Sequence Diagram
-  
-   ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
+  * [SEQUENCE DIAGRAM](https://github.com/element2112/ACCHORD/tree/master/artifacts)
    
- * [TESTING](https://github.com/element2112/ACCHORD/blob/master/artifacts/testing.md)
+* [TESTING](https://github.com/element2112/ACCHORD/blob/master/artifacts/testing.md)
+ 
+* [DEMO](https://www.youtube.com/watch?v=OOsKVusU7Es)
   
  * ### Source code is in the current root folder up above. It cannot be put into a seperate folder due to hosting on heroku.
  
- * [DEMO](https://www.youtube.com/watch?v=OOsKVusU7Es)
+
 
 # SPRINT 4
 
