@@ -105,7 +105,7 @@ export default class LoginSpot extends Component {
             <span className="sr-only">Loading...</span>
           </Spinner>
           <Playlist /> 
-          <Button id="login" onClick={() => {window.location = window.location.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord.herokupp.com/spotifylogin'}}>Login with Spotify</Button>
+          <Button id="login" onClick={() => {window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokupp.com/spotifylogin'}}>Login with Spotify</Button>
           <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
         </div>
       )
