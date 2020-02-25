@@ -15,16 +15,33 @@ export default class LoginSpot extends Component {
       serverData: {},
       link: '',
       playlistID: '',
-      trackID: '',
-      track: 'yellow',
-      artist: 'coldplay',
+      trackIDs: [],
+      tracks: ['feelings', 'yellow'],
+      artists: ['hayley kiyoko', 'coldplay'],
       market: 'US',
-      uri: '',
+      uris: [],
       loading: false
     }
 
     this.handlePlaylists = this.handlePlaylists.bind(this)
   }
+
+  async search() {
+
+    let i = 0;
+
+    for (i; i < this.state.artists.length; i++)
+    {
+      await fetch(`https://api.spotify.com/v1/search?q=track:${this.state.tracks[i]}%20artist:${this.state.artists[i]}&type=track`, {
+      headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
+      }).then((res) => res.json())
+        .then(data => !this.state.trackIDs.includes(data.tracks.items[0].id) ? this.setState({ trackIDs: [...this.state.trackIDs, data.tracks.items[0].id], uris: [...this.state.uris, data.tracks.items[0].uri] }) : console.log('duplicate tracks detected'))
+        .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
+      }
+    
+  }
+
+  // pressing newplaylist after adding songs just re-ads those songs
 
   // all playlist fetching
   async handlePlaylists() {
@@ -53,22 +70,18 @@ export default class LoginSpot extends Component {
       .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
 
     // searching for track
-    await fetch(`https://api.spotify.com/v1/search?q=track:${this.state.track}%20artist:${this.state.artist}&type=track`, {
-      headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
-    }).then((res) => res.json())
-      .then(data => this.setState({ trackID: data.tracks.items[0].id, uri: data.tracks.items[0].uri }))
-      .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
+    await this.search().then(() => console.log('test')).catch((err) => console.log(err))
 
     // adding track to playlist
     await fetch(`https://api.spotify.com/v1/users/${this.state.username}/playlists/${this.state.playlistID}/tracks`, {
       method: 'POST',
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json'},
       body: JSON.stringify({
-        "uris": [this.state.uri]
+        "uris": this.state.uris
       })
     }).then((res) => res.json())
       .then((data) => this.setState({ playlistID: data.snapshot_id}))
-      .then(() => console.log('FETCHING TRACK'))
+      .then(() => console.log('FETCHING TRACK ' + this.state.uris))
       .then(() => this.setState({ loading: false }))
       .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
     

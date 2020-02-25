@@ -8,8 +8,6 @@ function Playlist(props) {
 
   // link to embedd playlist
   var link = 'https://open.spotify.com/embed/playlist/' + lastSegment;
-
-  console.log('playlist embedded')
   
   return (
     <div data-testid="playlist">
