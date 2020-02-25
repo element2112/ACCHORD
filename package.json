@@ -9,7 +9,7 @@
     "server": "node server.js",
     "dev-server": "nodemon server.js",
     "spot-server": "cd ./api && nodemon spotify.js",
-    "start": "concurrently \"npm run dev-server\" \"npm run client\" \npm run spot-server\""
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
     "acchord",
