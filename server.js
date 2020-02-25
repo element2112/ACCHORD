@@ -9,7 +9,10 @@ const users = require('./api/users');
 
 // const spotify = require('./api/spotify');
 
-
+if (process.env.NODE_ENV !== 'production')
+{
+  require('dotenv').config();
+}
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -18,18 +21,6 @@ const port = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(express.json());
-
-if (process.env.NODE_ENV === 'production') {
-  // set static folder
-  app.use(express.static('client/build'));
-
-  app.get('*', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
-else {
-  require('dotenv').config()
-}
 
 // Use routes
 app.use('/api/users', users);
@@ -86,7 +77,14 @@ app.get('/callback', function(req, res) {
 
 // ------------------------DATABASE CONENCTION----------------------------//
 // serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+    // set static folder
+    app.use(express.static('client/build'));
 
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
