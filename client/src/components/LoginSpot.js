@@ -8,24 +8,24 @@ export default class LoginSpot extends Component {
 
   constructor() {
     super();
-    // this.handleClick = this.handleClick.bind(this);
     this.state = {
       username: '',
       spotifyToken: '',
-      serverData: {},
       link: '',
       playlistID: '',
       trackIDs: [],
-      tracks: ['feelings', 'yellow'],
-      artists: ['hayley kiyoko', 'coldplay'],
+      tracks: ['feelings', 'yellow', 'alison', 'tuscan leather', 'gimme'],
+      artists: ['hayley kiyoko', 'coldplay', 'elvis costello', 'drake', 'banks'],
       market: 'US',
       uris: [],
       loading: false
     }
 
     this.handlePlaylists = this.handlePlaylists.bind(this)
+    this.search = this.search.bind(this)
   }
 
+  // loops through an array of artists to prepare to add to playlist
   async search() {
 
     let i = 0;
@@ -40,8 +40,6 @@ export default class LoginSpot extends Component {
       }
     
   }
-
-  // pressing newplaylist after adding songs just re-ads those songs
 
   // all playlist fetching
   async handlePlaylists() {
@@ -87,7 +85,8 @@ export default class LoginSpot extends Component {
     
   }
 
-  // render
+  // if loading is set to false, then render the embedded playlist
+  // if loading is set to true, render a loading spinner
   render() {
     if (!this.state.loading)
     {
