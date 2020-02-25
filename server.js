@@ -9,7 +9,9 @@ const users = require('./api/users');
 
 // const spotify = require('./api/spotify');
 
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') { 
+  require('dotenv').config() 
+}
 
 const app = express();
 const port = process.env.PORT || 4000;
