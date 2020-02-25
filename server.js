@@ -25,7 +25,7 @@ app.use('/api/users', users);
 
 // --------------------SPOTIFY SERVER----------------------------- //
 
-let redirect_uri = 'http://localhost:8888/callback';
+let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:8888/callback';
 
 app.get('/spotifylogin', function(req, res) {
     res.redirect('https://accounts.spotify.com/authorize?' +
@@ -78,7 +78,7 @@ if (process.env.NODE_ENV === 'production') {
     // set static folder
     app.use(express.static('client/build'));
 
-    app.get('*', (req, res) => {
+    app.get('/', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
