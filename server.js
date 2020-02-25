@@ -67,7 +67,7 @@ app.get('/callback', function(req, res) {
 
 
   app.listen(spotPort, () => {
-    console.log(`Spotify auth server runnong on port ${spotPort}`)
+    console.log(`Spotify auth server running on port ${spotPort}`)
   })
 
 
