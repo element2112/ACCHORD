@@ -63,7 +63,7 @@ app.get('/callback', function(req, res) {
     })
   })
 
-  let spotPort = process.env.SPOTPORT || 8888
+  let spotPort = process.env.PORT || 8888
 
 
   app.listen(spotPort, () => {
