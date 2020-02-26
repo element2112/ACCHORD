@@ -70,7 +70,7 @@ app.get('/callback', function(req, res) {
     console.log(`Spotify auth server running on port ${spotPort}`)
   })
 
-
+  // may have to figure out how to deploy to two herokou instances
 // -------------------END OF SPOTIFY SERVER------------------------------- //
 
 
