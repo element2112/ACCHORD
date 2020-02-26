@@ -93,7 +93,7 @@ export default class LoginSpot extends Component {
       return ( 
         <div>
           <Playlist playlists={this.state.link} /> 
-          <Button id="login" onClick={() => window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord.herokuapp.com/spotifylogin'}>Login with Spotify</Button>
+          <Button id="login" onClick={() => window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}>Login with Spotify</Button>
           <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
         </div>
       )
