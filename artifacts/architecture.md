@@ -1,6 +1,10 @@
 # Program Organization
 
-[High Level Architecture](https://docs.google.com/document/d/1fRGJO0WuWy_onGmUY-X_2tus0E5H_XLB17wOOISiAd0/edit?usp=sharing)
+[context diagram](https://github.com/element2112/ACCHORD/blob/master/artifacts/context_diagram.png)
+
+[container diagram](https://github.com/element2112/ACCHORD/blob/master/artifacts/container_diagram.png)
+
+[component diagram](https://github.com/element2112/ACCHORD/blob/master/artifacts/component_diagram.png)
 
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
 
