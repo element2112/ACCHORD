@@ -1,11 +1,15 @@
 # Program Organization
 
-[context diagram](https://github.com/element2112/ACCHORD/blob/master/artifacts/context_diagram.png)
+#### Context Diagram
+![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/context_diagram.png)
 
-[container diagram](https://github.com/element2112/ACCHORD/blob/master/artifacts/container_diagram.png)
+#### Container Diagram
+![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/container_diagram.png)
 
-[component diagram](https://github.com/element2112/ACCHORD/blob/master/artifacts/component_diagram.png)
+#### Component Diagram
+![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/component_diagram.png)
 
+#### Sequence Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
 
 # Major Classes
