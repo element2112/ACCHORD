@@ -43,7 +43,7 @@ export default class LoginSpot extends Component {
 
   // all playlist fetching
   async handlePlaylists() {
-
+    console.log('handling playlists')
     let parsed = queryString.parse(window.location.search);
     let accessToken = parsed.access_token;
 
@@ -79,7 +79,6 @@ export default class LoginSpot extends Component {
       })
     }).then((res) => res.json())
       .then((data) => this.setState({ playlistID: data.snapshot_id}))
-      .then(() => console.log('FETCHING TRACK ' + this.state.uris))
       .then(() => this.setState({ loading: false }))
       .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
     

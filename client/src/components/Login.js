@@ -19,7 +19,7 @@ export class Login extends Component {
       remember: false
     }
     this.webpage =  (
-      <Form style={{
+      <Form data-testid="login" style={{
         position: 'absolute', left: '50%', top: '50%',
         transform: 'translate(-50%, -50%)'
       }} onSubmit={this.handleSubmit}>
@@ -39,7 +39,7 @@ export class Login extends Component {
           <Form.Check type="checkbox" label="Remember me" name="remember" onChange={this.update} />
         </Form.Group>
         
-        <Button variant="primary" type="submit">
+        <Button data-testid="loginButton" variant="primary" type="submit">
           Login
         </Button>
         <br/>
@@ -74,6 +74,7 @@ export class Login extends Component {
   }
   
   handleSubmit = (e) => {
+    console.log('logging in');
     let state = this.state;
     fetch("http://localhost:4000/api/users/login",
     {
