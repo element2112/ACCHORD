@@ -3,7 +3,7 @@ import { Card, Col, Row } from 'react-bootstrap'
 import '../styles/Dash.css'
 import { Redirect } from 'react-router-dom'
 
-export class Account extends Component {
+export class Update extends Component {
 
     constructor(){
         super()
@@ -36,7 +36,7 @@ export class Account extends Component {
           return (
             <Card style={{ width: '100rem' }}>
             <Card.Body style={{color: "black"}}>
-              <Card.Title>User Account Information</Card.Title>
+              <Card.Title>Update Account Information</Card.Title>
                 <Card.Text >
                     First name: {this.state.firstName}
                 </Card.Text>
@@ -46,12 +46,10 @@ export class Account extends Component {
                 <Card.Text >
                     Email: {this.state.email}
                 </Card.Text>
-              <a href="/update" class="btn btn-primary">Update account</a>
             </Card.Body>
           </Card>
           )
       }
     }
     
-    export default Account
-
+    export default Update
