@@ -3,6 +3,9 @@ import { Button } from 'react-bootstrap'
 import queryString from 'query-string'
 import Playlist from './Playlist';
 import { Spinner } from 'react-bootstrap'
+import create_playlist from '../services/create_playlist'
+import addTracks from '../services/addTracks'
+import spotLogin from '../services/spotLogin'
 
 export default class LoginSpot extends Component {
 
@@ -47,40 +50,23 @@ export default class LoginSpot extends Component {
     let parsed = queryString.parse(window.location.search);
     let accessToken = parsed.access_token;
 
-    await fetch('https://api.spotify.com/v1/me', {
-      headers: { 'Authorization': 'Bearer ' + accessToken}
-    }).then((res) => res.json())
-      .then((data) => this.setState({ username: data.display_name, spotifyToken: accessToken }))
-      .then(() => this.setState({ loading: true }))
-      .catch((err) => alert(`Cannot login due to ${err}`))
+    // login to spotify with access token
+    const login = await spotLogin(accessToken);
+    this.setState({ username: login.display_name, spotifyToken: accessToken });
+    this.setState({ loading: true });
     
     // creating playlist
-    await fetch(`https://api.spotify.com/v1/me/playlists`, {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        "name": "test playlist",
-        "description": "my description",
-        "public": true
-      })
-    }).then((res) => res.json())
-      .then((data) => this.setState({ playlistID: data.id, link: data.external_urls.spotify }))
-      .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
+    const create = await create_playlist(this.state.spotifyToken)
+    this.setState({ playlistID: create.id, link: create.external_urls.spotify })
+
 
     // searching for track
     await this.search().then(() => console.log('test')).catch((err) => console.log(err))
 
     // adding track to playlist
-    await fetch(`https://api.spotify.com/v1/users/${this.state.username}/playlists/${this.state.playlistID}/tracks`, {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        "uris": this.state.uris
-      })
-    }).then((res) => res.json())
-      .then((data) => this.setState({ playlistID: data.snapshot_id}))
-      .then(() => this.setState({ loading: false }))
-      .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
+    const add = await addTracks(this.state.playlistID, this.state.username, this.state.spotifyToken, this.state.uris)
+    this.setState({ playlistID: add.snapshot_id})
+    this.setState({ loading: false })
     
   }
 
@@ -89,10 +75,10 @@ export default class LoginSpot extends Component {
   render() {
     if (!this.state.loading)
     {
-      return ( 
+      return (
         <div>
           <Playlist playlists={this.state.link} /> 
-          <Button id="login" onClick={() => window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}>Login with Spotify</Button>
+          <Button id="loginSee" onClick={() => window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}>Login with Spotify</Button>
           <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
         </div>
       )
