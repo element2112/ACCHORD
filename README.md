@@ -105,7 +105,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
  # SPRINT 5
 
-* [REQUIREMENTS SPRINT 5](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint4.md)
+* [REQUIREMENTS SPRINT 5](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint5.md)
 
 * [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=461865848)
 
@@ -115,7 +115,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 * [TESTING](https://github.com/element2112/ACCHORD/blob/master/artifacts/testing.md)
 
-* [DEMO](https://youtu.be/M_-O_bU3_QE)
+* [DEMO]()
 
 * [RESPONSIBILITIES](https://github.com/element2112/ACCHORD/blob/master/artifacts/responsibilities_sprint_5.md)
 
