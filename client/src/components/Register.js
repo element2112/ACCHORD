@@ -27,6 +27,8 @@ const Register = () => {
     if (password !== password2)
     {
       alert('passwords do not match');
+    } else if (password.length < 6) {
+      alert('passwords must be at least 6 characters')
     } else {
       const newUser = {
         firstName,
@@ -58,6 +60,9 @@ const Register = () => {
         
       } catch(err) {
         // error catching
+
+        alert('Email is not unique');
+        
         console.error(err);
       }
     }

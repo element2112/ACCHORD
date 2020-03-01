@@ -9,7 +9,9 @@ const users = require('./api/users');
 
 // const spotify = require('./api/spotify');
 
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') { 
+  require('dotenv').config() 
+}
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -25,7 +27,7 @@ app.use('/api/users', users);
 
 // --------------------SPOTIFY SERVER----------------------------- //
 
-let redirect_uri = 'http://localhost:8888/callback';
+let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:8888/callback';
 
 app.get('/spotifylogin', function(req, res) {
     res.redirect('https://accounts.spotify.com/authorize?' +
@@ -65,10 +67,10 @@ app.get('/callback', function(req, res) {
 
 
   app.listen(spotPort, () => {
-    console.log(`Spotify auth server runnong on port ${spotPort}`)
+    console.log(`Spotify auth server running on port ${spotPort}`)
   })
 
-
+  // may have to figure out how to deploy to two herokou instances
 // -------------------END OF SPOTIFY SERVER------------------------------- //
 
 

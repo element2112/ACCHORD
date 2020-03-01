@@ -29,7 +29,7 @@ function Navbarcomp() {
           <Nav.Link href="#features">Playlists</Nav.Link>
           <Nav.Link href="#pricing">My Friends</Nav.Link>
           <Nav.Link href=" /account">My Account</Nav.Link>
-          <Nav.Link href="/" onClick={handleClick} data-testid="logout">Logout</Nav.Link>
+          <Nav.Link href={window.location.href.includes('localhost') ? '/' : 'https://acchord.herokuapp.com'} onClick={handleClick} data-testid="logout">Logout</Nav.Link>
         </Nav>
       </Navbar>
     </>
