@@ -102,7 +102,27 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
  * ### Source code is in the current root folder up above. It cannot be put into a seperate folder due to hosting on heroku.
   
 
- 
- 
+
+ # SPRINT 5
+
+* [REQUIREMENTS SPRINT 4](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint4.md)
+
+* [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=461865848)
+
+* [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=0)
+
+* [DESIGN DOCUMENTS](https://github.com/element2112/ACCHORD/blob/master/artifacts/architecture.md)
+
+* [AUTOMATED TESTS](https://github.com/element2112/ACCHORD/tree/master/client/src/__testing__)
+
+* [MANUAL TEST](https://github.com/element2112/ACCHORD/blob/master/artifacts/testing.md)
+
+* [DEMO](https://youtu.be/M_-O_bU3_QE)
+
+* [RESPONSIBILITIES](https://github.com/element2112/ACCHORD/blob/master/artifacts/responsibilities_sprint_4.md)
+
+* [Trello Board](https://trello.com/b/8bv1SEPT/acchord-cop4331c)
+  
+ * ### Source code is in the current root folder up above. It cannot be put into a seperate folder due to hosting on heroku.
 
 
