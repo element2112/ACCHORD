@@ -39,7 +39,7 @@ export default class LoginSpot extends Component {
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
       }).then((res) => res.json())
         .then(data => !this.state.trackIDs.includes(data.tracks.items[0].id) ? this.setState({ trackIDs: [...this.state.trackIDs, data.tracks.items[0].id], uris: [...this.state.uris, data.tracks.items[0].uri] }) : console.log('duplicate tracks detected'))
-        .catch((err) => alert('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
+        .catch((err) => console.log('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
       }
     
   }
@@ -56,17 +56,23 @@ export default class LoginSpot extends Component {
     this.setState({ loading: true });
     
     // creating playlist
-    const create = await create_playlist(this.state.spotifyToken)
-    this.setState({ playlistID: create.id, link: create.external_urls.spotify })
+    try {
+      const create = await create_playlist(this.state.spotifyToken)
+      this.setState({ playlistID: create.id, link: create.external_urls.spotify })
 
 
-    // searching for track
-    await this.search().then(() => console.log('test')).catch((err) => console.log(err))
+      // searching for track
+      await this.search().then(() => console.log('test')).catch((err) => console.log(err))
 
-    // adding track to playlist
-    const add = await addTracks(this.state.playlistID, this.state.username, this.state.spotifyToken, this.state.uris)
-    this.setState({ playlistID: add.snapshot_id})
-    this.setState({ loading: false })
+      // adding track to playlist
+      const add = await addTracks(this.state.playlistID, this.state.username, this.state.spotifyToken, this.state.uris)
+      this.setState({ playlistID: add.snapshot_id})
+      this.setState({ loading: false })
+    
+    } catch (err) {
+      console.log('error creating playlist, make sure you are logged into spotify')
+      alert("error creating playlist, make sure you are logged into spotify")
+    }
     
   }
 
