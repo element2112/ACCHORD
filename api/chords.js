@@ -16,14 +16,21 @@ const CHORD_API_URI = 'https://api.hooktheory.com/v1/';
 
 exports.getSongs = () => {
   console.log("CHORDS");
-  return axios.get(CHORD_API_URI + 'trends/songs?cp=4,1')
-  .then(response => {
-    console.log("WE GOT IT");
-    console.log(response.data.song);
-    console.log(response.data.artist);
-  })
-  .catch(error => {
-    console.log("YIKES");
-    console.log(error);
-  })
+  axios.post(CHORD_API_URI + 'users/auth', {
+    "username": "COPGroup16",
+	  "password": "acchord123"
+  }).then(res => {
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.activkey;
+    console.log("GOT THE KEY " + axios.defaults.headers.common['Authorization']);
+    axios.get(CHORD_API_URI + 'trends/songs?cp=4,1')
+    .then(response => {
+      console.log("WE GOT IT");
+      console.log(response.data[1].song);
+      console.log(response.data[1].artist);
+    })
+    .catch(error => {
+      console.log("YIKES");
+      console.log(error);
+    })
+  });
 }
