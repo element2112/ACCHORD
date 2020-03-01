@@ -24,4 +24,17 @@
 | :------: | :-----------: |
 | Navigate to acchord login page. | the login page should render |
 | Click the link under the submit button that says register user | the register page should render |
-| Enter in a first name, last name, email, and password with less than six characters | An alert pops up that says "password must be a minimum of six characters|
+| Enter in a first name, last name, email, and password with less than six characters | An alert pops up that says "password must be a minimum of six characters"|
+
+=================================================
+
+| Action (Each login email should be unique)| Observation|
+| :------: | :-----------: |
+| Navigate to acchord login page. | the login page should render |
+| Click the link under the submit button that says register user | the register page should render |
+| Enter in a first name, last name, email, and password with less than six characters | The form has each filled with the associated information |
+| Click the submit button | The dashboard page should render |
+| Click the logout button | The login page should render |
+| Click the link under the submit button that says register user | the register page should render |
+| Enter in a first name, last name, email, and password with less than six characters | The form has each filled with the associated information |
+| Click the submit button | An alert pops up that says "email is not unique" |
