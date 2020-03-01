@@ -3,7 +3,7 @@
 
 
 ### Manual Testing
-=========================================================================
+================================================
 | Action (Login) | Observation|
 | :------: | :-----------: |
 | navigate to https://acchord.herokuapp.com|the acchord landing page loads with inputs for email and password |
@@ -11,7 +11,7 @@
 | in the box that says password, enter in your password   | the password typed in will be shown as dots for security purposes |
 | click the button that says submit under the password back| if the password is correct, the account's dashboard will load. If the password is incorrect, an alert box will say that the password is incorrect and the landing page will still be on the screen |
 
-==========================================================================
+=================================================
 
 | Action ( Accessing Account info from any screen)| Observation|
 | :------: | :-----------: |
