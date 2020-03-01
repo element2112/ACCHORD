@@ -18,6 +18,8 @@
 |after logging in, click the link that says "account page" at the very top of the screen | the account page should render |
 | Repeat for every page accessible from the dashboard | the account page should render |
 
+=================================================
+
 | Action (Minimum length of password is 6 characters)| Observation|
 | :------: | :-----------: |
 | Navigate to acchord login page. | the login page should render |
