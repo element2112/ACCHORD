@@ -41,6 +41,7 @@ Due to our web application not being used for business purposes, business rules 
 By using Mongodb Atlas Cloud, all resources are managed by MongoDB and AWS.
 
 # Security
+We plan to use Json Web Token for route authentication between the frontend and the database. Oauth 2.0 is used for the login route between the frontend and spotify's developer API. 
 
 # Performance
 
