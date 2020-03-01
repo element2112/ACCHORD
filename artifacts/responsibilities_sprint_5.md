@@ -1,4 +1,4 @@
-## Responsibilty Sprint 5
+## Responsibilities Sprint 5
 * Brittanie Staton: 
   - Spotify API bug fixing/Testing/Design Documents
 * Alexandra Arriola: 
