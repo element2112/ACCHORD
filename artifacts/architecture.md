@@ -1,7 +1,15 @@
 # Program Organization
 
-[High Level Architecture](https://docs.google.com/document/d/1fRGJO0WuWy_onGmUY-X_2tus0E5H_XLB17wOOISiAd0/edit?usp=sharing)
+#### Context Diagram
+![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/context_diagram.png)
 
+#### Container Diagram
+![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/container_diagram.png)
+
+#### Component Diagram
+![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/component_diagram.png)
+
+#### Sequence Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
 
 # Major Classes
@@ -33,8 +41,11 @@ Due to our web application not being used for business purposes, business rules 
 By using Mongodb Atlas Cloud, all resources are managed by MongoDB and AWS.
 
 # Security
+We plan to use Json Web Token for route authentication between the frontend and the database. Oauth 2.0 is used for the login route between the frontend and spotify's developer API. 
 
 # Performance
+
+As a guideline, long wait times (approximately < 5 seconds at worst) will be tolerated for calls to external API such as Spotify. Since the project is small, we are hosting the webpage on Heroku for free, which means the server sleeps when it doesn’t receive requests after some time (about thirty minutes); this is acceptable, as the project is currently small and very early in development, but this should not cause greater than 5 seconds of delay when the app is released.
 
 # Scalability
 
@@ -43,6 +54,8 @@ Hosting: Currently we are using the free tier of heroku where the server falls a
 Database: Currently we are using the free tier of MongoDB Atlas which provides shared RAM and has maximum storage size of 512MB. Once more users begin to visit the site, upgrading to the paid AWS cloud deployment would be necessary.  For $0.08 per month, MongoDB provides 2GB of RAM and a maximum storage size of 10GB.
 
 # Interoperability
+
+Data will be shared between the user and our server through HTTP requests handled by our own logic layer between the server and the client’s browser. Data will be shared with Spotify through Spotify’s API. 
 
 # Internationalization/Localization
 
@@ -62,7 +75,11 @@ The fault tolerance of our system is minimal as most of our error processing is 
 
 # Architectural Feasibility
 
+Storing user data in our database is feasible for the types of data we plan to store. The performance requirements are quite loose; they are already met and we expect they will remain feasible as the project grows.
+
 # Overengineering
+
+Written code should be robust enough as to handle all the expected errors in fail cases, such as attempting to access data where there is none. Use of magic values should be minimized, and server requests and responses should provide the minimal information for the intended functionality.
 
 # Build-vs-Buy Decisions
 
@@ -73,3 +90,5 @@ The architecture doesn’t use many off-the-shelf components due to the simplici
 Due to the nature of the project, there will be no reuse of pre-existing software. However there will be a use of resources such as the Spotify API.
 
 # Change Strategy
+
+In the future, we may want the react components to be refactored into more components if parts of our webpages will be added to other webpages or the navigation bar, such as login. Different major libraries have their own testing libraries, and are supported by node’s own testing library, and we may want to switch between the two as our project gets larger and there is more to test. We may also want to change the structure of the database to meet changing security demands before launch; mongo allows for this to be done post-launch in the case we want to change this.
