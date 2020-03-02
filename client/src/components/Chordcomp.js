@@ -39,12 +39,6 @@ export class Chordcomp extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state);
-
-    // fetch(/api/spotify)
-
-    //  var chords = [this.state.chord1, this.state.chord2, this.state.chord3];
-
-    // here we'll fetch
   }
 
   render() {
@@ -54,11 +48,10 @@ export class Chordcomp extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Row style={{margin: "10px"}}>
             <Col>
-              <input type="text" name="chord1" placeholder="chord 1" onChange={this.handleChord1Change} />
-              <input  type="text" name="chord2" placeholder="chord 2" onChange={this.handleChord2Change} />
-              <input  type="text" name="chord3" placeholder="chord 3" onChange={this.handleChord3Change}/>
+              <input type="text" name="chord1" placeholder="First" onChange={this.handleChord1Change} />
+              <input  type="text" name="chord2" placeholder="Second" onChange={this.handleChord2Change} />
+              <input  type="text" name="chord3" placeholder="Third" onChange={this.handleChord3Change}/>
               <button type="submit">Get Playlist</button>
-              
             </Col>
           </Row>
       </Form>
