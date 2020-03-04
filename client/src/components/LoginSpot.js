@@ -41,7 +41,6 @@ export default class LoginSpot extends Component {
         .then(data => !this.state.trackIDs.includes(data.tracks.items[0].id) ? this.setState({ trackIDs: [...this.state.trackIDs, data.tracks.items[0].id], uris: [...this.state.uris, data.tracks.items[0].uri] }) : console.log('duplicate tracks detected'))
         .catch((err) => console.log('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
       }
-    
   }
 
   // all playlist fetching
@@ -54,6 +53,7 @@ export default class LoginSpot extends Component {
     const login = await spotLogin(accessToken);
     this.setState({ username: login.display_name, spotifyToken: accessToken });
     this.setState({ loading: true });
+    sessionStorage.setItem('token', this.state.spotifyToken);
     
     // creating playlist
     try {
