@@ -17,6 +17,7 @@ function Navbarcomp() {
   const handleClick = () => {
     console.log('logging out')
     localStorage.clear();
+    sessionStorage.clear();
   }
   
   // returning element to parent component
