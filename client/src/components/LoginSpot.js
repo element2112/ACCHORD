@@ -54,6 +54,7 @@ export default class LoginSpot extends Component {
     const login = await spotLogin(accessToken);
     this.setState({ username: login.display_name, spotifyToken: accessToken });
     this.setState({ loading: true });
+    sessionStorage.setItem('token', this.state.spotifyToken);
     
     // creating playlist
     try {
