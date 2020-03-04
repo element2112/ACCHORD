@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
-import { Dropdown } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
+// send chords over from here
 export class Chordcomp extends Component {
 
   constructor() {
@@ -9,30 +10,38 @@ export class Chordcomp extends Component {
     this.state = {
       chord1: '',
       chord2: '',
-      chord3: ''
+      chord3: '',
+      chord4: ''
     }
 
     this.handleChord1Change = this.handleChord1Change.bind(this);
     this.handleChord2Change = this.handleChord2Change.bind(this);
     this.handleChord3Change = this.handleChord3Change.bind(this);
+    this.handleChord4Change = this.handleChord4Change.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async handleChord1Change(e) {
     e.preventDefault();
-    await this.setState({ chord1: e.target.value })
+    this.setState({ chord1: e.target.value })
     // console.log(this.state.chord1)
   }
 
   async handleChord2Change(e) {
     e.preventDefault();
-    await this.setState({ chord2: e.target.value })
-    // console.log(this.state.chord1)
+    this.setState({ chord2: e.target.value })
+    console.log(this.state.chord2)
   }
 
   async handleChord3Change(e) {
     e.preventDefault();
-    await this.setState({ chord3: e.target.value })
+    this.setState({ chord3: e.target.value })
+    // console.log(this.state.chord1)
+  }
+
+  async handleChord4Change(e) {
+    e.preventDefault();
+    this.setState({ chord4: e.target.value })
     // console.log(this.state.chord1)
   }
 
@@ -46,15 +55,44 @@ export class Chordcomp extends Component {
     return (
       <div>
         <Form onSubmit={this.handleSubmit}>
-          <Row style={{margin: "10px"}}>
-            <Col>
-              <input type="text" name="chord1" placeholder="First" onChange={this.handleChord1Change} />
-              <input  type="text" name="chord2" placeholder="Second" onChange={this.handleChord2Change} />
-              <input  type="text" name="chord3" placeholder="Third" onChange={this.handleChord3Change}/>
-              <button type="submit">Get Playlist</button>
-            </Col>
-          </Row>
-      </Form>
+          <select onClick={this.handleChord1Change}>
+                <option>I</option>
+                <option>II</option>
+                <option>III</option>
+                <option>IV</option>
+                <option>V</option>
+                <option>VI</option>
+                <option>VII</option>
+          </select>
+          <select onClick={this.handleChord2Change}>
+                <option>I</option>
+                <option>II</option>
+                <option>III</option>
+                <option>IV</option>
+                <option>V</option>
+                <option>VI</option>
+                <option>VII</option>
+          </select>
+          <select onClick={this.handleChord3Change}>
+                <option>I</option>
+                <option>II</option>
+                <option>III</option>
+                <option>IV</option>
+                <option>V</option>
+                <option>VI</option>
+                <option>VII</option>
+          </select>
+          <select onClick={this.handleChord4Change}>
+                <option>I</option>
+                <option>II</option>
+                <option>III</option>
+                <option>IV</option>
+                <option>V</option>
+                <option>VI</option>
+                <option>VII</option>
+          </select>
+          <Button type="submit">Submit</Button>
+        </Form>
       </div>
     )
   }
