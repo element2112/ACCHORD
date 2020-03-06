@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
+import send_playlist from '../services/spotLogin'
 
 // send chords over from here
 export class Chordcomp extends Component {
@@ -30,7 +31,6 @@ export class Chordcomp extends Component {
   async handleChord2Change(e) {
     e.preventDefault();
     this.setState({ chord2: e.target.value })
-    console.log(this.state.chord2)
   }
 
   async handleChord3Change(e) {
@@ -45,9 +45,16 @@ export class Chordcomp extends Component {
     // console.log(this.state.chord1)
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
     console.log(this.state);
+
+    try {
+      const send = await send_playlist(`${this.state.chord1},${this.state.chord2},${this.state.chord3}, ${this.state.chord4}`);
+    } catch (err)
+    {
+      console.log('error getting your playlist. Make sure you are logged into spotify');
+    }
   }
 
   render() {
