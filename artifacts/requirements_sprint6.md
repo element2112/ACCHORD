@@ -1,4 +1,4 @@
-# REQUIREMENTS FOR SPRINT 6 (2020-02-23 to 2020-03-08)
+# REQUIREMENTS FOR SPRINT 6 (2020-03-02 to 2020-03-08)
 
 | REQUIREMENT ID            | USER STORY ID            | REQUIREMENT  | ACCEPTANCE CRITERIA |	EFFORT |	PRIORITY | STATUS |
 | ------------- |---------------------| -------|---------------------|-----------|----------|:---------:|
