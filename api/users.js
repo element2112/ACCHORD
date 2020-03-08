@@ -80,10 +80,12 @@ router.post('/login', async (req, res) => {
 // @route GET api/users
 // @desc Get all users
 // @access Public
-router.get('/songs', (req, res) => {
+router.get('/songs', async (req, res) => {
   console.log("GETTING SONGS IN USERS");
   console.log("REQUESTING CP=" + req.body.cp);
-	res.json(chords.getSongs(req.body.cp));
+
+  await chords.getSongs(req.body.cp).then(data => res.send(data));
+	
 });
 
 // @route DELETE api/users/:id
