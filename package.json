@@ -5,11 +5,13 @@
   "main": "server.js",
   "scripts": {
     "frontend_test": "cd ./client && npm run test",
-    "client": "cd ./client && npm run start",
+    "start": "node server",
+    "client": "npm start --prefix client",
     "server": "node server.js",
     "dev-server": "nodemon server.js",
     "spot-server": "cd ./api && nodemon spotify.js",
-    "start": "concurrently \"npm run dev-server\" \"npm run client\" \npm run spot-server\""
+    "dev": "concurrently \"npm run dev-server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [
     "acchord",
@@ -22,13 +24,10 @@
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.4.1",
-    "concurrently": "^5.1.0",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-csp-header": "^2.3.2",
     "mongoose": "^5.8.10",
-    "nodemon": "^2.0.2",
     "query-string": "^6.11.0",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.16",
@@ -42,7 +41,10 @@
     "npm": "6.10.3"
   },
   "devDependencies": {
+    "concurrently": "^5.1.0",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2"
+    "enzyme-adapter-react-16": "^1.15.2",
+    "nodemon": "^2.0.2"
   }
 }

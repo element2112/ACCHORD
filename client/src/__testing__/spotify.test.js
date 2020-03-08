@@ -1,18 +1,13 @@
 import React from 'react'
-import Register from '../components/Register'
-import Navbarcomp from '../components/Navbarcomp'
-import Chordcomp from '../components/Chordcomp'
 import Playlist from '../components/Playlist'
 import LoginSpot from '../components/LoginSpot'
+import Enzyme, { shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 
 import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent, waitForElement } from '@testing-library/react'
-import Dashboardhome from '../components/Dashboardhome'
 
-// Chord comp
-it('renders app without crashing', () => {
-  render(<Chordcomp />)
-})
+Enzyme.configure({ adapter: new Adapter() })
 
 // playlist
 it('renders playlist without crashing', () => {
@@ -31,3 +26,21 @@ it('should handle playlists', () => {
   fireEvent.click(getByTestId("handleList"));
   expect(logSpy).toHaveBeenCalled();
 });
+
+jest.mock('../services/create_playlist')
+
+it('creates a playlist', (done) => {
+  const wrapper = shallow(<LoginSpot />)
+
+  const state = wrapper.instance().state
+  expect(state.loading).toBeFalsy();
+
+  setTimeout(() => {
+    wrapper.update();
+    expect(wrapper.find("Playlist").length).toEqual(1);
+    done();
+  })
+
+  
+  
+})

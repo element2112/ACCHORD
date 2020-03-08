@@ -4,7 +4,7 @@ const router = express.Router();
 // User model
 const User = require('./models/user.model');
 
-
+const chords = require('./chords');
 
 
 // @route GET api/users
@@ -75,6 +75,15 @@ router.post('/login', async (req, res) => {
   });
   // end await
   res.json(returnJson);
+});
+
+// @route GET api/users
+// @desc Get all users
+// @access Public
+router.get('/songs', (req, res) => {
+  console.log("GETTING SONGS IN USERS");
+  console.log("REQUESTING CP=" + req.body.cp);
+	res.json(chords.getSongs(req.body.cp));
 });
 
 // @route DELETE api/users/:id

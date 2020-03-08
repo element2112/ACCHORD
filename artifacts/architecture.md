@@ -3,14 +3,22 @@
 #### Context Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/context_diagram.png)
 
+From the user's point of view, our product is contained in the Acchord Web Application (a website). The Web Application is the only way for users to access the product.
+
 #### Container Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/container_diagram.png)
+
+Our product is divided into layers; the top layer in HTML rendering with react, the middle logical layer verifying requests and gathering resources, and the bottom layer database holding all the records stored from users. This was the best way we considered organizing the application, with stacked layers boosting security and reliability of the software product.
 
 #### Component Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/component_diagram.png)
 
+Diagram of the authentication logic, showing how user verification is needed before HTML is rendered and sent to the user's browser. The logic component returns a login page to the user and, upon successful verification, pushes down to allow access to our signature features in the top layer.
+
 #### Sequence Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
+
+A diagram of the user registering an account, logging in, and resuming sessions.
 
 # Major Classes
 
@@ -41,6 +49,7 @@ Due to our web application not being used for business purposes, business rules 
 By using Mongodb Atlas Cloud, all resources are managed by MongoDB and AWS.
 
 # Security
+We plan to use Json Web Token for route authentication between the frontend and the database. Oauth 2.0 is used for the login route between the frontend and spotify's developer API. 
 
 # Performance
 
