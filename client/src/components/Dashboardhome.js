@@ -14,14 +14,13 @@ export class Dashboardhome extends Component {
       lastName: '',
       email: '',
       password: '',
-      authenticated: true
+      authenticated: false
     }
   }
 
   
 
   componentWillMount() {
-    localStorage.setItem('authenticated', true);
     console.log('test ' + localStorage.getItem('authenticated'));
     if (localStorage.getItem('authenticated'))
     {

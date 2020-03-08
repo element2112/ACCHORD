@@ -61,6 +61,8 @@ export class Login extends Component {
       this.webpage = (<Redirect to="/dashboard" />);
       
       // also, store data in localStorage
+      let data = res.user;
+      data.authenticated = true;
       this.setLocalStorage(res.user);
       
       // Force webpage refresh by changing state.
