@@ -137,7 +137,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 * [DEMO](https://www.youtube.com/watch?v=rGvBbkS2ejw&feature=youtu.be)
 
-* [RESPONSIBILITIES](https://github.com/element2112/ACCHORD/blob/master/artifacts/responsibilities_sprint_5.md)
+* [RESPONSIBILITIES](https://github.com/element2112/ACCHORD/blob/master/artifacts/responsibilities_sprint_6.md)
 
 * [Trello Board](https://trello.com/b/8bv1SEPT/acchord-cop4331c)
   
