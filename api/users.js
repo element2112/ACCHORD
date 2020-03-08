@@ -28,7 +28,15 @@ router.post('/registeruser', async (req, res) => {
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		timestamps: true
-	});
+  });
+  
+  router.post('/updateuser', async (req, res) => {
+    console.log("in route");
+    const data = await User.find(findByEmail(req.body.originalEmail));
+    console.log("found data " + data);
+
+    User.updateUser({password: req.body.password});
+  });
 
 	// may need to add an error or check if theres a duplicate user
   
