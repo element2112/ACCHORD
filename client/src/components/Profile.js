@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Card, Col, Row } from 'react-bootstrap'
+import { Card, Row } from 'react-bootstrap'
 // import Navbarcomp from './Navbarcomp'
-import '../styles/Dash.css'
 import { Redirect } from 'react-router-dom'
+import Messages from './Messages'
 
 export class Profile extends Component {
 
@@ -13,7 +13,8 @@ export class Profile extends Component {
       lastName: '',
       email: '',
       password: '',
-      authenticated: false
+      authenticated: false,
+      bio: 'This is where you can describe yourself to oter users!'
     }
   }
 
@@ -31,6 +32,7 @@ export class Profile extends Component {
         password: localStorage.getItem('password'),
         authenticated: true
       })
+      // TODO: get the bio from db record
     }
   }
 
@@ -41,20 +43,15 @@ export class Profile extends Component {
       return (
         <>
           <Row>
-            <Col md={4}></Col>
-            <Col md={{ span: 4, offset: 9 }} style={{marginLeft: "82%"}}>
-              <Card id='profile-bio'>
-                <Card.Body>
-                  <Card.Title style={{color: "black"}}>{this.state.firstName}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                  </Card.Subtitle>
-                  <Card.Text style={{color: "black"}}>
-                    BIO
-                  </Card.Text>
-                  <Card.Link href="#">MY spotify profile (this is a profile)</Card.Link>
-                </Card.Body>
-              </Card>
-            </Col>
+            <Card id='profile-bio'>
+              <Card.Body>
+                <Card.Title style={{color: "black"}}>{this.state.firstName}</Card.Title>
+                <Card.Text style={{color: "black"}}>
+                  BIO: {this.state.bio}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <Messages />
           </Row>
         </>
       )
