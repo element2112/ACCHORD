@@ -14,14 +14,13 @@ export class Dashboardhome extends Component {
       lastName: '',
       email: '',
       password: '',
-      authenticated: true
+      authenticated: false
     }
   }
 
   
 
   componentWillMount() {
-    localStorage.setItem('authenticated', true);
     console.log('test ' + localStorage.getItem('authenticated'));
     if (localStorage.getItem('authenticated'))
     {
@@ -45,17 +44,6 @@ export class Dashboardhome extends Component {
           <Row>
             <Col md={4}></Col>
             <Col md={{ span: 4, offset: 9 }} style={{marginLeft: "82%"}}>
-              <Card id='profile-bio'>
-                <Card.Body>
-                  <Card.Title style={{color: "black"}}>{this.state.firstName}</Card.Title>
-                  <Card.Subtitle className="mb-2 text-muted">
-                  </Card.Subtitle>
-                  <Card.Text style={{color: "black"}}>
-                    BIO
-                  </Card.Text>
-                  <Card.Link href="#">MY spotify profile</Card.Link>
-                </Card.Body>
-              </Card>
             </Col>
           </Row>
         </>

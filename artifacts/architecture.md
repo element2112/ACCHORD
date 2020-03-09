@@ -3,17 +3,17 @@
 #### Context Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/context_diagram.png)
 
-From the user's point of view, our product is contained in the Acchord Web Application (a website). The Web Application is the only way for users to access the product.
+From the user's point of view, our product is contained in the Acchord Web Application (a website). The Web Application is the only way for users to access the product. Hence, this generally satisfies all the user stories through providing access to a website that will perform musical functions. From this level in particular, user stories 11, 12, and 16 are satisfied with account information access through login and registration.
 
 #### Container Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/container_diagram.png)
 
-Our product is divided into layers; the top layer in HTML rendering with react, the middle logical layer verifying requests and gathering resources, and the bottom layer database holding all the records stored from users. This was the best way we considered organizing the application, with stacked layers boosting security and reliability of the software product.
+Our product is divided into layers; the top layer in HTML rendering with react, the middle logical layer verifying requests and gathering resources, and the bottom layer database holding all the records stored from users. This was the best way we considered organizing the application, with stacked layers boosting security and reliability of the software product. From this level, user stories 9, 10, and 17 are satisfied with access to the database to change account information, to save chord progressions, and to have an account profile.
 
 #### Component Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/component_diagram.png)
 
-Diagram of the authentication logic, showing how user verification is needed before HTML is rendered and sent to the user's browser. The logic component returns a login page to the user and, upon successful verification, pushes down to allow access to our signature features in the top layer.
+Diagram of the authentication logic, showing how user verification is needed before HTML is rendered and sent to the user's browser. The logic component returns a login page to the user and, upon successful verification, pushes down to allow access to our signature features in the top layer. From this level, user stories 11 and 12 are satisfied with account information access through login.
 
 #### Sequence Diagram
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/Acchord%20Sequence%20Diagram.png)
@@ -22,9 +22,9 @@ A diagram of the user registering an account, logging in, and resuming sessions.
 
 # Major Classes
 
-The major classes in Acchord are registerPage, loginPage, and dashboardPage.  loginPage and dashboardPage are subclasses of registerPage, since they are sharing the user information data.  The link to the UML class diagram is below.
+The major classes in Acchord are registerPage, loginPage, and dashboardPage.  loginPage and dashboardPage are subclasses of registerPage, since they are sharing the user information data.
 
-* UML Class Diagram
+### UML Class Diagram
 
 ![alt text](https://github.com/element2112/ACCHORD/blob/master/artifacts/class_architecture.png)
 

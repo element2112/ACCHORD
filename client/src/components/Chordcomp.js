@@ -51,7 +51,7 @@ export class Chordcomp extends Component {
     e.preventDefault();
     console.log(this.state);
 
-    const res = await axios.get('http://localhost:4000/api/users/songs', )
+    // const res = await axios.get('http://localhost:4000/api/users/songs', )
 
     const res = await axios.get('http://localhost:4000/api/users/songs', {
 
