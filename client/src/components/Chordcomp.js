@@ -60,9 +60,15 @@ export class Chordcomp extends Component {
     //     "cp": `${this.state.chord1},${this.state.chord2}`
     //   }),
     // })
-    const send = await send_playlist("4,1");
+    const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3, this.state.chord4]);
 
-    console.log('send ' + JSON.stringify(send));
+    
+    // const artist = send[0].artist;
+    // const song = send[0].song;
+
+    // console.log('send ' + JSON.stringify(send));
+    // console.log('artist ' + artist);
+    // console.log('artist ' + song);
 
     //   console.log('send: '+ JSON.stringify(send));
     // // } catch (err)
