@@ -28,7 +28,8 @@ exports.getSongs = async prog => {
   return await axios.get(CHORD_API_URI + 'trends/songs?cp=' + prog)
     .then(response => {
       console.log("WE GOT IT");
-      console.log(response.data);
+      console.log('test: ' + prog);
+      // console.log(response.data);
       return response.data
       // console.log(response.data[1].song);
       // console.log(response.data[1].artist);

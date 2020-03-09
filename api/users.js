@@ -84,7 +84,7 @@ router.get('/songs', async (req, res) => {
   console.log("GETTING SONGS IN USERS");
   console.log("REQUESTING CP=" + req.body.cp);
 
-  await chords.getSongs(req.body.cp).then(data => res.send(data));
+  await chords.getSongs(req.body.cp).then(data => res.send(data)).catch(err => console.error(err));
 	
 });
 

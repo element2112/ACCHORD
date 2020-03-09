@@ -17,8 +17,8 @@ export default class LoginSpot extends Component {
       link: '',
       playlistID: '',
       trackIDs: [],
-      tracks: ['feelings', 'yellow', 'alison', 'tuscan leather', 'gimme'],
-      artists: ['hayley kiyoko', 'coldplay', 'elvis costello', 'drake', 'banks'],
+      tracks: [],
+      artists: [],
       market: 'US',
       uris: [],
       loading: false

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
 import send_playlist from '../services/spotLogin'
+import { stringify } from 'query-string';
+import axios from 'axios'
 
 // send chords over from here
 export class Chordcomp extends Component {
@@ -49,12 +51,22 @@ export class Chordcomp extends Component {
     e.preventDefault();
     console.log(this.state);
 
-    try {
-      const send = await send_playlist(`${this.state.chord1},${this.state.chord2},${this.state.chord3}, ${this.state.chord4}`);
-    } catch (err)
-    {
-      console.log('error getting your playlist. Make sure you are logged into spotify');
-    }
+    const res = await axios.get('http://localhost:4000/api/users/songs', )
+
+    const res = await axios.get('http://localhost:4000/api/users/songs', {
+
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        "cp": `${this.state.chord1},${this.state.chord2}`
+      }),
+    })
+    //   const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3, this.state.chord4]);
+
+    //   console.log('send: '+ JSON.stringify(send));
+    // // } catch (err)
+    // {
+    //   console.log('error getting your playlist. Make sure you are logged into spotify: ' + err);
+    // }
   }
 
   render() {
@@ -63,40 +75,40 @@ export class Chordcomp extends Component {
       <div>
         <Form onSubmit={this.handleSubmit}>
           <select onClick={this.handleChord1Change}>
-                <option>I</option>
-                <option>II</option>
-                <option>III</option>
-                <option>IV</option>
-                <option>V</option>
-                <option>VI</option>
-                <option>VII</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
           </select>
           <select onClick={this.handleChord2Change}>
-                <option>I</option>
-                <option>II</option>
-                <option>III</option>
-                <option>IV</option>
-                <option>V</option>
-                <option>VI</option>
-                <option>VII</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
           </select>
           <select onClick={this.handleChord3Change}>
-                <option>I</option>
-                <option>II</option>
-                <option>III</option>
-                <option>IV</option>
-                <option>V</option>
-                <option>VI</option>
-                <option>VII</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
           </select>
           <select onClick={this.handleChord4Change}>
-                <option>I</option>
-                <option>II</option>
-                <option>III</option>
-                <option>IV</option>
-                <option>V</option>
-                <option>VI</option>
-                <option>VII</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option></option>
           </select>
           <Button type="submit">Submit</Button>
         </Form>
