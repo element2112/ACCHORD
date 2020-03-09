@@ -80,7 +80,7 @@ router.post('/login', async (req, res) => {
 // @route GET api/users
 // @desc Get all users
 // @access Public
-router.get('/songs', async (req, res) => {
+router.post('/songs', async (req, res) => {
   console.log("GETTING SONGS IN USERS");
   console.log("REQUESTING CP=" + req.body.cp);
 

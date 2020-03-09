@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
 import { Button } from 'react-bootstrap'
-import send_playlist from '../services/spotLogin'
+import send_playlist from '../services/send_playlist'
 import { stringify } from 'query-string';
 import axios from 'axios'
 
@@ -53,14 +53,16 @@ export class Chordcomp extends Component {
 
     // const res = await axios.get('http://localhost:4000/api/users/songs', )
 
-    const res = await axios.get('http://localhost:4000/api/users/songs', {
+    // const res = await axios.get('http://localhost:4000/api/users/songs', {
 
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        "cp": `${this.state.chord1},${this.state.chord2}`
-      }),
-    })
-    //   const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3, this.state.chord4]);
+    //   headers: {'Content-Type': 'application/json'},
+    //   body: JSON.stringify({
+    //     "cp": `${this.state.chord1},${this.state.chord2}`
+    //   }),
+    // })
+    const send = await send_playlist("4,1");
+
+    console.log('send ' + JSON.stringify(send));
 
     //   console.log('send: '+ JSON.stringify(send));
     // // } catch (err)

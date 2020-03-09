@@ -4,6 +4,7 @@ const CHORD_API_URI = 'https://api.hooktheory.com/v1/';
 
 exports.getSongs = async prog => {
   console.log("CHORDS");
+  console.log('PROG ' + prog);
   await axios.post(CHORD_API_URI + 'users/auth', {
     "username": "COPGroup16",
 	  "password": "acchord123"
@@ -16,7 +17,7 @@ exports.getSongs = async prog => {
   return await axios.get(CHORD_API_URI + 'trends/songs?cp=' + prog)
     .then(res => {
       console.log("WE GOT IT");
-      console.log(res.data);
+      // console.log(res.data);
 
       if (res.data.length == 20)
       {
