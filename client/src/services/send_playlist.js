@@ -1,12 +1,26 @@
 import React from 'react'
 
-function send_playlist(progression) {
-  console.log('prog ' + progression)
-  const res = await fetch('../../api/users/songs', {
-    method: 'GET' ,
+async function send_playlist(progression) {
+
+  console.log('progression: ' + progression);
+
+  const new_array = [];
+
+  for (var i = 0; i < progression.length; i++)
+  {
+    if (progression[i] === '')
+      continue;
+
+    new_array.push(progression[i]);
+  }
+
+  console.log('new: ' + new_array)
+
+  const res = await fetch('http://localhost:4000/api/users/songs', {
+    method: 'POST' ,
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      "cp": `${progression[0]},${progression.chord2[1]}`
+      "cp": new_array
     }),
   })
 
