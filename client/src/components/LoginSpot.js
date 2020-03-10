@@ -8,6 +8,7 @@ import addTracks from '../services/addTracks'
 import spotLogin from '../services/spotLogin'
 import send_playlist from '../services/send_playlist'
 
+
 export default class LoginSpot extends Component {
 
   constructor() {
@@ -67,11 +68,18 @@ export default class LoginSpot extends Component {
 
     const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3, this.state.chord4]);
 
+    const art_arr = [];
+    const track_arr = [];
+
     for (let i = 0; i < send.length; i++)
     {
-      this.setState({ artists: [...this.state.artists, send[i].artist], tracks: [...this.state.tracks, send[i].song] })
+
+      art_arr.push(send[i].artist);
+      track_arr.push(send[i].song);
+      // this.setState({ artists: [...this.state.artists, send[i].artist], tracks: [...this.state.tracks, send[i].song] })
     }
 
+    this.setState({ artists: art_arr, tracks: track_arr, trackIDs: [],  uris: []});
 
     // console.log('send: '+ JSON.stringify(send));
 
@@ -107,6 +115,18 @@ export default class LoginSpot extends Component {
     this.setState({ loading: true });
     sessionStorage.setItem('token', this.state.spotifyToken);
     
+    // this.reset();
+    console.log('hereeeeeeeeeee')
+    console.log('arrayyy: ' + this.state.tracks);
+
+    // if (this.state.tracks != [])
+    // {
+    //   this.setState({ trackIDs: [], tracks: [], artists: [], uris: [] });
+    // }
+
+
+    // console.log('arrayyy: ' + this.state.tracks);
+
     // creating playlist
     try {
       const create = await create_playlist(this.state.spotifyToken)
@@ -120,6 +140,7 @@ export default class LoginSpot extends Component {
       const add = await addTracks(this.state.playlistID, this.state.username, this.state.spotifyToken, this.state.uris)
       this.setState({ playlistID: add.snapshot_id})
       this.setState({ loading: false })
+
     
     } catch (err) {
       console.log('error creating playlist, make sure you are logged into spotify')
