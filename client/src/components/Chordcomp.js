@@ -1,63 +1,128 @@
-import React, { Component } from 'react'
-import { Col, Form, Row } from 'react-bootstrap'
-import { Dropdown } from 'react-bootstrap'
+// import React, { Component } from 'react'
+// import { Col, Form, Row } from 'react-bootstrap'
+// import { Button } from 'react-bootstrap'
+// import send_playlist from '../services/send_playlist'
+// import { stringify } from 'query-string';
+// import axios from 'axios'
 
-export class Chordcomp extends Component {
+// // send chords over from here
+// export class Chordcomp extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      chord1: '',
-      chord2: '',
-      chord3: ''
-    }
+//   constructor() {
+//     super();
+//     this.state = {
+//       chord1: '',
+//       chord2: '',
+//       chord3: '',
+//       chord4: ''
+//     }
 
-    this.handleChord1Change = this.handleChord1Change.bind(this);
-    this.handleChord2Change = this.handleChord2Change.bind(this);
-    this.handleChord3Change = this.handleChord3Change.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+//     this.handleChord1Change = this.handleChord1Change.bind(this);
+//     this.handleChord2Change = this.handleChord2Change.bind(this);
+//     this.handleChord3Change = this.handleChord3Change.bind(this);
+//     this.handleChord4Change = this.handleChord4Change.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
 
-  async handleChord1Change(e) {
-    e.preventDefault();
-    await this.setState({ chord1: e.target.value })
-    // console.log(this.state.chord1)
-  }
+//   async handleChord1Change(e) {
+//     e.preventDefault();
+//     this.setState({ chord1: e.target.value })
+//     // console.log(this.state.chord1)
+//   }
 
-  async handleChord2Change(e) {
-    e.preventDefault();
-    await this.setState({ chord2: e.target.value })
-    // console.log(this.state.chord1)
-  }
+//   async handleChord2Change(e) {
+//     e.preventDefault();
+//     this.setState({ chord2: e.target.value })
+//   }
 
-  async handleChord3Change(e) {
-    e.preventDefault();
-    await this.setState({ chord3: e.target.value })
-    // console.log(this.state.chord1)
-  }
+//   async handleChord3Change(e) {
+//     e.preventDefault();
+//     this.setState({ chord3: e.target.value })
+//     // console.log(this.state.chord1)
+//   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    console.log(this.state);
-  }
+//   async handleChord4Change(e) {
+//     e.preventDefault();
+//     this.setState({ chord4: e.target.value })
+//     // console.log(this.state.chord1)
+//   }
 
-  render() {
-    // console.log(this.state)
-    return (
-      <div>
-        <Form onSubmit={this.handleSubmit}>
-          <Row style={{margin: "10px"}}>
-            <Col>
-              <input type="text" name="chord1" placeholder="First" onChange={this.handleChord1Change} />
-              <input  type="text" name="chord2" placeholder="Second" onChange={this.handleChord2Change} />
-              <input  type="text" name="chord3" placeholder="Third" onChange={this.handleChord3Change}/>
-              <button type="submit">Get Playlist</button>
-            </Col>
-          </Row>
-      </Form>
-      </div>
-    )
-  }
-}
+//   async handleSubmit(e) {
+//     e.preventDefault();
+//     console.log(this.state);
 
-export default Chordcomp
+//     // const res = await axios.get('http://localhost:4000/api/users/songs', )
+
+//     // const res = await axios.get('http://localhost:4000/api/users/songs', {
+
+//     //   headers: {'Content-Type': 'application/json'},
+//     //   body: JSON.stringify({
+//     //     "cp": `${this.state.chord1},${this.state.chord2}`
+//     //   }),
+//     // })
+//     const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3, this.state.chord4]);
+
+
+//     // const artist = send[0].artist;
+//     // const song = send[0].song;
+
+//     // console.log('send ' + JSON.stringify(send));
+//     // console.log('artist ' + artist);
+//     // console.log('artist ' + song);
+
+//     //   console.log('send: '+ JSON.stringify(send));
+//     // // } catch (err)
+//     // {
+//     //   console.log('error getting your playlist. Make sure you are logged into spotify: ' + err);
+//     // }
+//   }
+
+//   render() {
+//     // console.log(this.state)
+//     return (
+//       <div>
+//         <Form onSubmit={this.handleSubmit}>
+//           <select onClick={this.handleChord1Change}>
+//                 <option>1</option>
+//                 <option>2</option>
+//                 <option>3</option>
+//                 <option>4</option>
+//                 <option>5</option>
+//                 <option>6</option>
+//                 <option>7</option>
+//           </select>
+//           <select onClick={this.handleChord2Change}>
+//                 <option>1</option>
+//                 <option>2</option>
+//                 <option>3</option>
+//                 <option>4</option>
+//                 <option>5</option>
+//                 <option>6</option>
+//                 <option>7</option>
+//           </select>
+//           <select onClick={this.handleChord3Change}>
+//                 <option>1</option>
+//                 <option>2</option>
+//                 <option>3</option>
+//                 <option>4</option>
+//                 <option>5</option>
+//                 <option>6</option>
+//                 <option>7</option>
+//           </select>
+//           <select onClick={this.handleChord4Change}>
+//                 <option>1</option>
+//                 <option>2</option>
+//                 <option>3</option>
+//                 <option>4</option>
+//                 <option>5</option>
+//                 <option>6</option>
+//                 <option></option>
+//           </select>
+//           <Button type="submit">Submit</Button>
+//         </Form>
+//       </div>
+//     )
+//   }
+// }
+
+// export default Chordcomp

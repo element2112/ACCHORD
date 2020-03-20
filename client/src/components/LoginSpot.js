@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import { Button } from 'react-bootstrap'
 import queryString from 'query-string'
 import Playlist from './Playlist';
-import { Spinner } from 'react-bootstrap'
+import { Spinner, Form } from 'react-bootstrap'
 import create_playlist from '../services/create_playlist'
 import addTracks from '../services/addTracks'
 import spotLogin from '../services/spotLogin'
+import send_playlist from '../services/send_playlist'
+
 
 export default class LoginSpot extends Component {
 
@@ -17,15 +19,73 @@ export default class LoginSpot extends Component {
       link: '',
       playlistID: '',
       trackIDs: [],
-      tracks: ['feelings', 'yellow', 'alison', 'tuscan leather', 'gimme'],
-      artists: ['hayley kiyoko', 'coldplay', 'elvis costello', 'drake', 'banks'],
+      tracks: [],
+      artists: [],
       market: 'US',
       uris: [],
-      loading: false
+      loading: false,
+      chord1: '',
+      chord2: '',
+      chord3: '',
+      chord4: ''
     }
 
     this.handlePlaylists = this.handlePlaylists.bind(this)
     this.search = this.search.bind(this)
+    this.handleChord1Change = this.handleChord1Change.bind(this);
+    this.handleChord2Change = this.handleChord2Change.bind(this);
+    this.handleChord3Change = this.handleChord3Change.bind(this);
+    this.handleChord4Change = this.handleChord4Change.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  async handleChord1Change(e) {
+    e.preventDefault();
+    this.setState({ chord1: e.target.value })
+    // console.log(this.state.chord1)
+  }
+
+  async handleChord2Change(e) {
+    e.preventDefault();
+    this.setState({ chord2: e.target.value })
+  }
+
+  async handleChord3Change(e) {
+    e.preventDefault();
+    this.setState({ chord3: e.target.value })
+    // console.log(this.state.chord1)
+  }
+
+  async handleChord4Change(e) {
+    e.preventDefault();
+    this.setState({ chord4: e.target.value })
+    // console.log(this.state.chord1)
+  }
+
+  async handleSubmit(e) {
+    e.preventDefault();
+    console.log(this.state);
+
+    const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3, this.state.chord4]);
+
+    const art_arr = [];
+    const track_arr = [];
+
+    for (let i = 0; i < send.length; i++)
+    {
+
+      art_arr.push(send[i].artist);
+      track_arr.push(send[i].song);
+      // this.setState({ artists: [...this.state.artists, send[i].artist], tracks: [...this.state.tracks, send[i].song] })
+    }
+
+    this.setState({ artists: art_arr, tracks: track_arr, trackIDs: [],  uris: []});
+
+    // console.log('send: '+ JSON.stringify(send));
+
+    console.log('ARTISTS: ' + this.state.artists);
+    console.log('songs: ' + this.state.tracks);
+
   }
 
   // loops through an array of artists to prepare to add to playlist
@@ -41,7 +101,6 @@ export default class LoginSpot extends Component {
         .then(data => !this.state.trackIDs.includes(data.tracks.items[0].id) ? this.setState({ trackIDs: [...this.state.trackIDs, data.tracks.items[0].id], uris: [...this.state.uris, data.tracks.items[0].uri] }) : console.log('duplicate tracks detected'))
         .catch((err) => console.log('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
       }
-    
   }
 
   // all playlist fetching
@@ -54,7 +113,20 @@ export default class LoginSpot extends Component {
     const login = await spotLogin(accessToken);
     this.setState({ username: login.display_name, spotifyToken: accessToken });
     this.setState({ loading: true });
+    sessionStorage.setItem('token', this.state.spotifyToken);
     
+    // this.reset();
+    console.log('hereeeeeeeeeee')
+    console.log('arrayyy: ' + this.state.tracks);
+
+    // if (this.state.tracks != [])
+    // {
+    //   this.setState({ trackIDs: [], tracks: [], artists: [], uris: [] });
+    // }
+
+
+    // console.log('arrayyy: ' + this.state.tracks);
+
     // creating playlist
     try {
       const create = await create_playlist(this.state.spotifyToken)
@@ -68,6 +140,7 @@ export default class LoginSpot extends Component {
       const add = await addTracks(this.state.playlistID, this.state.username, this.state.spotifyToken, this.state.uris)
       this.setState({ playlistID: add.snapshot_id})
       this.setState({ loading: false })
+
     
     } catch (err) {
       console.log('error creating playlist, make sure you are logged into spotify')
@@ -86,6 +159,45 @@ export default class LoginSpot extends Component {
           <Playlist playlists={this.state.link} /> 
           <Button id="loginSee" onClick={() => window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}>Login with Spotify</Button>
           <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
+          <Form onSubmit={this.handleSubmit}>
+            <select onClick={this.handleChord1Change}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+            </select>
+            <select onClick={this.handleChord2Change}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+            </select>
+            <select onClick={this.handleChord3Change}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+            </select>
+            <select onClick={this.handleChord4Change}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option></option>
+            </select>
+            <Button type="submit">Submit</Button>
+          </Form>
         </div>
       )
     }
