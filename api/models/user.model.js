@@ -30,6 +30,14 @@ const userSchema = new Schema({
         unique: false,
         trim: true
     },
+    bio: {
+      type: String,
+      trim: true
+    },
+    messages: {
+      type: String,
+      trim: true
+    }
  }, {
     timestamps: true,
 });
