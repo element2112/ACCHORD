@@ -24,10 +24,10 @@ export default class LoginSpot extends Component {
       market: 'US',
       uris: [],
       loading: false,
-      chord1: '1',
-      chord2: '1',
-      chord3: '1',
-      chord4: '1'
+      chord1: '',
+      chord2: '',
+      chord3: '',
+      chord4: ''
     }
 
     this.handlePlaylists = this.handlePlaylists.bind(this)
