@@ -7,6 +7,7 @@ import Register from './pages/Registerpage';
 import Dashboard from './pages/Dashboard';
 import Profilepage from './pages/Profilepage';
 import Accountpage from './pages/Accountpage';
+import Updatepage from './pages/Updatepage';
 // import Dashboardhome from './components/Dashboardhome';
 // import Navbarcomp from './components/Navbarcomp'
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/dashboard" exact component={Dashboard} />
         <Route path="/profile" exact component={Profilepage} />
         <Route path="/account" exact component={Accountpage} />
+        <Route path="/update" exact component={Updatepage} />
       </Fragment>
     </Router>
   );

@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
+import axios from 'axios'
 import '../styles/Dash.css'
 import { Redirect } from 'react-router-dom'
 
@@ -20,6 +21,7 @@ export class Account extends Component {
       componentWillMount() {
         localStorage.setItem('authenticated', true);
         console.log('test ' + localStorage.getItem('authenticated'));
+
         if (localStorage.getItem('authenticated'))
         {
           // changing the state from values in local storage
@@ -46,7 +48,7 @@ export class Account extends Component {
                 <Card.Text >
                     Email: {this.state.email}
                 </Card.Text>
-              <a href={"#"} class="btn btn-primary">Update account</a>
+              <a href="/update" className="btn btn-primary">Update account</a>
             </Card.Body>
           </Card>
           )
@@ -54,4 +56,3 @@ export class Account extends Component {
     }
     
     export default Account
-

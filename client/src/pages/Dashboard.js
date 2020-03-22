@@ -17,7 +17,6 @@ export class Dashboard extends Component {
         <Container>
           <Dashboardhome />
         </Container>
-        <Chordcomp />
       </>
     )
   }

@@ -6,6 +6,33 @@ const User = require('./models/user.model');
 
 const chords = require('./chords');
 
+// @route PUT api/users
+// @desc Update user
+// @access Public
+router.put('/updateuser', async (req, res) => {
+  console.log("Update User");
+  let user;
+  console.log(req.body);
+  try {
+    user = await User.findByEmail(req.body.email);
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.password = req.body.password;
+
+    console.log("updated!");
+    await user.save();
+  }
+  catch {
+    if (user == null) {
+      console.log("no user");
+    }
+    else {
+      console.log("error updating!");
+    }
+  }
+  return user;
+});
+
 
 // @route GET api/users
 // @desc Get all users
@@ -28,7 +55,7 @@ router.post('/registeruser', async (req, res) => {
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		timestamps: true
-	});
+  });
 
 	// may need to add an error or check if theres a duplicate user
   
@@ -80,11 +107,11 @@ router.post('/login', async (req, res) => {
 // @route GET api/users
 // @desc Get all users
 // @access Public
-router.get('/songs', async (req, res) => {
+router.post('/songs', async (req, res) => {
   console.log("GETTING SONGS IN USERS");
   console.log("REQUESTING CP=" + req.body.cp);
 
-  await chords.getSongs(req.body.cp).then(data => res.send(data));
+  await chords.getSongs(req.body.cp).then(data => res.send(data)).catch(err => console.error(err));
 	
 });
 

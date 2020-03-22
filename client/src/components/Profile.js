@@ -14,7 +14,7 @@ export class Profile extends Component {
       email: '',
       password: '',
       authenticated: false,
-      bio: 'This is where you can describe yourself to oter users!'
+      bio: 'This is where you can describe yourself to other users!'
     }
   }
 
