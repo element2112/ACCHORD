@@ -7,6 +7,29 @@ const User = require('./models/user.model');
 const chords = require('./chords');
 
 
+router.put('/updateuser', async (req, res) => {
+  console.log("Update User");
+  let user;
+  console.log(req.body);
+  try {
+    user = await User.findByEmail(req.body.originalEmail);
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.email = req.body.email;
+    user.password = req.body.password;
+    console.log("updated!");
+    await user.save();
+  }
+  catch {
+    if (user == null) {
+      console.log("no user");
+    }
+    else {
+      console.log("error updating!");
+    }
+  }
+});
+
 // @route GET api/users
 // @desc Get all users
 // @access Public
@@ -28,24 +51,6 @@ router.post('/registeruser', async (req, res) => {
 		firstName: req.body.firstName,
 		lastName: req.body.lastName,
 		timestamps: true
-  });
-
-  router.get('/:id/edit', async(req, res) => {
-    try {
-      const user = await User.findByEmail(req.params.originalEmail);
-      res.render('users/edit', {user: user});
-    }catch {
-      res.redirect('/update');
-    }
-  })
-
-  router.put('/:User', async (req), res => {
-    console.log("Update User");
-    // User.firstName.updateOne({"firstName" : "r"}, {$set : "Rebecca"});
-    // // const data = User.updateOne({"firstName" : "r"}, {$replaceWith : "Rebecca"});
-    // console.log("updated! hopefully");
-
-    // // User.updateUser({password: req.body.password});
   });
 
 	// may need to add an error or check if theres a duplicate user

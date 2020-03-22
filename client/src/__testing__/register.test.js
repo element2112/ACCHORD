@@ -6,6 +6,8 @@ import '@testing-library/jest-dom/extend-expect'
 import { render, fireEvent, waitForElement } from '@testing-library/react'
 import Dashboardhome from '../components/Dashboardhome'
 
+window.alert = jest.fn();
+
 // app renders
 it('renders app without crashing', () => {
   const div = document.createElement('div')
@@ -27,9 +29,11 @@ it('should not submit', () => {
 
 it('should log out', () => {
   const logSpy = jest.spyOn(console, "log");
+
   const { getByText } = render(<Navbarcomp />);
   expect(getByText("Logout")).toBeTruthy();
   fireEvent.click(getByText("Logout"));
+
   expect(logSpy).toHaveBeenCalled();
-  
+
 })

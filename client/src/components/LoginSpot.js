@@ -37,6 +37,7 @@ export default class LoginSpot extends Component {
     this.handleChord3Change = this.handleChord3Change.bind(this);
     this.handleChord4Change = this.handleChord4Change.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getAlert = this.getAlert.bind(this);
   }
 
   async handleChord1Change(e) {
@@ -119,14 +120,6 @@ export default class LoginSpot extends Component {
     console.log('hereeeeeeeeeee')
     console.log('arrayyy: ' + this.state.tracks);
 
-    // if (this.state.tracks != [])
-    // {
-    //   this.setState({ trackIDs: [], tracks: [], artists: [], uris: [] });
-    // }
-
-
-    // console.log('arrayyy: ' + this.state.tracks);
-
     // creating playlist
     try {
       const create = await create_playlist(this.state.spotifyToken)
@@ -140,13 +133,18 @@ export default class LoginSpot extends Component {
       const add = await addTracks(this.state.playlistID, this.state.username, this.state.spotifyToken, this.state.uris)
       this.setState({ playlistID: add.snapshot_id})
       this.setState({ loading: false })
-
-    
+      this.setState({ chord1: '', chord2: '', chord3: '', chord4: '' });
+      
     } catch (err) {
       console.log('error creating playlist, make sure you are logged into spotify')
       alert("error creating playlist, make sure you are logged into spotify")
     }
     
+  }
+
+  getAlert()
+  {
+    alert('GET YOUR PLAYLIST NOW! (click new playlist)');
   }
 
   // if loading is set to false, then render the embedded playlist
@@ -159,7 +157,7 @@ export default class LoginSpot extends Component {
           <Playlist playlists={this.state.link} /> 
           <Button id="loginSee" onClick={() => window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}>Login with Spotify</Button>
           <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
-          <Form onSubmit={this.handleSubmit}>
+          <Form data-testid="chordSubmit" onSubmit={this.handleSubmit}>
             <select onClick={this.handleChord1Change}>
                   <option>1</option>
                   <option>2</option>
@@ -196,7 +194,7 @@ export default class LoginSpot extends Component {
                   <option>6</option>
                   <option></option>
             </select>
-            <Button type="submit">Submit</Button>
+            <Button type="submit" onClick={this.getAlert}>Submit</Button>
           </Form>
         </div>
       )
