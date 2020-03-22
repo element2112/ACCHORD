@@ -35,7 +35,7 @@ const userSchema = new Schema({
       trim: true
     },
     messages: {
-      type: String,
+      type: [String],
       trim: true
     }
  }, {
