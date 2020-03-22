@@ -133,7 +133,8 @@ export default class LoginSpot extends Component {
       const add = await addTracks(this.state.playlistID, this.state.username, this.state.spotifyToken, this.state.uris)
       this.setState({ playlistID: add.snapshot_id})
       this.setState({ loading: false })
-    
+      this.setState({ chord1: '', chord2: '', chord3: '', chord4: '' });
+      
     } catch (err) {
       console.log('error creating playlist, make sure you are logged into spotify')
       alert("error creating playlist, make sure you are logged into spotify")
