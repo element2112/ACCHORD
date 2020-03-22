@@ -27,6 +27,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-csp-header": "^2.3.2",
+    "method-override": "^3.0.0",
     "mongoose": "^5.8.10",
     "query-string": "^6.11.0",
     "react": "^16.13.0",

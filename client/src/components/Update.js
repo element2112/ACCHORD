@@ -43,8 +43,9 @@ const onSubmit = async e => {
 
     const body = JSON.stringify(updatedUser);
 
-    const res = await axios.post('http://localhost:4000/api/users/updateuser', body, config);
-    console.log("Res is: " + res);
+    console.log("calling route");
+    const res = await axios.post('http://localhost:4000/api/users/updateuser', body);
+    // console.log("Res is: " + res);
 
     // update values in local storage to be used in dashboard
     localStorage.setItem("email", email);
@@ -58,7 +59,7 @@ const onSubmit = async e => {
     localStorage.setItem("authenticated", true);        
     } catch(err) {
       // error catching        
-      console.error(err);
+      // console.error(err);
     }
   }
       
@@ -73,20 +74,20 @@ const onSubmit = async e => {
                 <Form.Control type="text" placeholder="Enter last name" name='lastName' defaultValue={lastName} onChange={e => onChange(e)} required />
               </Form.Group>
 
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label className="formLabel">Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" name='email' defaultValue={email} onChange={e => onChange(e)} required />
-              </Form.Group> */}
+            //   <Form.Group controlId="formBasicEmail">
+            //     <Form.Label className="formLabel">Email address</Form.Label>
+            //     <Form.Control type="email" placeholder="Enter email" name='email' defaultValue={email} onChange={e => onChange(e)} required />
+            //   </Form.Group> */}
             
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label className="formLabel">Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" name='password' defaultValue={password} onChange={e => onChange(e)} required />
-              </Form.Group>
+            //   <Form.Group controlId="formBasicPassword">
+            //     <Form.Label className="formLabel">Password</Form.Label>
+            //     <Form.Control type="password" placeholder="Password" name='password' defaultValue={password} onChange={e => onChange(e)} required />
+            //   </Form.Group>
 
-              <Button variant="primary" type="submit" data-testid="submitBtn">
-                Submit
-              </Button>
-            </Form>
+            //   <Button variant="primary" type="submit" data-testid="submitBtn">
+            //     Submit
+            //   </Button>
+            // </Form>
           )
       }
     
