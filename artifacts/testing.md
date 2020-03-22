@@ -39,3 +39,17 @@
 | Click the link under the submit button that says register user | the register page should render |
 | Enter in a first name, last name, email, and password with less than six characters | The form has each filled with the associated information |
 | Click the submit button | An alert pops up that says "email is not unique" |
+
+=================================================
+
+| Action (Update profile)| Observation|
+| :------: | :-----------: |
+| Navigate to acchord account page. | the account page should render |
+| Click the button labeled 'Update account' | the update page should render |
+| Change the first name to 'newName' | The form is filled with 'newName' |
+| Click the 'Update' button | The update page should be the same |
+| Click the 'My Account' button on the NavBar | The account page should render |
+| Verify that the First Name field now reads 'newName' | The first Name field says 'newName' |
+| Navigate to the 'test users' cluster in the MongoDB database | The database loads informtion |
+| Find the account that was edited | Account information should be in the database |
+| Verify that the First Name field now reads 'newName' | The first Name field says 'newName' |
