@@ -5,5 +5,5 @@
   - posting messages on profile
 * Omar Kalam:
   - CSS
-* Rebecca Englehart:
+* Rebecca Englehart (renglehart):
   - update profile
