@@ -66,7 +66,7 @@ export class Login extends Component {
       this.setLocalStorage(res.user);
       
       // Force webpage refresh by changing state.
-      this.setState({refresh: true});
+      this.setState({});
     } else {
       // if login unsuccessful, go to login page with an error
       alert('Login unsuccessful. Check the password and the spelling of the email address');
