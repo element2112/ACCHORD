@@ -5,7 +5,7 @@ import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
 import '@testing-library/jest-dom/extend-expect'
-import { render, fireEvent, waitForElement } from '@testing-library/react'
+import { render, fireEvent, getByTestId } from '@testing-library/react'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -27,6 +27,38 @@ it('should handle playlists', () => {
   expect(logSpy).toHaveBeenCalled();
 });
 
+jest.mock('../services/send_playlist')
+
+it ('sends playlist', (done) => {
+  const wrapper = shallow(<LoginSpot />)
+
+  const state = wrapper.instance().state
+  expect(state.uris).toEqual([]);
+
+  setTimeout(() => {
+    wrapper.update();
+    expect(wrapper.find("Playlist").length).toEqual(1);
+    done();
+  })
+
+})
+
+jest.mock('../services/addTracks');
+
+it ('adds track', (done) => {
+  const wrapper = shallow(<LoginSpot />)
+
+  const state = wrapper.instance().state
+  expect(state.uris).toEqual([]);
+
+  setTimeout(() => {
+    wrapper.update();
+    expect(wrapper.find("Playlist").length).toEqual(1);
+    done();
+  })
+
+})
+
 jest.mock('../services/create_playlist')
 
 it('creates a playlist', (done) => {
@@ -40,7 +72,5 @@ it('creates a playlist', (done) => {
     expect(wrapper.find("Playlist").length).toEqual(1);
     done();
   })
-
-  
-  
 })
+
