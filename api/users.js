@@ -6,17 +6,19 @@ const User = require('./models/user.model');
 
 const chords = require('./chords');
 
-
+// @route PUT api/users
+// @desc Update user
+// @access Public
 router.put('/updateuser', async (req, res) => {
   console.log("Update User");
   let user;
   console.log(req.body);
   try {
-    user = await User.findByEmail(req.body.originalEmail);
+    user = await User.findByEmail(req.body.email);
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
-    user.email = req.body.email;
     user.password = req.body.password;
+
     console.log("updated!");
     await user.save();
   }
@@ -28,7 +30,9 @@ router.put('/updateuser', async (req, res) => {
       console.log("error updating!");
     }
   }
+  return user;
 });
+
 
 // @route GET api/users
 // @desc Get all users

@@ -6,8 +6,8 @@ import { Redirect } from 'react-router-dom'
 
 const Update = () => {
 
+
 const [formData, setFormData] = useState({
-  originalEmail: localStorage.getItem('email'),
   firstName: localStorage.getItem('firstName'),
   lastName: localStorage.getItem('lastName'),
   email: localStorage.getItem('email'),
@@ -27,7 +27,6 @@ const onSubmit = async e => {
   e.preventDefault();
 
   const updatedUser = {
-    originalEmail,
     firstName,
     lastName,        
     email,
@@ -41,19 +40,15 @@ const onSubmit = async e => {
       }
     }
 
-    updatedUser.originalEmail = localStorage.getItem('email');
-
     const body = JSON.stringify(updatedUser);
 
-    console.log("calling route");
-    const res = await axios.put('http://localhost:4000/api/users/updateuser', body, config);
-    // console.log("Res is: " + res);
+    console.log("test: " + updatedUser);
 
-    // update values in local storage to be used in dashboard/account
-    localStorage.setItem("email", email);
-    localStorage.setItem("firstName", firstName);
-    localStorage.setItem("lastName", lastName);
-    localStorage.setItem("password", password);
+    localStorage.setItem('password', updatedUser.password);
+    localStorage.setItem('firstName', updatedUser.firstName);
+    localStorage.setItem('lastName', updatedUser.lastName);
+
+    const res = await axios.put('http://localhost:4000/api/users/updateuser', body, config);
 
     setFormData({authenticated: true});
     localStorage.setItem("authenticated", true);
@@ -67,19 +62,20 @@ const onSubmit = async e => {
       // render() {
           return (
             <Fragment>
-            {/* <form action = "/Users/localStorage.getItem('email')?_method=PUT"
-            method = "POST">
-              <FormLabel>First Name</FormLabel>
-              <input type="text" name = "name" defaultValue={firstName} onChange={e => onChange(e)} required }></input>
-              <a href = "/account">Cancel</a>
-              <button type= "submit">Update</button>
-            </form> */}
             <Form style={{position: 'absolute', left: '50%', top: '50%',
-          transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={e => onSubmit(e)} data-testid="form">
-            <Form.Group controlId="Name">
-              <Form.Label>First Name</Form.Label>
-              <Form.Control type="text" placeholder={localStorage.firstName} name='firstName' defaultValue={firstName} onChange={e => onChange(e)} required />
-            </Form.Group>
+            transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={onSubmit} data-testid="form">
+              <Form.Group controlId="firstName">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control type="text" placeholder={localStorage.firstName} name='firstName' defaultValue={firstName} onChange={onChange} />
+              </Form.Group>
+              <Form.Group controlId="lastName">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control type="text" placeholder={localStorage.lastName} name='lastName' defaultValue={lastName} onChange={onChange} />
+              </Form.Group>
+              <Form.Group controlId="Password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="text" placeholder={localStorage.password} name='password' defaultValue="******" onChange={onChange} />
+              </Form.Group>
             <button type= "submit">Update</button>
             </Form>
           </Fragment>
