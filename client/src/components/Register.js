@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Component, Fragment, useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
@@ -13,7 +13,7 @@ const Register = () => {
     password2: '',
     authenticated: false
   });
-
+ 
   // array destructure for state
   const { firstName, lastName, email, password, password2, authenticated } = formData;
 
