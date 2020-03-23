@@ -1,0 +1,18 @@
+
+body {
+    background: gray;
+    background-image: url("../images/background1.png");
+    background-repeat: none;
+    background-position: center;
+  }
+
+.container {
+    background-color: #282c34 transparent;
+    border-radius: 25px;
+    color: gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 50%;
+  }

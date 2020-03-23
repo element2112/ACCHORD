@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 // import Navbarcomp from './Navbarcomp'
-import '../styles/Dash.css'
 import { Redirect } from 'react-router-dom'
 
 export class Dashboardhome extends Component {

@@ -39,12 +39,12 @@ export class Login extends Component {
           <Form.Check type="checkbox" label="Remember me" name="remember" onChange={this.update} />
         </Form.Group>
         
-        <Button data-testid="loginButton" variant="primary" type="submit">
+        <Button data-testid="loginButton" type="submit">
           Login
         </Button>
         <br/>
         <br/>
-        <Link to='/register' style={{color: "blue"}}>{"Register an account!"}</Link>
+        <Link to='/register' style={{color: "#E63"}}>{"Register an account!"}</Link>
       </Form>
     )
   }

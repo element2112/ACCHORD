@@ -6,7 +6,7 @@ export class Homepage extends Component {
   render() {
     // register page parent layout
     return (
-      <Container>
+      <Container className='register'>
         <Register />
       </Container>
     )

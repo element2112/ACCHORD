@@ -84,29 +84,29 @@ const Register = () => {
     return (
       <Fragment>
         <Form style={{position: 'absolute', left: '50%', top: '50%',
-          transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={e => onSubmit(e)} data-testid="form">
+          transform: 'translate(-50%, -50%)'}} onSubmit={e => onSubmit(e)} data-testid="form">
             <Form.Group controlId="Name">
-              <Form.Label>First Name</Form.Label>
+              <Form.Label style={{color: 'gold'}}>First Name</Form.Label>
               <Form.Control type="text" placeholder="Enter first name" name='firstName' defaultValue={firstName} onChange={e => onChange(e)} required />
-              <Form.Label className="formLabel">Last Name</Form.Label>
+              <Form.Label style={{color: 'gold'}}>Last Name</Form.Label>
               <Form.Control type="text" placeholder="Enter last name" name='lastName' defaultValue={lastName} onChange={e => onChange(e)} required />
             </Form.Group>
           
             <Form.Group controlId="formBasicEmail">
-              <Form.Label className="formLabel">Email address</Form.Label>
+            <Form.Label style={{color: 'gold'}}>Email address</Form.Label>
               <Form.Control type="email" placeholder="Enter email" name='email' defaultValue={email} onChange={e => onChange(e)} required />
             </Form.Group>
             
             <Form.Group controlId="formBasicPassword">
-              <Form.Label className="formLabel">Password</Form.Label>
+            <Form.Label style={{color: 'gold'}}>Password</Form.Label>
               <Form.Control type="password" placeholder="Password" name='password' defaultValue={password} onChange={e => onChange(e)} required />
             </Form.Group>
             
             <Form.Group controlId="formBasicPassword">
-              <Form.Label className="formLabel">Confirm Password</Form.Label>
+            <Form.Label style={{color: 'gold'}}>Confirm Password</Form.Label>
               <Form.Control type="password" placeholder="Confirm password" name='password2' defaultValue={password2} onChange={e => onChange(e)} required />
             </Form.Group>
-            <Button variant="primary" type="submit" data-testid="submitBtn">
+            <Button type="submit" data-testid="submitBtn">
               Submit
             </Button>
         </Form>

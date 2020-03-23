@@ -45,8 +45,8 @@ export class Profile extends Component {
           <Row>
             <Card id='profile-bio'>
               <Card.Body>
-                <Card.Title style={{color: "black"}}>{this.state.firstName}</Card.Title>
-                <Card.Text style={{color: "black"}}>
+                <Card.Title >{this.state.firstName}</Card.Title>
+                <Card.Text >
                   BIO: {this.state.bio}
                 </Card.Text>
               </Card.Body>
