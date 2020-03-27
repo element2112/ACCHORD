@@ -142,7 +142,19 @@ export default class LoginSpot extends Component {
 
   getAlert()
   {
-    alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1} -> ${this.state.chord2} -> ${this.state.chord3}`)
+    if (this.state.chord2 == '')
+    {
+      alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1}`)
+    }
+    else if (this.state.chord3 == '')
+    {
+      alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1} -> ${this.state.chord2}`)
+    }
+    else
+    {
+      alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1} -> ${this.state.chord2} -> ${this.state.chord3}`)
+    }
+    
   }
 
   // if loading is set to false, then render the embedded playlist

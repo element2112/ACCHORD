@@ -17,6 +17,7 @@ function App() {
     <Router>
       <Fragment>
         <Route path="/" exact component={Homepage} />
+        <Route path="/login" exact component={Homepage} />
         <Route path="/register" exact component={Register} />
         <Route path="/dashboard" exact component={Dashboard} />
         <Route path="/profile" exact component={Profilepage} />

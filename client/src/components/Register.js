@@ -46,18 +46,16 @@ const Register = () => {
 
         const body = JSON.stringify(newUser);
 
-        const res = await axios.post('http://localhost:4000/api/users/registeruser', body, config);
-        // setting values to local storage to be used in dashboard
-        localStorage.setItem("email", email);
-        localStorage.setItem("firstName", firstName);
-        localStorage.setItem("lastName", lastName);
-        localStorage.setItem("password", password);
-    
-        setFormData({authenticated: true});
-        localStorage.setItem("authenticated", true);
-        
-        // console.log(res.data);
-        
+        await axios.post('http://localhost:4000/api/users/registeruser', body, config)
+            .then(() => {
+              localStorage.setItem("email", email)
+              localStorage.setItem("firstName", firstName)
+              localStorage.setItem("lastName", lastName)
+              localStorage.setItem("password", password)
+              localStorage.setItem("authenticated", true)
+            })
+            .then(() =>  setFormData({authenticated: true}))
+            
       } catch(err) {
         // error catching
 
@@ -72,19 +70,14 @@ const Register = () => {
   if (authenticated)
   {
     return (
-      <>
-        <div role="alert">Welcome</div>
-        <Redirect to="/dashboard" />
-      </>
-    
+      <Redirect to="/dashboard" />
     )
   } else {
-
     // returning component
     return (
       <Fragment>
         <Form style={{position: 'absolute', left: '50%', top: '50%',
-          transform: 'translate(-50%, -50%)'}} onSubmit={e => onSubmit(e)} data-testid="form">
+          transform: 'translate(-50%, -50%)'}} onSubmit={onSubmit} data-testid="form">
             <Form.Group controlId="Name">
               <Form.Label style={{color: 'gold'}}>First Name</Form.Label>
               <Form.Control type="text" placeholder="Enter first name" name='firstName' defaultValue={firstName} onChange={e => onChange(e)} required />
