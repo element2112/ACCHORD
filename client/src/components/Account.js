@@ -49,6 +49,7 @@ export class Account extends Component {
                     Email: {this.state.email}
                 </Card.Text>
               <a href="/update" className="btn btn-primary">Update account</a>
+              <a href="/dashboard" className="btn btn-primary">Delete account</a>
             </Card.Body>
           </Card>
           )
