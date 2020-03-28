@@ -44,16 +44,13 @@ const onSubmit = async e => {
 
     // console.log("test: " + updatedUser);
 
-    localStorage.setItem('password', updatedUser.password);
-    localStorage.setItem('firstName', updatedUser.firstName);
-    localStorage.setItem('lastName', updatedUser.lastName);
 
-    await axios.put('http://localhost:4000/api/users/updateuser', body, config)
-          .then(() => {
-            setFormData({updated: true});
-          })
+    localStorage.setItem('firstName', updatedUser.firstName)
+    localStorage.setItem('lastName', updatedUser.lastName)
+
+    await axios.put('http://localhost:4000/api/users/updateuser', body, config).then(() => { setFormData({updated: true}) })
                 
-    console.log('updated: ' + updated)
+    // console.log('updated: ' + res)
 
 
     // res.Redirect('/account');

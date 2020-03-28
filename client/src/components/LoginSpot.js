@@ -122,7 +122,7 @@ export default class LoginSpot extends Component {
     try {
       const create = await create_playlist(this.state.spotifyToken)
       this.setState({ playlistID: create.id, link: create.external_urls.spotify })
-
+      sessionStorage.setItem('playlist', this.state.link);
 
       // searching for track
       await this.search().then(() => console.log('test')).catch((err) => console.log(err))

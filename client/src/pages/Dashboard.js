@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Navbarcomp from '../components/Navbarcomp'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import Dashboardhome from '../components/Dashboardhome';
-import Chordcomp from '../components/Chordcomp';
+// import Chordcomp from '../components/Chordcomp';
 import LoginSpot from '../components/LoginSpot';
+import History from '../components/History';
 //import '../styles/Dash.css';
 
 export class Dashboard extends Component {
@@ -13,6 +14,11 @@ export class Dashboard extends Component {
     return (
       <>
         <Navbarcomp />
+        <Row>
+          <Col md="auto">
+            <History />
+          </Col>
+        </Row>
         <Container>
           <LoginSpot />
         </Container>
