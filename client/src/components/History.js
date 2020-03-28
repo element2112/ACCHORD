@@ -1,19 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Carousel } from 'react-bootstrap'
-import Playlist from './Playlist'
+import Playlist from '../components/Playlist'
 
-export class History extends Component {
-  render() {
+function History() {
+  const retrieve = JSON.parse(sessionStorage.getItem('playlist'));
+
+  if (retrieve == null)
+  {
     return (
       <Carousel>
-        <Carousel.Item>
-          <Playlist playlists={sessionStorage.getItem('playlist')}/>
+        <Carousel.Item style={{ alignItems: "center" }}>
+          <Playlist />
         </Carousel.Item>
         <Carousel.Item>
-          <Playlist playlists={sessionStorage.getItem('playlist')}/>
+          <Playlist />
         </Carousel.Item>
         <Carousel.Item>
-          <Playlist playlists={sessionStorage.getItem('playlist')}/>
+          <Playlist />
+        </Carousel.Item>
+      </Carousel>    
+    )
+  }
+  else
+  {
+    return (
+      <Carousel>
+        <Carousel.Item style={{ alignItems: "center" }}>
+          <Playlist playlists={retrieve[0]}/>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Playlist playlists={retrieve[1]}/>
         </Carousel.Item>
       </Carousel>
     )
@@ -21,3 +37,4 @@ export class History extends Component {
 }
 
 export default History
+

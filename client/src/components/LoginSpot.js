@@ -7,6 +7,7 @@ import create_playlist from '../services/create_playlist'
 import addTracks from '../services/addTracks'
 import spotLogin from '../services/spotLogin'
 import send_playlist from '../services/send_playlist'
+import History from '../components/History'
 
 
 export default class LoginSpot extends Component {
@@ -26,7 +27,8 @@ export default class LoginSpot extends Component {
       loading: false,
       chord1: '',
       chord2: '',
-      chord3: ''
+      chord3: '',
+      storage: []
     }
 
     this.handlePlaylists = this.handlePlaylists.bind(this)
@@ -36,13 +38,13 @@ export default class LoginSpot extends Component {
     this.handleChord3Change = this.handleChord3Change.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getAlert = this.getAlert.bind(this);
+    // this.showHistory = this.showHistory.bind(this)
   }
 
-  // componentDidMount()
-  // {
-  //   this.handlePlaylists();
-  //   console.log('state: ' + this.state.chord1 + ' ' + this.state.chord2+ ' ' + this.state.chord3 + ' ' + this.state.chord4)
-  // }
+  componentWillMount()
+  {
+    History();
+  }
 
   async handleChord1Change(e) {
     e.preventDefault();
@@ -122,8 +124,8 @@ export default class LoginSpot extends Component {
     try {
       const create = await create_playlist(this.state.spotifyToken)
       this.setState({ playlistID: create.id, link: create.external_urls.spotify })
-      sessionStorage.setItem('playlist', this.state.link);
-
+      this.setState({ storage: [... this.state.storage, this.state.link] })
+      sessionStorage.setItem('playlist', JSON.stringify(this.state.storage));
       // searching for track
       await this.search().then(() => console.log('test')).catch((err) => console.log(err))
 
@@ -165,7 +167,7 @@ export default class LoginSpot extends Component {
       return (
         <div>
           <Playlist playlists={this.state.link} /> 
-          <Button id="loginSee" onClick={() => window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}>Login with Spotify</Button>
+          <Button id="loginSee" onClick={() => {window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}}>Login with Spotify</Button>
           <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
           <Form data-testid="chordSubmit" onSubmit={this.handleSubmit}>
             <select onClick={this.handleChord1Change}>

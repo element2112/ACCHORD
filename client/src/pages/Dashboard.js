@@ -15,13 +15,17 @@ export class Dashboard extends Component {
       <>
         <Navbarcomp />
         <Row>
-          <Col md="auto">
+          <Col lg={2} style={{ marginLeft: "50px" }}>
             <History />
           </Col>
+          <Col style={{ marginTop: "100px" }}>
+            <Container>
+              <LoginSpot />
+            </Container>
+          </Col>
+          <Col>
+          </Col>
         </Row>
-        <Container>
-          <LoginSpot />
-        </Container>
         <Container>
           <Dashboardhome />
         </Container>
