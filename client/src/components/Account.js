@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import axios from 'axios'
-import '../styles/Dash.css'
+//import '../styles/Dash.css'
 import { Redirect } from 'react-router-dom'
 
 export class Account extends Component {
@@ -37,7 +37,7 @@ export class Account extends Component {
       render() {
           return (
             <Card style={{ width: '100rem' }}>
-            <Card.Body style={{color: "black"}}>
+            <Card.Body>
               <Card.Title>User Account Information</Card.Title>
                 <Card.Text >
                     First name: {this.state.firstName}
