@@ -6,6 +6,8 @@ import Dashboard from './pages/Dashboard';
 import Profilepage from './pages/Profilepage';
 import Accountpage from './pages/Accountpage';
 import Updatepage from './pages/Updatepage';
+import Deletepage from './pages/Deletepage';
+
 // import Dashboardhome from './components/Dashboardhome';
 // import Navbarcomp from './components/Navbarcomp'
 import Homepage from './pages/Homepage';
@@ -22,6 +24,7 @@ function App() {
         <Route path="/profile" exact component={Profilepage} />
         <Route path="/account" exact component={Accountpage} />
         <Route path="/update" exact component={Updatepage} />
+        <Route path="/delete" exact component={Deletepage} />
       </Fragment>
     </Router>
   );

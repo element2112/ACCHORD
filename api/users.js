@@ -33,6 +33,26 @@ router.put('/updateuser', async (req, res) => {
   return user;
 });
 
+// @route DELETE api/users
+// @desc Delete current user
+// @access Public
+router.delete('/deleteuser', async (req, res) => {
+  console.log("in delete!");
+  let user;
+  try {
+    user = await User.findByEmail(req.body.email);
+    await user.remove();
+    res.redirect('/');
+  }
+  catch {
+    if (user == null) {
+      res.redirect('/');
+    }
+    else {
+      res.redirect('/');
+    }
+  }
+});
 
 // @route GET api/users
 // @desc Get all users
