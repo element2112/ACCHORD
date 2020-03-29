@@ -47,9 +47,18 @@
 | Navigate to acchord account page. | the account page should render |
 | Click the button labeled 'Update account' | the update page should render |
 | Change the first name to 'newName' | The form is filled with 'newName' |
-| Click the 'Update' button | The update page should be the same |
-| Click the 'My Account' button on the NavBar | The account page should render |
+| Click the 'Update' button | The account page should render |
 | Verify that the First Name field now reads 'newName' | The first Name field says 'newName' |
 | Navigate to the 'test users' cluster in the MongoDB database | The database loads informtion |
 | Find the account that was edited | Account information should be in the database |
 | Verify that the First Name field now reads 'newName' | The first Name field says 'newName' |
+
+=================================================
+
+| Action (Delete account)| Observation|
+| :------: | :-----------: |
+| Navigate to acchord account page. | the account page should render |
+| Click the button labeled 'Delete account' | the delete page should render |
+| Click the 'delete' button | The login page should render |
+| Navigate to the 'test users' cluster in the MongoDB database | The database loads informtion |
+| Verify that the account with the email that you deleted is no longer in the database | The account has been deleted |
