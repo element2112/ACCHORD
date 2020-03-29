@@ -11,11 +11,11 @@ const [formData, setFormData] = useState({
   lastName: localStorage.getItem('lastName'),
   email: localStorage.getItem('email'),
   password: localStorage.getItem('password'),
-  authenticated: false
+  deleted: false
 });
 
 // array destructure for state
-const { firstName, lastName, email, password } = formData;
+const { firstName, lastName, email, password, deleted } = formData;
 
 // change the state as input is being typed
 const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,7 +28,8 @@ const onSubmit = async e => {
     firstName,
     lastName,        
     email,
-    password
+    password,
+    deleted
   }
   try {
     let config = {
@@ -52,8 +53,7 @@ const onSubmit = async e => {
     // Let's not worry about what happens when the button is clicked really fast
     axios.delete('http://localhost:4000/api/users/deleteuser', config);
 
-    // actually redirect
-    Redirect('/');
+    setFormData({deleted: true});
 
     } catch(err) {
       // error catching        
@@ -61,21 +61,30 @@ const onSubmit = async e => {
     }
   }
       
-      // render() {
-          return (
-            <Fragment>
-            <Form style={{position: 'absolute', left: '50%', top: '50%',
-            transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={onSubmit} data-testid="form">
-              <Form.Group controlId="firstName">
-                <Form.Label>Hi, {localStorage.firstName}</Form.Label>
-              </Form.Group>
-              <Form.Group controlId="lastName">
-                <Form.Label>Are you sure you want to delete your account?</Form.Label>
-              </Form.Group>
-            <button type= "submit">Delete</button>
-            </Form>
-          </Fragment>
-          )
-      }
-    
+  if (!deleted) {
+    return (
+      <Fragment>
+      <Form style={{position: 'absolute', left: '50%', top: '50%',
+      transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={onSubmit} data-testid="form">
+        <Form.Group controlId="firstName">
+          <Form.Label>Hi, {localStorage.firstName}</Form.Label>
+        </Form.Group>
+        <Form.Group controlId="lastName">
+          <Form.Label>Are you sure you want to delete your account?</Form.Label>
+        </Form.Group>
+      <button type= "submit">Delete</button>
+      </Form>
+    </Fragment>
+    )
+  }
+  else  {
+    return (
+    <>
+      <div role="alert">Welcome</div>
+      <Redirect to="/" />
+    </>
+  
+  )
+  }
+} 
     export default Delete

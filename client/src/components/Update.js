@@ -6,17 +6,16 @@ import { Redirect } from 'react-router-dom'
 
 const Update = () => {
 
-
 const [formData, setFormData] = useState({
   firstName: localStorage.getItem('firstName'),
   lastName: localStorage.getItem('lastName'),
   email: localStorage.getItem('email'),
   password: localStorage.getItem('password'),
-  authenticated: false
+  updated: false
 });
 
 // array destructure for state
-const { originalEmail, firstName, lastName, email, password } = formData;
+const {firstName, lastName, email, password, updated } = formData;
 
 // change the state as input is being typed
 const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -48,38 +47,48 @@ const onSubmit = async e => {
     localStorage.setItem('firstName', updatedUser.firstName);
     localStorage.setItem('lastName', updatedUser.lastName);
 
+    setFormData({updated: true});
     const res = await axios.put('http://localhost:4000/api/users/updateuser', body, config);
+
+    console.log("updated");
 
     setFormData({authenticated: true});
     localStorage.setItem("authenticated", true);
-    res.Redirect('/account');
+
     } catch(err) {
       // error catching        
       // console.error(err);
     }
   }
-      
-      // render() {
-          return (
-            <Fragment>
-            <Form style={{position: 'absolute', left: '50%', top: '50%',
-            transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={onSubmit} data-testid="form">
-              <Form.Group controlId="firstName">
-                <Form.Label>First Name</Form.Label>
-                <Form.Control type="text" placeholder={localStorage.firstName} name='firstName' defaultValue={firstName} onChange={onChange} />
-              </Form.Group>
-              <Form.Group controlId="lastName">
-                <Form.Label>Last Name</Form.Label>
-                <Form.Control type="text" placeholder={localStorage.lastName} name='lastName' defaultValue={lastName} onChange={onChange} />
-              </Form.Group>
-              <Form.Group controlId="Password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="text" placeholder={localStorage.password} name='password' defaultValue="******" onChange={onChange} />
-              </Form.Group>
-            <button type= "submit">Update</button>
-            </Form>
-          </Fragment>
-          )
-      }
-    
+      if (!updated) {
+        return (
+          <Fragment>
+          <Form style={{position: 'absolute', left: '50%', top: '50%',
+          transform: 'translate(-50%, -50%)', fontWeight:"900"}} onSubmit={onSubmit} data-testid="form">
+            <Form.Group controlId="firstName">
+              <Form.Label>First Name</Form.Label>
+              <Form.Control type="text" placeholder={localStorage.firstName} name='firstName' defaultValue={firstName} onChange={onChange} />
+            </Form.Group>
+            <Form.Group controlId="lastName">
+              <Form.Label>Last Name</Form.Label>
+              <Form.Control type="text" placeholder={localStorage.lastName} name='lastName' defaultValue={lastName} onChange={onChange} />
+            </Form.Group>
+            <Form.Group controlId="Password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="text" placeholder={localStorage.password} name='password' defaultValue="******" onChange={onChange} />
+            </Form.Group>
+          <button type= "submit">Update</button>
+          </Form>
+        </Fragment>
+        )
+    }
+    else {
+      return (
+        <>
+          <Redirect to="/account" />
+        </>
+      )
+    }
+  }
+          
     export default Update
