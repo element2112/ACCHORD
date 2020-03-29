@@ -121,7 +121,7 @@ router.post('/songs', async (req, res) => {
 // @access Public
 router.get('/messages', (req, res) => {
   console.log("Getting your messages!");
-  console.log("This is the req.email: \n" + req.body.email);
+  console.log("This is the req.body.email: \n" + req.body.email);
 
   User.findByEmail(req.body.email)
   .then(user => res.json(user.messages));
@@ -136,7 +136,11 @@ router.post('/addmessages', (req, res) => {
   console.log("Message = '" + req.body.messages + "'");
 
   User.findByEmail(req.body.email)
-  .then(user => user.messages = req.body.messages);
+  .then(user => {
+    user.messages = req.body.messages;
+    console.log("user.messages is now: " + user.messages);
+    res = res.json(user.messages);
+  });
   	
 });
 
