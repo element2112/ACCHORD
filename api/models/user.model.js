@@ -37,6 +37,10 @@ const userSchema = new Schema({
     messages: {
       type: [String],
       trim: true
+    },
+    history: {
+      type: String,
+      trim: true
     }
  }, {
     timestamps: true,
