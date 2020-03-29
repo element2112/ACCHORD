@@ -44,10 +44,10 @@ const onSubmit = async e => {
     config.data = JSON.stringify(userInfo);
 
     // remove information from localStorage
-    localStorage.setItem('password', '123456');
-    localStorage.setItem('firstName', 'becca');
-    localStorage.setItem('lastName', 'test');
-    localStorage.setItem('email', 'r@test.com');
+    localStorage.setItem('password', '');
+    localStorage.setItem('firstName', '');
+    localStorage.setItem('lastName', '');
+    localStorage.setItem('email', '');
 
     // Let's not worry about what happens when the button is clicked really fast
     axios.delete('http://localhost:4000/api/users/deleteuser', config);

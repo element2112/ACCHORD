@@ -39,23 +39,7 @@ router.put('/updateuser', async (req, res) => {
 
 router.delete('/deleteuser', async (req, res) => {
   console.log("in delete!");
-  /*
-  let user;
-  try {
-    user = await User.findByEmail(req.body.email);
-    console.log(user);
-    await user.remove();
-    res.redirect('/');
-  }
-  catch {
-    if (user == null) {
-      res.redirect('/');
-    }
-    else {
-      res.redirect('/');
-    }
-  }
-*/
+
 // TODO: check that user was deleted
   console.log(req.body);
   User.findByEmail(req.body.email).then(user => {
