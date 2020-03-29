@@ -36,11 +36,14 @@ router.put('/updateuser', async (req, res) => {
 // @route DELETE api/users
 // @desc Delete current user
 // @access Public
+
 router.delete('/deleteuser', async (req, res) => {
   console.log("in delete!");
+  /*
   let user;
   try {
     user = await User.findByEmail(req.body.email);
+    console.log(user);
     await user.remove();
     res.redirect('/');
   }
@@ -52,6 +55,19 @@ router.delete('/deleteuser', async (req, res) => {
       res.redirect('/');
     }
   }
+*/
+// TODO: check that user was deleted
+  console.log(req.body);
+  User.findByEmail(req.body.email).then(user => {
+    console.log(user);
+    user.remove().then(() => {
+    });
+    
+  }, err => {
+    console.log(err);
+  });
+
+  res.status(200).send();
 });
 
 // @route GET api/users
@@ -96,7 +112,7 @@ router.post('/registeruser', async (req, res) => {
 // @desc Attempt login as existing user
 // @access Public - normally private
 router.post('/login', async (req, res) => {
-	console.log("ATTEMPTING LOGIN");
+  console.log("ATTEMPTING LOGIN");
   console.log(req.body);
   let email = req.body.email;
   let password = req.body.password;

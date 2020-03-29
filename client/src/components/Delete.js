@@ -22,18 +22,16 @@ const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value
 
   // sending form data to API on submit
 const onSubmit = async e => {
-  console.log('in submit');
   e.preventDefault();
 
-  const userInfo = {
+  let userInfo = {
     firstName,
     lastName,        
     email,
     password
   }
-
   try {
-    const config = {
+    let config = {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -43,7 +41,7 @@ const onSubmit = async e => {
     userInfo.email = localStorage.getItem('email');
     userInfo.password = localStorage.getItem('password');
 
-    const body = JSON.stringify(userInfo);
+    config.data = JSON.stringify(userInfo);
 
     // remove information from localStorage
     localStorage.setItem('password', '123456');
@@ -51,9 +49,11 @@ const onSubmit = async e => {
     localStorage.setItem('lastName', 'test');
     localStorage.setItem('email', 'r@test.com');
 
-    const res = await axios.delete('http://localhost:4000/api/users/deleteuser', body, config);
+    // Let's not worry about what happens when the button is clicked really fast
+    axios.delete('http://localhost:4000/api/users/deleteuser', config);
 
-    res.Redirect('/');
+    // actually redirect
+    Redirect('/');
 
     } catch(err) {
       // error catching        
