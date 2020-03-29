@@ -107,8 +107,8 @@ export class Messages extends Component {
         <Col>
           <Card id='messages'>
             <Card.Body>
-              <Card.Title style={{color: "black"}}>{this.state.firstName}'s messages</Card.Title>
-              <Card.Text style={{color: "black"}} >
+              <Card.Title>{this.state.firstName}'s messages</Card.Title>
+              <Card.Text>
                  <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formMessage">
                       <Form.Label>Leave A Message!</Form.Label>
@@ -119,10 +119,10 @@ export class Messages extends Component {
                     </Button>
                   </Form>
               </Card.Text>
-              <Card.Text style={{color: "black"}} >
+              <Card.Text>
                 {this.state.messages[1]}
               </Card.Text>
-              <Card.Text style={{color: "black"}} >
+              <Card.Text>
                 {this.state.messages[0]}
               </Card.Text>
               <Card.Text>
