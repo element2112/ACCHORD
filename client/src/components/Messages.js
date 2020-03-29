@@ -112,7 +112,7 @@ export class Messages extends Component {
                  <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formMessage">
                       <Form.Label>Leave A Message!</Form.Label>
-                      <Form.Control type="messages" placeholder="Write your message here!" name="messages" />
+                      <Form.Control type="messages" placeholder="Write your message here!" name="messages" onChange={this.update}/>
                     </Form.Group>
                     <Button data-testid="submitButton" variant="primary" type="submit">
                       Submit
