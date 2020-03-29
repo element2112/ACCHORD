@@ -74,10 +74,15 @@ export class Messages extends Component {
   }
 
   handleSubmit = (e) => {
-    this.state.messages.push(newMessage);
+    if (this.state.messages[0] == 'This is a default message.')
+      this.state.messages[0] = newMessage;
+    else
+      this.state.messages.push(newMessage);
+    
     let currMessages = this.state.messages;
     this.setState({messages: currMessages});
     let state = this.state;
+    console.log("messages is now (handleSubmit): " + state.messages);
     fetch("http://localhost:4000/api/users/addmessages",
     {
       method: "POST",
@@ -85,7 +90,7 @@ export class Messages extends Component {
       body: JSON.stringify(state)
     })
     .then(res => res.json())
-    .then(this.handleMessageSubmission);
+    //.then(this.handleMessageSubmission);
     e.preventDefault();
   }
 
@@ -115,7 +120,10 @@ export class Messages extends Component {
                   </Form>
               </Card.Text>
               <Card.Text style={{color: "black"}} >
-                {this.state.messages}
+                {this.state.messages[1]}
+              </Card.Text>
+              <Card.Text style={{color: "black"}} >
+                {this.state.messages[0]}
               </Card.Text>
               <Card.Text style={{color: "black"}} >
                 This is a default message.
