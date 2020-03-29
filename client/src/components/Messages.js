@@ -3,10 +3,13 @@ import { Card, Col } from 'react-bootstrap'
 // import Navbarcomp from './Navbarcomp'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import axios from 'axios'
 
 const headers = {
   'Content-Type': 'application/json'
 }
+
+var newMessage;
 
 export class Messages extends Component {
 
@@ -19,7 +22,7 @@ export class Messages extends Component {
       email: '',
       password: '',
       authenticated: false,
-      messages: ''
+      messages: ['This is a default message.']
     }
   }
 
@@ -27,6 +30,7 @@ export class Messages extends Component {
 
   componentWillMount() {
     console.log('test ' + localStorage.getItem('authenticated'));
+    console.log("WE MADE IT INTO COMP WILL MOUNT");
     if (localStorage.getItem('authenticated'))
     {
       // changing the state from values in local storage
@@ -35,36 +39,61 @@ export class Messages extends Component {
         lastName: localStorage.getItem('lastName'),
         email: localStorage.getItem('email'),
         password: localStorage.getItem('password'),
-        messages: localStorage.getItem('messages'),
         authenticated: true
       })
     }
   }
 
-  handleCommentSubmission = () => {
+  componentDidMount() {
+    console.log("WE MADE IT INTO COMP DID MOUNT");
+    if (localStorage.getItem('authenticated'))
+    {
+      // changing the state from values in local storage
+      this.setState({
+        firstName: localStorage.getItem('firstName'),
+        lastName: localStorage.getItem('lastName'),
+        email: localStorage.getItem('email'),
+        password: localStorage.getItem('password'),
+        authenticated: true
+      })
+
+      let state = this.state;
+
+      axios.get("http://localhost:4000/api/users/messages",
+      {
+        headers: headers,
+        body: JSON.stringify(state)
+      })
+      .then(dbMessages => this.setState({messages: dbMessages}));      
+    }
+  }
+
+  handleMessageSubmission = () => {
     console.log("refreshing");
     this.setState({refresh: true});
   }
 
   handleSubmit = (e) => {
-    console.log('leaving comment');
+    this.state.messages.push(newMessage);
+    let currMessages = this.state.messages;
+    this.setState({messages: currMessages});
     let state = this.state;
-    fetch("http://localhost:4000/api/users/updateuser",
+    fetch("http://localhost:4000/api/users/addmessages",
     {
       method: "POST",
       headers: headers,
       body: JSON.stringify(state)
     })
     .then(res => res.json())
-    .then(this.handleCommentSubmission);
+    .then(this.handleMessageSubmission);
     e.preventDefault();
   }
 
   update = (e) => {
     console.log("Changing state!");
-    let name = e.target.name;
     let value = e.target.value;
-    this.setState({[name]: value});
+    console.log("Message so far '" + value + "'");
+    newMessage = value;
   }
 
   render() {
@@ -75,10 +104,10 @@ export class Messages extends Component {
             <Card.Body>
               <Card.Title style={{color: "black"}}>{this.state.firstName}'s messages</Card.Title>
               <Card.Text style={{color: "black"}} >
-                 <Form>
+                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formMessage">
                       <Form.Label>Leave A Message!</Form.Label>
-                      <Form.Control type="messages" placeholder="Write your message here!" name="messages" onChange={this.update} />
+                      <Form.Control type="messages" placeholder="Write your message here!" name="messages" onChange={this.update}/>
                     </Form.Group>
                     <Button data-testid="submitButton" variant="primary" type="submit">
                       Submit
