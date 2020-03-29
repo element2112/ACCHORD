@@ -26,8 +26,7 @@ export default class LoginSpot extends Component {
       loading: false,
       chord1: '',
       chord2: '',
-      chord3: '',
-      chord4: ''
+      chord3: ''
     }
 
     this.handlePlaylists = this.handlePlaylists.bind(this)
@@ -35,10 +34,15 @@ export default class LoginSpot extends Component {
     this.handleChord1Change = this.handleChord1Change.bind(this);
     this.handleChord2Change = this.handleChord2Change.bind(this);
     this.handleChord3Change = this.handleChord3Change.bind(this);
-    this.handleChord4Change = this.handleChord4Change.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getAlert = this.getAlert.bind(this);
   }
+
+  // componentDidMount()
+  // {
+  //   this.handlePlaylists();
+  //   console.log('state: ' + this.state.chord1 + ' ' + this.state.chord2+ ' ' + this.state.chord3 + ' ' + this.state.chord4)
+  // }
 
   async handleChord1Change(e) {
     e.preventDefault();
@@ -57,17 +61,11 @@ export default class LoginSpot extends Component {
     // console.log(this.state.chord1)
   }
 
-  async handleChord4Change(e) {
-    e.preventDefault();
-    this.setState({ chord4: e.target.value })
-    // console.log(this.state.chord1)
-  }
-
   async handleSubmit(e) {
     e.preventDefault();
     console.log(this.state);
 
-    const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3, this.state.chord4]);
+    const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3]);
 
     const art_arr = [];
     const track_arr = [];
@@ -114,7 +112,7 @@ export default class LoginSpot extends Component {
     const login = await spotLogin(accessToken);
     this.setState({ username: login.display_name, spotifyToken: accessToken });
     this.setState({ loading: true });
-    sessionStorage.setItem('token', this.state.spotifyToken);
+    sessionStorage.setItem('token', accessToken);
     
     // this.reset();
     console.log('hereeeeeeeeeee')
@@ -133,8 +131,8 @@ export default class LoginSpot extends Component {
       const add = await addTracks(this.state.playlistID, this.state.username, this.state.spotifyToken, this.state.uris)
       this.setState({ playlistID: add.snapshot_id})
       this.setState({ loading: false })
-      this.setState({ chord1: '', chord2: '', chord3: '', chord4: '' });
-      
+      this.setState({ chord1: '', chord2: '', chord3: '' });
+
     } catch (err) {
       console.log('error creating playlist, make sure you are logged into spotify')
       alert("error creating playlist, make sure you are logged into spotify")
@@ -144,7 +142,7 @@ export default class LoginSpot extends Component {
 
   getAlert()
   {
-    alert('GET YOUR PLAYLIST NOW! (click new playlist)');
+    alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1} -> ${this.state.chord2} -> ${this.state.chord3}`)
   }
 
   // if loading is set to false, then render the embedded playlist
@@ -185,15 +183,6 @@ export default class LoginSpot extends Component {
                   <option>6</option>
                   <option>7</option>
             </select>
-            <select onClick={this.handleChord4Change}>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option></option>
-            </select>
             <Button type="submit" onClick={this.getAlert}>Submit</Button>
           </Form>
         </div>
@@ -205,9 +194,6 @@ export default class LoginSpot extends Component {
           <Spinner animation="border" role="status" style={{ position:"fixed", top:"20%", left:"50%" }}>
             <span className="sr-only">Loading...</span>
           </Spinner>
-          <Playlist /> 
-          <Button id="login" onClick={() => {window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokupp.com/spotifylogin'}}>Login with Spotify</Button>
-          <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
         </div>
       )
     }

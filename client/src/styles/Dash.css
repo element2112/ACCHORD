@@ -1,8 +1,8 @@
 body {
   margin: 0;
   background-color: blue;
+  background-image:  url("../images/background1.png");
 }
-
 #profile-bio {
   display: block;
   justify-content: center;

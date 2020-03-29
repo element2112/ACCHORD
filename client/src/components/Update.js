@@ -1,7 +1,7 @@
 import React, { Fragment, Component, useState } from 'react'
 import { Form, Button, FormLabel } from 'react-bootstrap'
 import axios from 'axios'
-import '../styles/Dash.css'
+//import '../styles/Dash.css'
 import { Redirect } from 'react-router-dom'
 
 const Update = () => {

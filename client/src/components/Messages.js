@@ -107,9 +107,9 @@ export class Messages extends Component {
         <Col>
           <Card id='messages'>
             <Card.Body>
-              <Card.Title style={{color: "black"}}>{this.state.firstName}'s messages</Card.Title>
-              <Card.Text style={{color: "black"}} >
-                 <Form onSubmit={this.handleSubmit}>
+              <Card.Title>{this.state.firstName}'s messages</Card.Title>
+              <Card.Text>
+                 <Form>
                     <Form.Group controlId="formMessage">
                       <Form.Label>Leave A Message!</Form.Label>
                       <Form.Control type="messages" placeholder="Write your message here!" name="messages" onChange={this.update}/>
@@ -125,7 +125,7 @@ export class Messages extends Component {
               <Card.Text style={{color: "black"}} >
                 {this.state.messages[0]}
               </Card.Text>
-              <Card.Text style={{color: "black"}} >
+              <Card.Text>
                 This is a default message.
               </Card.Text>
             </Card.Body>

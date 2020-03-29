@@ -39,12 +39,12 @@ export class Login extends Component {
           <Form.Check type="checkbox" label="Remember me" name="remember" onChange={this.update} />
         </Form.Group>
         
-        <Button data-testid="loginButton" variant="primary" type="submit">
+        <Button data-testid="loginButton" type="submit">
           Login
         </Button>
         <br/>
         <br/>
-        <Link to='/register' style={{color: "blue"}}>{"Register an account!"}</Link>
+        <Link to='/register' style={{color: "#E63"}}>{"Register an account!"}</Link>
       </Form>
     )
   }
@@ -66,7 +66,7 @@ export class Login extends Component {
       this.setLocalStorage(res.user);
       
       // Force webpage refresh by changing state.
-      this.setState({refresh: true});
+      this.setState({});
     } else {
       // if login unsuccessful, go to login page with an error
       alert('Login unsuccessful. Check the password and the spelling of the email address');
