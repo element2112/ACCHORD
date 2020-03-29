@@ -15,9 +15,9 @@ export class Dashboard extends Component {
       <>
         <Navbarcomp />
         <Row>
-          <Col lg={2} style={{ marginLeft: "50px" }}>
+          {/* <Col lg={2} style={{ marginLeft: "50px" }}>
             <History />
-          </Col>
+          </Col> */}
           <Col style={{ marginTop: "100px" }}>
             <Container>
               <LoginSpot />

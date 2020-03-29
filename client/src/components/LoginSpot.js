@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, Row } from 'react-bootstrap'
 import queryString from 'query-string'
 import Playlist from './Playlist';
-import { Spinner, Form } from 'react-bootstrap'
+import { Spinner, Form, Col, Carousel } from 'react-bootstrap'
 import create_playlist from '../services/create_playlist'
 import addTracks from '../services/addTracks'
 import spotLogin from '../services/spotLogin'
@@ -28,7 +28,8 @@ export default class LoginSpot extends Component {
       chord1: '',
       chord2: '',
       chord3: '',
-      storage: []
+      storage: [],
+      length: 0
     }
 
     this.handlePlaylists = this.handlePlaylists.bind(this)
@@ -39,11 +40,6 @@ export default class LoginSpot extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getAlert = this.getAlert.bind(this);
     // this.showHistory = this.showHistory.bind(this)
-  }
-
-  componentWillMount()
-  {
-    History();
   }
 
   async handleChord1Change(e) {
@@ -125,15 +121,18 @@ export default class LoginSpot extends Component {
       const create = await create_playlist(this.state.spotifyToken)
       this.setState({ playlistID: create.id, link: create.external_urls.spotify })
       this.setState({ storage: [... this.state.storage, this.state.link] })
-      sessionStorage.setItem('playlist', JSON.stringify(this.state.storage));
+      this.setState({ length: this.state.storage.length })
+      // sessionStorage.setItem('playlist', JSON.stringify(this.state.storage));
+
       // searching for track
       await this.search().then(() => console.log('test')).catch((err) => console.log(err))
 
       // adding track to playlist
       const add = await addTracks(this.state.playlistID, this.state.username, this.state.spotifyToken, this.state.uris)
+      
       this.setState({ playlistID: add.snapshot_id})
       this.setState({ loading: false })
-      this.setState({ chord1: '', chord2: '', chord3: '' });
+      this.setState({ chord1: '', chord2: '', chord3: '' })
 
     } catch (err) {
       console.log('error creating playlist, make sure you are logged into spotify')
@@ -165,41 +164,53 @@ export default class LoginSpot extends Component {
     if (!this.state.loading)
     {
       return (
-        <div>
-          <Playlist playlists={this.state.link} /> 
-          <Button id="loginSee" onClick={() => {window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}}>Login with Spotify</Button>
-          <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
-          <Form data-testid="chordSubmit" onSubmit={this.handleSubmit}>
-            <select onClick={this.handleChord1Change}>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-            </select>
-            <select onClick={this.handleChord2Change}>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-            </select>
-            <select onClick={this.handleChord3Change}>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-            </select>
-            <Button type="submit" onClick={this.getAlert}>Submit</Button>
-          </Form>
-        </div>
+        <Row>
+          <Col style={{ marginTop: "200px" }}>
+            <Playlist playlists={this.state.link} /> 
+            <Button id="loginSee" onClick={() => {window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}}>Login with Spotify</Button>
+            <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
+            <Form data-testid="chordSubmit" onSubmit={this.handleSubmit}>
+              <select onClick={this.handleChord1Change}>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+              </select>
+              <select onClick={this.handleChord2Change}>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+              </select>
+              <select onClick={this.handleChord3Change}>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+              </select>
+              <Button type="submit" onClick={this.getAlert}>Submit</Button>
+            </Form> 
+          </Col>
+          <Col>
+            <Carousel>
+              <Carousel.Item style={{ alignItems: "center" }}>
+                <Playlist playlists={this.state.storage[this.state.length-2]}/>
+              </Carousel.Item>
+              <Carousel.Item>
+                <Playlist playlists={this.state.storage[this.state.length-1]}/>
+              </Carousel.Item>
+            </Carousel>
+          </Col>
+        </Row>
       )
     }
     else {
