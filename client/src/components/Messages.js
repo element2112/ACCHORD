@@ -87,6 +87,40 @@ export class Messages extends Component {
     newMessage = value;
   }
 
+  removeMessage = (i) => {
+    return () => {
+      let body = {
+        email:this.state.email,
+        messageIndex:i
+      };
+
+      fetch("http://localhost:4000/api/users/removemessages",
+      {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(body)
+      })
+      .then();
+    }
+    
+  }
+
+  anotherRender = (i) => {
+    if(i < this.state.messages.length)
+      return(
+        <>
+          {this.anotherRender(i+1)} 
+          <Card.Text>
+            {this.state.messages[i]}
+            <Button style={{float: "right"}} onClick={this.removeMessage(i)}>
+              Delete
+            </Button>
+          </Card.Text>
+        </>
+      )
+    else return;
+  }
+
   render() {
     return (
       <>
@@ -105,12 +139,7 @@ export class Messages extends Component {
                     </Button>
                   </Form>
               </Card.Text>
-              <Card.Text>
-                {this.state.messages[1]}
-              </Card.Text>
-              <Card.Text>
-                {this.state.messages[0]}
-              </Card.Text>
+              {this.anotherRender(0)}
               <Card.Text>
                 This is a default message.
               </Card.Text>
