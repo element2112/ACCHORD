@@ -9,7 +9,7 @@ export class Profilepage extends Component {
     return (
       <>
         <Navbarcomp />
-          <Profile />
+        <Profile />
       </>
     )
   }

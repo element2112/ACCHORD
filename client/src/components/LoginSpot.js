@@ -206,7 +206,7 @@ export default class LoginSpot extends Component {
                 <Playlist playlists={this.state.storage[this.state.length-2]}/>
               </Carousel.Item>
               <Carousel.Item>
-                <Playlist playlists={this.state.storage[this.state.length-1]}/>
+                <Playlist playlists={this.state.storage[this.state.length-3]}/>
               </Carousel.Item>
             </Carousel>
           </Col>
