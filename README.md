@@ -170,7 +170,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 * [REQUIREMENTS SPRINT 8](https://github.com/element2112/ACCHORD/blob/master/artifacts/requirements_sprint8.md)
 
-* [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=1475064529)
+* [BURNDOWN CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=1072547404)
 
 * [VELOCITY CHART](https://docs.google.com/spreadsheets/d/1gboh-OFFhgyA-l6hTHtJ6xIffrOeYGIaOCYFcc1xCF8/edit#gid=0)
 
