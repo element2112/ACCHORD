@@ -53,7 +53,8 @@ router.post('/registeruser', async (req, res) => {
 		email: req.body.email,
 		password: req.body.password,
 		firstName: req.body.firstName,
-		lastName: req.body.lastName,
+    lastName: req.body.lastName,
+    messages: ['This is a default message.'],
 		timestamps: true
   });
 
@@ -104,8 +105,8 @@ router.post('/login', async (req, res) => {
   res.json(returnJson);
 });
 
-// @route GET api/users
-// @desc Get all users
+// @route POST api/users
+// @desc Get songs with chord prog
 // @access Public
 router.post('/songs', async (req, res) => {
   console.log("GETTING SONGS IN USERS");
@@ -113,6 +114,30 @@ router.post('/songs', async (req, res) => {
 
   await chords.getSongs(req.body.cp).then(data => res.send(data)).catch(err => console.error(err));
 	
+});
+
+// @route GET api/users
+// @desc Gets user's message
+// @access Public
+router.get('/messages', (req, res) => {
+  console.log("Getting your messages!");
+  console.log("This is the req.email: \n" + req.body.email);
+
+  User.findByEmail(req.body.email)
+  .then(user => res.json(user.messages));
+  	
+});
+
+// @route POST api/users
+// @desc Adds message
+// @access Public
+router.post('/addmessages', (req, res) => {
+  console.log("Leaving a message (route)!");
+  console.log("Message = '" + req.body.messages + "'");
+
+  User.findByEmail(req.body.email)
+  .then(user => user.messages = req.body.messages);
+  	
 });
 
 // @route DELETE api/users/:id
