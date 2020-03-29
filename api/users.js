@@ -119,12 +119,15 @@ router.post('/songs', async (req, res) => {
 // @route GET api/users
 // @desc Gets user's message
 // @access Public
-router.get('/messages', (req, res) => {
+router.post('/messages', (req, res) => {
   console.log("Getting your messages!");
-  console.log("This is the req.body.email: \n" + req.body.email);
+  console.log("This is the req.body: \n" + JSON.stringify(req.body));
 
   User.findByEmail(req.body.email)
-  .then(user => res.json(user.messages));
+  .then(user => {
+    console.log("Here are the messages : " + user.messages);
+    res.json(user.messages);
+  });
   	
 });
 
@@ -133,15 +136,17 @@ router.get('/messages', (req, res) => {
 // @access Public
 router.post('/addmessages', (req, res) => {
   console.log("Leaving a message (route)!");
-  console.log("Message = '" + req.body.messages + "'");
+  console.log("Message : " + JSON.stringify(req.body.newMessage));
 
-  User.findByEmail(req.body.email)
-  .then(user => {
-    user.messages = req.body.messages;
-    console.log("user.messages is now: " + user.messages);
-    res = res.json(user.messages);
-  });
-  	
+  // this should always be found
+  User.updateOne({email:req.body.email}, {$push: {messages: req.body.newMessage}})
+  .then((success) => {
+    User.findByEmail(req.body.email)
+    .then(user => {
+      console.log("user.messages is now: " + JSON.stringify(user.messages));
+      res.json(user.messages);
+    });
+  })
 });
 
 // @route DELETE api/users/:id

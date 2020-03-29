@@ -26,26 +26,16 @@ export class Messages extends Component {
     }
   }
 
-  
-
-  componentWillMount() {
-    console.log('test ' + localStorage.getItem('authenticated'));
-    console.log("WE MADE IT INTO COMP WILL MOUNT");
-    if (localStorage.getItem('authenticated'))
-    {
-      // changing the state from values in local storage
-      this.setState({
-        firstName: localStorage.getItem('firstName'),
-        lastName: localStorage.getItem('lastName'),
-        email: localStorage.getItem('email'),
-        password: localStorage.getItem('password'),
-        authenticated: true
-      })
-    }
-  }
+  setMessages = (messages) => {
+    console.log("setting messages: " + JSON.stringify(messages));
+    this.setState({messages: messages}, ()=> {
+      console.log("messages is now (handleSubmit): " + JSON.stringify(this.state.messages));
+    });
+  } 
 
   componentDidMount() {
     console.log("WE MADE IT INTO COMP DID MOUNT");
+    // this is not an issue
     if (localStorage.getItem('authenticated'))
     {
       // changing the state from values in local storage
@@ -55,34 +45,30 @@ export class Messages extends Component {
         email: localStorage.getItem('email'),
         password: localStorage.getItem('password'),
         authenticated: true
-      })
+      });
 
-      let state = this.state;
-
-      axios.get("http://localhost:4000/api/users/messages",
+      fetch("http://localhost:4000/api/users/messages",
       {
+        method: "POST",
         headers: headers,
-        body: JSON.stringify(state)
+        body: JSON.stringify({email: localStorage.getItem('email')})
       })
-      .then(dbMessages => this.setState({messages: dbMessages}));      
+      .then(res => res.json())
+      .then(this.setMessages);      
     }
   }
 
-  handleMessageSubmission = () => {
-    console.log("refreshing");
-    this.setState({refresh: true});
-  }
 
   handleSubmit = (e) => {
-    if (this.state.messages[0] == 'This is a default message.')
-      this.state.messages[0] = newMessage;
-    else
-      this.state.messages.push(newMessage);
+    // TODO: remove this later
+
+    //if (this.state.messages[0] == 'This is a default message.')
+    //  this.state.messages[0] = newMessage;
+    //else
+    //  this.state.messages.push(newMessage);
     
-    let currMessages = this.state.messages;
-    this.setState({messages: currMessages});
-    let state = this.state;
-    console.log("messages is now (handleSubmit): " + state.messages);
+    //this.setState({messages: currMessages});
+    let state = {email: this.state.email, newMessage: newMessage};
     fetch("http://localhost:4000/api/users/addmessages",
     {
       method: "POST",
@@ -90,7 +76,7 @@ export class Messages extends Component {
       body: JSON.stringify(state)
     })
     .then(res => res.json())
-    //.then(this.handleMessageSubmission);
+    .then(this.setMessages);
     e.preventDefault();
   }
 
