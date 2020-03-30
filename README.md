@@ -178,7 +178,7 @@ Acchord is for musicians of all experience levels and is suitable to craft a pla
 
 * [TESTING](https://github.com/element2112/ACCHORD/blob/master/artifacts/testing.md)
 
-* [DEMO]()
+* [DEMO](https://www.youtube.com/watch?v=G4G8b8j7-6g)
 
 * [RESPONSIBILITIES](https://github.com/element2112/ACCHORD/blob/master/artifacts/responsibilities_sprint_8.md)
 
