@@ -142,9 +142,6 @@ export class Messages extends Component {
                   </Form>
               </Card.Text>
               {this.anotherRender(0)}
-              <Card.Text>
-                This is a default message.
-              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
