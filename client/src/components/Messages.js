@@ -60,19 +60,26 @@ export class Messages extends Component {
 
 
   handleSubmit = (e) => {
-    let state = {email: this.state.email, newMessage: newMessage};
-    fetch("http://localhost:4000/api/users/addmessages",
-    {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(state)
-    })
-    .then(res => res.json())
-    .then(this.setMessages);
     e.preventDefault();
+
+    // accept only if non-whitespace
+    let whitespace = /^\s*$/
+    if (!whitespace.test(newMessage))
+    {
+      let state = {email: this.state.email, newMessage: newMessage};
+      fetch("http://localhost:4000/api/users/addmessages",
+      {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(state)
+      })
+      .then(res => res.json())
+      .then(this.setMessages);
+    }
+    
     // reset the input field to empty
     e.target.getElementsByTagName("input")[0].value = "";
-    this.setState({});
+    newMessage = "";
   }
 
   update = (e) => {
