@@ -149,6 +149,29 @@ router.post('/addmessages', (req, res) => {
   })
 });
 
+// @route POST api/users
+// @desc Removes indexed message
+// @access Public
+router.post('/removemessages', (req, res) => {
+  console.log("Deleting a message (route)!");
+  console.log("Message index: " + JSON.stringify(req.body.messageIndex));
+
+  // this should always be found
+  User.findByEmail(req.body.email)
+    .then(user => {
+      let messages = [];
+      for (i = 0; i < user.messages.length; i++)
+      {
+        if (i == req.body.messageIndex) continue;
+        messages.push(user.messages[i]);
+      }
+      user.messages = messages;
+      user.save(); //async
+      console.log("user.messages is now: " + JSON.stringify(user.messages));
+      res.json(user.messages);
+    });
+  });
+
 // @route DELETE api/users/:id
 // @desc Delete an user
 // @access Public

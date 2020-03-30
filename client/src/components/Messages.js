@@ -60,14 +60,6 @@ export class Messages extends Component {
 
 
   handleSubmit = (e) => {
-    // TODO: remove this later
-
-    //if (this.state.messages[0] == 'This is a default message.')
-    //  this.state.messages[0] = newMessage;
-    //else
-    //  this.state.messages.push(newMessage);
-    
-    //this.setState({messages: currMessages});
     let state = {email: this.state.email, newMessage: newMessage};
     fetch("http://localhost:4000/api/users/addmessages",
     {
@@ -78,6 +70,9 @@ export class Messages extends Component {
     .then(res => res.json())
     .then(this.setMessages);
     e.preventDefault();
+    // reset the input field to empty
+    e.target.getElementsByTagName("input")[0].value = "";
+    this.setState({});
   }
 
   update = (e) => {
@@ -100,9 +95,9 @@ export class Messages extends Component {
         headers: headers,
         body: JSON.stringify(body)
       })
-      .then();
+      .then(res => res.json())
+      .then(this.setMessages);
     }
-    
   }
 
   anotherRender = (i) => {
