@@ -73,7 +73,8 @@ router.post('/registeruser', async (req, res) => {
 		email: req.body.email,
 		password: req.body.password,
 		firstName: req.body.firstName,
-		lastName: req.body.lastName,
+    lastName: req.body.lastName,
+    messages: ['This is a default message.'],
 		timestamps: true
   });
 
@@ -124,8 +125,8 @@ router.post('/login', async (req, res) => {
   res.json(returnJson);
 });
 
-// @route GET api/users
-// @desc Get all users
+// @route POST api/users
+// @desc Get songs with chord prog
 // @access Public
 router.post('/songs', async (req, res) => {
   console.log("GETTING SONGS IN USERS");
@@ -134,6 +135,62 @@ router.post('/songs', async (req, res) => {
   await chords.getSongs(req.body.cp).then(data => res.send(data)).catch(err => console.error(err));
 	
 });
+
+// @route GET api/users
+// @desc Gets user's message
+// @access Public
+router.post('/messages', (req, res) => {
+  console.log("Getting your messages!");
+  console.log("This is the req.body: \n" + JSON.stringify(req.body));
+
+  User.findByEmail(req.body.email)
+  .then(user => {
+    console.log("Here are the messages : " + user.messages);
+    res.json(user.messages);
+  });
+  	
+});
+
+// @route POST api/users
+// @desc Adds message
+// @access Public
+router.post('/addmessages', (req, res) => {
+  console.log("Leaving a message (route)!");
+  console.log("Message : " + JSON.stringify(req.body.newMessage));
+
+  // this should always be found
+  User.updateOne({email:req.body.email}, {$push: {messages: req.body.newMessage}})
+  .then((success) => {
+    User.findByEmail(req.body.email)
+    .then(user => {
+      console.log("user.messages is now: " + JSON.stringify(user.messages));
+      res.json(user.messages);
+    });
+  })
+});
+
+// @route POST api/users
+// @desc Removes indexed message
+// @access Public
+router.post('/removemessages', (req, res) => {
+  console.log("Deleting a message (route)!");
+  console.log("Message index: " + JSON.stringify(req.body.messageIndex));
+
+  // this should always be found
+  User.findByEmail(req.body.email)
+    .then(user => {
+      let messages = [];
+      for (i = 0; i < user.messages.length; i++)
+      {
+        if (i == req.body.messageIndex) continue;
+        messages.push(user.messages[i]);
+      }
+      user.messages = messages;
+      user.save(); //async
+      console.log("user.messages is now: " + JSON.stringify(user.messages));
+      res.json(user.messages);
+    });
+  });
 
 // @route DELETE api/users/:id
 // @desc Delete an user
