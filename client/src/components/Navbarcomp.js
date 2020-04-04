@@ -1,6 +1,5 @@
 import React from 'react'
-import { Navbar, FormControl, Button, Form, Nav } from 'react-bootstrap'
-import { Component } from 'react';
+import { Navbar, Nav } from 'react-bootstrap'
 // import { Redirect } from 'react-router-dom'
 //import '../styles/Nav.css'
 

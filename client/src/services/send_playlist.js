@@ -1,5 +1,3 @@
-import React from 'react'
-
 async function send_playlist(progression) {
 
   console.log('progression: ' + progression);

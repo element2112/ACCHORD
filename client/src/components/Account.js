@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react'
-import { Card, Col, Row } from 'react-bootstrap'
-import axios from 'axios'
+import React, { Component } from 'react'
+import { Card } from 'react-bootstrap'
+// import axios from 'axios'
 //import '../styles/Dash.css'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 
 export class Account extends Component {
     constructor(){
