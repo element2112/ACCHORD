@@ -87,7 +87,7 @@ const onSubmit = async e => {
             </Form.Group>
             <Form.Group controlId="Bio">
               <Form.Label>Bio</Form.Label>
-              <Form.Control type="text" placeholder={localStorage.bio} name='bio' defaultValue={bio} onChange={onChange} />
+              <Form.Control as="textarea" placeholder={localStorage.bio} name='bio' rows="4" defaultValue={bio} onChange={onChange} />
             </Form.Group>
           <button type= "submit">Update</button>
           </Form>
