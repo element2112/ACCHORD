@@ -24,6 +24,11 @@ const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value
   // sending form data to API on submit
 const onSubmit = async e => {
   console.log('in submit');
+
+  if (password.length < 6) {
+    alert('passwords must be at least 6 characters')
+  }
+
   e.preventDefault();
 
   const updatedUser = {
