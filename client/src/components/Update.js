@@ -11,11 +11,12 @@ const [formData, setFormData] = useState({
   lastName: localStorage.getItem('lastName'),
   email: localStorage.getItem('email'),
   password: localStorage.getItem('password'),
+  bio: localStorage.getItem('bio'),
   updated: false
 });
 
 // array destructure for state
-const {firstName, lastName, email, password, updated } = formData;
+const {firstName, lastName, email, password, bio, updated } = formData;
 
 // change the state as input is being typed
 const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,7 +30,8 @@ const onSubmit = async e => {
     firstName,
     lastName,        
     email,
-    password
+    password,
+    bio
   }
 
   try {
@@ -46,6 +48,7 @@ const onSubmit = async e => {
     localStorage.setItem('password', updatedUser.password);
     localStorage.setItem('firstName', updatedUser.firstName);
     localStorage.setItem('lastName', updatedUser.lastName);
+    localStorage.setItem('bio', updatedUser.bio);
 
     setFormData({updated: true});
     const res = await axios.put('http://localhost:4000/api/users/updateuser', body, config);
@@ -76,6 +79,10 @@ const onSubmit = async e => {
             <Form.Group controlId="Password">
               <Form.Label>Password</Form.Label>
               <Form.Control type="text" placeholder={localStorage.password} name='password' defaultValue="******" onChange={onChange} />
+            </Form.Group>
+            <Form.Group controlId="Bio">
+              <Form.Label>Bio</Form.Label>
+              <Form.Control type="text" placeholder={localStorage.bio} name='bio' defaultValue={bio} onChange={onChange} />
             </Form.Group>
           <button type= "submit">Update</button>
           </Form>

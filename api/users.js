@@ -18,6 +18,7 @@ router.put('/updateuser', async (req, res) => {
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.password = req.body.password;
+    user.bio = req.body.bio;
 
     console.log("updated!");
     await user.save();

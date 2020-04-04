@@ -14,7 +14,7 @@ export class Profile extends Component {
       email: '',
       password: '',
       authenticated: false,
-      bio: 'This is where you can describe yourself to other users!'
+      bio: ''
     }
   }
 
@@ -22,6 +22,11 @@ export class Profile extends Component {
 
   componentWillMount() {
     console.log('test ' + localStorage.getItem('authenticated'));
+
+    if (localStorage.getItem('bio') == '') {
+      localStorage.setItem('bio', 'This is where you can describe yourself to other people! Update on the MyAccount page.');
+    }
+
     if (localStorage.getItem('authenticated'))
     {
       // changing the state from values in local storage
@@ -30,10 +35,12 @@ export class Profile extends Component {
         lastName: localStorage.getItem('lastName'),
         email: localStorage.getItem('email'),
         password: localStorage.getItem('password'),
+        bio: localStorage.getItem('bio'),
         authenticated: true
       })
       // TODO: get the bio from db record
     }
+
   }
 
   render() {

@@ -13,6 +13,7 @@ export class Account extends Component {
           lastName: '',
           email: '',
           password: '',
+          bio: '',
           authenticated: false
         }
       }
@@ -29,6 +30,7 @@ export class Account extends Component {
             lastName: localStorage.getItem('lastName'),
             email: localStorage.getItem('email'),
             password: localStorage.getItem('password'),
+            bio: localStorage.getItem('bio'),
             authenticated: true
           })
         }
@@ -46,6 +48,9 @@ export class Account extends Component {
                 </Card.Text>
                 <Card.Text >
                     Email: {this.state.email}
+                </Card.Text>
+                <Card.Text >
+                    Bio: {this.state.bio}
                 </Card.Text>
               <a href="/update" className="btn btn-primary">Update account</a>
               <a href="/delete" className="btn btn-primary">Delete account</a>
