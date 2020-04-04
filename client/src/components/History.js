@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import { Carousel, Button } from 'react-bootstrap'
+import React from 'react'
+import { Carousel } from 'react-bootstrap'
 import Playlist from '../components/Playlist'
+import spotify_logo from '../images/spotify_logo.png'
 
 function History() {
 
@@ -18,13 +19,12 @@ function History() {
             <Playlist />
           </Carousel.Item>
           <Carousel.Item>
-            <Playlist />
+            <img src={spotify_logo}></img>
           </Carousel.Item>
           <Carousel.Item>
             <Playlist />
           </Carousel.Item>
         </Carousel>
-
       </>
     )
   }

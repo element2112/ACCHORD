@@ -1,5 +1,3 @@
-import React from 'react'
-
 async function addTracks(playlistID, username, spotifyToken, uris) {
   const res = await fetch(`https://api.spotify.com/v1/users/${username}/playlists/${playlistID}/tracks`, {
     method: 'POST',

@@ -1,5 +1,5 @@
-import React, { Fragment, Component, useState } from 'react'
-import { Form, Button, FormLabel } from 'react-bootstrap'
+import React, { Fragment, useState } from 'react'
+import { Form } from 'react-bootstrap'
 import axios from 'axios'
 //import '../styles/Dash.css'
 import { Redirect } from 'react-router-dom'

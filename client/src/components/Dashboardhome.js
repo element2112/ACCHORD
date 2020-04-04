@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Col, Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 // import Navbarcomp from './Navbarcomp'
 import { Redirect } from 'react-router-dom'
 

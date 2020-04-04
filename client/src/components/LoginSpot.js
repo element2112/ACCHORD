@@ -7,7 +7,6 @@ import create_playlist from '../services/create_playlist'
 import addTracks from '../services/addTracks'
 import spotLogin from '../services/spotLogin'
 import send_playlist from '../services/send_playlist'
-import History from '../components/History'
 
 
 export default class LoginSpot extends Component {
@@ -143,11 +142,11 @@ export default class LoginSpot extends Component {
 
   getAlert()
   {
-    if (this.state.chord2 == '')
+    if (this.state.chord2 === '')
     {
       alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1}`)
     }
-    else if (this.state.chord3 == '')
+    else if (this.state.chord3 === '')
     {
       alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1} -> ${this.state.chord2}`)
     }
