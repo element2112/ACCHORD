@@ -15,7 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const app = express();
-const port = process.env.PORT || 4000;
+
 
 // const spotPort = process.env.SPOTPORT || 8888;
 
@@ -77,15 +77,7 @@ app.get('/callback', function(req, res) {
 
 
 // ------------------------DATABASE CONENCTION----------------------------//
-// serve static assets in production
-if (process.env.NODE_ENV === 'production') {
-    // set static folder
-    app.use(express.static('client/build'));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
@@ -97,6 +89,18 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 })
+
+// serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  // set static folder
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
+
+const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
     console.log('Server is running on port: ' + port);
