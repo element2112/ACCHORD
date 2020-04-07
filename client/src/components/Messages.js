@@ -47,7 +47,7 @@ export class Messages extends Component {
         authenticated: true
       });
 
-      fetch("http://localhost:4000/api/users/messages",
+      fetch("/api/users/messages",
       {
         method: "POST",
         headers: headers,
@@ -67,7 +67,7 @@ export class Messages extends Component {
     if (!whitespace.test(newMessage))
     {
       let state = {email: this.state.email, newMessage: newMessage};
-      fetch("http://localhost:4000/api/users/addmessages",
+      fetch("/api/users/addmessages",
       {
         method: "POST",
         headers: headers,
@@ -96,7 +96,7 @@ export class Messages extends Component {
         messageIndex:i
       };
 
-      fetch("http://localhost:4000/api/users/removemessages",
+      fetch("/api/users/removemessages",
       {
         method: "POST",
         headers: headers,
