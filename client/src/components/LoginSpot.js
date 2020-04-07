@@ -106,11 +106,11 @@ export default class LoginSpot extends Component {
     let accessToken = parsed.access_token;
 
     // login to spotify with access token
-    const login = await spotLogin(accessToken)
-      .then(() => this.setState({ username: login.display_name, spotifyToken: accessToken }))
-      .then(() => this.setState({ loading: true }))
-      .then(() => sessionStorage.setItem('token', accessToken));
-
+    const login = await spotLogin(accessToken);
+    this.setState({ username: login.display_name, spotifyToken: accessToken });
+    this.setState({ loading: true });
+    sessionStorage.setItem('token', accessToken);
+    
     // this.reset();
     console.log('hereeeeeeeeeee')
     console.log('arrayyy: ' + this.state.tracks);
