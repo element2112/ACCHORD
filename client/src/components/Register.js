@@ -46,7 +46,7 @@ const Register = () => {
 
         const body = JSON.stringify(newUser);
 
-        await axios.post('http://localhost:4000/api/users/registeruser', body, config)
+        await axios.post('/api/users/registeruser', body, config)
             .then(() => {
               localStorage.setItem("email", email)
               localStorage.setItem("firstName", firstName)

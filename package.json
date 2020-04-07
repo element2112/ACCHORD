@@ -5,17 +5,20 @@
   "main": "server.js",
   "scripts": {
     "frontend_test": "cd ./client && npm run test",
-    "test": "node server",
+    "start": "node server",
     "client": "npm start --prefix client",
     "server": "node server",
     "dev-server": "nodemon server.js",
     "spot-server": "cd ./api && nodemon spotify.js",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run dev-server\" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [
     "acchord",
-    "heroku"
+    "heroku",
+    "node",
+    "create-react-app",
+    "react"
   ],
   "author": "",
   "license": "ISC",

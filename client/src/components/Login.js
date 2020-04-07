@@ -78,7 +78,7 @@ export class Login extends Component {
   handleSubmit = (e) => {
     console.log('logging in');
     let state = this.state;
-    fetch("http://localhost:4000/api/users/login",
+    fetch("/api/users/login",
     {
       method: "POST",
       headers: headers,
