@@ -1,5 +1,0 @@
-{
-  "mongoURI": "ATLAS_URI=mongodb+srv://dbAcchord:acchord123@cluster0-wqzx6.mongodb.net/test?retryWrites=true&w=majority",
-  "spotifyClient": "0199dfb275e94ee38b6fd208166c334b",
-  "spotifySecret": "5e92b289eb4047bbbca01b7eddc6cfb5"
-}
