@@ -58,7 +58,7 @@ const onSubmit = async e => {
     setFormData({updated: true});
     // const res = await axios.put('http://localhost:4000/api/users/updateuser', body, config);
     
-    await axios.put('http://localhost:4000/api/users/updateuser', body, config);
+    await axios.put('/api/users/updateuser', body, config);
 
     console.log("updated");
 
