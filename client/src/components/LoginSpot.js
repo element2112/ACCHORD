@@ -166,7 +166,7 @@ export default class LoginSpot extends Component {
         <Row>
           <Col style={{ marginTop: "200px" }}>
             <Playlist playlists={this.state.link} /> 
-            <Button id="loginSee" onClick={() => {window.location = '/api/spotify/spotifylogin'}}>Login with Spotify</Button>
+            <Button id="loginSee" onClick={() => {window.location = 'https://myacchord.herokuapp.com/spotifylogin'}}>Login with Spotify</Button>
             <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
             <Form data-testid="chordSubmit" onSubmit={this.handleSubmit}>
               <select onClick={this.handleChord1Change}>
