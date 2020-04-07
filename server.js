@@ -29,7 +29,7 @@ app.use('/api/users', users);
 
 // --------------------SPOTIFY SERVER----------------------------- //
 
-let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:8888/callback';
+let redirect_uri = process.env.REDIRECT_URI || 'http://localhost:4000/callback';
 
 app.get('/spotifylogin', function(req, res) {
     res.redirect('https://accounts.spotify.com/authorize?' +
@@ -65,12 +65,12 @@ app.get('/callback', function(req, res) {
     })
   })
 
-  let spotPort = process.env.SPOTPORT || 8888
+  // let spotPort = process.env.PORT || 8888
 
 
-  app.listen(spotPort, () => {
-    console.log(`Spotify auth server running on port ${spotPort}`)
-  })
+  // app.listen(spotPort, () => {
+  //   console.log(`Spotify auth server running on port ${spotPort}`)
+  // })
 
   // may have to figure out how to deploy to two herokou instances
 // -------------------END OF SPOTIFY SERVER------------------------------- //
