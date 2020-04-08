@@ -24,9 +24,9 @@ export default class LoginSpot extends Component {
       market: 'US',
       uris: [],
       loading: false,
-      chord1: '',
-      chord2: '',
-      chord3: '',
+      chord1: '1',
+      chord2: '1',
+      chord3: '1',
       storage: [],
       length: 0
     }
@@ -94,7 +94,7 @@ export default class LoginSpot extends Component {
       await fetch(`https://api.spotify.com/v1/search?q=track:${this.state.tracks[i]}%20artist:${this.state.artists[i]}&type=track`, {
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
       }).then((res) => res.json())
-        .then(data => !this.state.trackIDs.includes(data.tracks.items[0].id) ? this.setState({ trackIDs: [...this.state.trackIDs, data.tracks.items[0].id], uris: [...this.state.uris, data.tracks.items[0].uri] }) : console.log('duplicate tracks detected'))
+        .then(data => data.tracks.items.length==0? console.log('song '+ this.state.tracks[i] +'::'+ this.state.artists[i] +' not found in spotify') : !this.state.trackIDs.includes(data.tracks.items[0].id) ? this.setState({ trackIDs: [...this.state.trackIDs, data.tracks.items[0].id], uris: [...this.state.uris, data.tracks.items[0].uri] }) : console.log('duplicate tracks detected'))
         .catch((err) => console.log('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
       }
   }
@@ -117,7 +117,7 @@ export default class LoginSpot extends Component {
 
     // creating playlist
     try {
-      const create = await create_playlist(this.state.spotifyToken)
+      const create = await create_playlist(this.state.spotifyToken, this.state.chord1+"->"+this.state.chord2+"->"+this.state.chord3)
       this.setState({ playlistID: create.id, link: create.external_urls.spotify })
       this.setState({ storage: [... this.state.storage, this.state.link] })
       this.setState({ length: this.state.storage.length })
@@ -131,7 +131,7 @@ export default class LoginSpot extends Component {
       
       this.setState({ playlistID: add.snapshot_id})
       this.setState({ loading: false })
-      this.setState({ chord1: '', chord2: '', chord3: '' })
+      this.setState({ chord1: '1', chord2: '1', chord3: '1' })
 
     } catch (err) {
       console.log('error creating playlist, make sure you are logged into spotify')
@@ -156,7 +156,23 @@ export default class LoginSpot extends Component {
     }
     
   }
-
+  renderHistory(i) {
+    if (this.state.length >=2) {
+      return (<Carousel>
+      {(this.state.length >= 2) ?
+        (<Carousel.Item style={{ alignItems: "center" }}>
+        <Playlist playlists={this.state.storage[this.state.length-2]}/>
+        </Carousel.Item>) : undefined
+      }
+      {(this.state.length >= 3) ?
+        (<Carousel.Item style={{ alignItems: "center" }}>
+        <Playlist playlists={this.state.storage[this.state.length-3]}/>
+        </Carousel.Item>) : undefined
+      }
+      </Carousel>)
+    }
+    return;
+  }
   // if loading is set to false, then render the embedded playlist
   // if loading is set to true, render a loading spinner
   render() {
@@ -200,14 +216,7 @@ export default class LoginSpot extends Component {
             </Form> 
           </Col>
           <Col>
-            <Carousel>
-              <Carousel.Item style={{ alignItems: "center" }}>
-                <Playlist playlists={this.state.storage[this.state.length-2]}/>
-              </Carousel.Item>
-              <Carousel.Item>
-                <Playlist playlists={this.state.storage[this.state.length-3]}/>
-              </Carousel.Item>
-            </Carousel>
+            {this.renderHistory()}
           </Col>
         </Row>
       )

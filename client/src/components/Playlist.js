@@ -22,24 +22,22 @@ function Playlist(props) {
             
           </Card.Title>
           <Card.Text>
-            <p>
-              We wanted to give you some instructions on how to use the site.
-              <br></br>
-              <br></br>
-              Press login with spotify and you will be redirected to the spotiy website to enter in your login credentials. 
-              <br></br>
-              <br></br>
-              If you don't already have a spotify account, create one!
-              <br></br>
-              <br></br>
-              After logging into spotify, use the drop down to select the progression would like to look up and afterwards press submit.
-              <br></br>
-              <br></br>
-              After pressing submit, click "New Playlist" and your new playlist has been generated!
-              <br></br>
-              <br></br>
-              Up to three playlists will be shown in the "History" section.
-            </p>
+            We wanted to give you some instructions on how to use the site.
+            <br></br>
+            <br></br>
+            Press login with spotify and you will be redirected to the spotiy website to enter in your login credentials. 
+            <br></br>
+            <br></br>
+            If you don't already have a spotify account, create one!
+            <br></br>
+            <br></br>
+            After logging into spotify, use the drop down to select the progression would like to look up and afterwards press submit.
+            <br></br>
+            <br></br>
+            After pressing submit, click "New Playlist" and your new playlist has been generated!
+            <br></br>
+            <br></br>
+            Up to three playlists will be shown in the "History" section.
           </Card.Text>
         </Card.Body>
       </Card>

@@ -65,7 +65,7 @@ export class Profile extends Component {
     }
     else
     {
-      return(<Redirect to={window.location.href.includes('localhost') ? '/' : 'https://acchord.herokuapp.com'} />)
+      return(<Redirect to={window.location.href.includes('localhost') ? '/' : 'https://myacchord.herokuapp.com'} />)
     }
   }
 }
