@@ -50,7 +50,7 @@ export class Dashboardhome extends Component {
     }
     else
     {
-      return(<Redirect to={'/'} />)
+      return(<Redirect to={window.location.href.includes('localhost') ? '/' : 'https://myacchord.herokuapp.com'} />)
     }
   }
 }
