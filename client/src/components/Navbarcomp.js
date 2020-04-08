@@ -32,7 +32,6 @@ function Navbarcomp() {
           <Nav.Link style={{color: "#999"}} href={"/friends"+"?access_token=" + sessionStorage.getItem('token')}>My Friends</Nav.Link>
           <Nav.Link style={{color: "#999"}} href={"/account"+"?access_token=" + sessionStorage.getItem('token')}>My Account</Nav.Link>
           <Nav.Link style={{color: "#999"}} href={"/"} onClick={handleClick} data-testid="logout">Logout</Nav.Link>
-          {/* <Nav.Link style={{color: "#999"}} href={window.location.href.includes('localhost') ? '/' : 'https://acchord.herokuapp.com'} onClick={handleClick} data-testid="logout">Logout</Nav.Link> */}
         </Nav>
       </Navbar>
     </>
