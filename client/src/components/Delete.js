@@ -84,7 +84,8 @@ const onSubmit = async e => {
       <Redirect to="/" />
     </>
   
-  )
+    )
   }
 } 
-    export default Delete
+
+export default Delete
