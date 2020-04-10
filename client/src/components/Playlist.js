@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
-import spotify_logo from '../images/spotify_logo.png'
+import spotify_logo from '../../public/spotify_logo.png'
 
 function Playlist(props) {
   // splitting URL
