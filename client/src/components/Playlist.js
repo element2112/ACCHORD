@@ -34,7 +34,7 @@ function Playlist(props) {
                   After pressing submit, click "New Playlist" and your new playlist has been generated!
                   <br/>
                   <br/>
-                  Up to three playlists will be shown in the "History" section.
+                  Up to two playlists will be shown in the "History" section.
                 </Card.Text>
               </Card.Body>
             </Card>
