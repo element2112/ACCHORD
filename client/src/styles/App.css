@@ -94,12 +94,16 @@ body {
   background-image: url("../images/background2.png");
   background-repeat: none;
   background-position: center;
+  align-items: left;
+  float: left;
 }
+
 #spotify {
   background-image: url("../images/spotifybg.png");
   background-repeat: none;
   background-position: center;
 }
+
 .spotifylogo {
   background-image: url("../images/background2.png");
 }

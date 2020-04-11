@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Card } from 'react-bootstrap'
+import React, { Component, Fragment } from 'react'
+import { Card, Form } from 'react-bootstrap'
 // import axios from 'axios'
 //import '../styles/Dash.css'
 // import { Redirect } from 'react-router-dom'
@@ -36,26 +36,29 @@ export class Account extends Component {
         }
       }
       render() {
-          return (
-            <Card style={{ width: '100rem' }}>
-            <Card.Body>
-              <Card.Title>User Account Information</Card.Title>
-                <Card.Text >
-                    First name: {this.state.firstName}
-                </Card.Text>
-                <Card.Text >
-                    Last name: {this.state.lastName}
-                </Card.Text>
-                <Card.Text >
-                    Email: {this.state.email}
-                </Card.Text>
-                <Card.Text >
-                    Bio: {this.state.bio}    
-                </Card.Text>
-              <a href="/update" className="btn btn-primary">Update account</a>
-              <a href="/delete" className="btn btn-primary">Delete account</a>
-            </Card.Body>
-          </Card>
+          return (          
+          <Fragment>
+          <Form style={{position: 'absolute', left: '50%', top: '50%',
+          transform: 'translate(-50%, -50%)', fontWeight:"900"}}>
+            <Form.Group controlId="Account">
+              <Form.Label>User Account Information</Form.Label>
+            </Form.Group>
+            <Form.Group controlId="firstName">
+              <Form.Label>First name: {this.state.firstName}</Form.Label>
+            </Form.Group>
+            <Form.Group controlId="lastName">
+              <Form.Label>Last name: {this.state.lastName}</Form.Label>
+            </Form.Group>
+            <Form.Group controlId="Email">
+              <Form.Label>Email: {this.state.email}</Form.Label>
+            </Form.Group>
+            <Form.Group controlId="Bio">
+              <Form.Label>Bio: {this.state.bio}</Form.Label>
+            </Form.Group>
+            <a href="/update" className="btn btn-primary">Update account</a>
+            <a href="/delete" className="btn btn-primary">Delete account</a>
+          </Form>
+          </Fragment>
           )
       }
     }
