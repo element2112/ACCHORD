@@ -49,6 +49,8 @@ const onSubmit = async e => {
     localStorage.setItem('firstName', '');
     localStorage.setItem('lastName', '');
     localStorage.setItem('email', '');
+    localStorage.setItem('bio', '');
+
 
     // Let's not worry about what happens when the button is clicked really fast
     axios.delete('http://localhost:4000/api/users/deleteuser', config);
