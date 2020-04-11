@@ -47,6 +47,15 @@ export class Login extends Component {
         <Link to='/register' style={{color: "#E63"}}>{"Register an account!"}</Link>
       </Form>
     )
+    if (localStorage.getItem('remember') == true)
+    {
+      // changing the state from values in local storage
+      this.setState({
+        email: localStorage.getItem('email'),
+        password: localStorage.getItem('password')
+      });
+      this.login();
+    }
   }
   
   setLocalStorage(obj) {
@@ -63,7 +72,8 @@ export class Login extends Component {
       // also, store data in localStorage
       let data = res.user;
       data.authenticated = true;
-      this.setLocalStorage(res.user);
+      data.remember = this.state.remember;
+      this.setLocalStorage(data);
       
       // Force webpage refresh by changing state.
       this.setState({});
@@ -75,8 +85,7 @@ export class Login extends Component {
       // confirm the source of this request through CORS (if possible)
   }
   
-  handleSubmit = (e) => {
-    console.log('logging in');
+  login = () => {
     let state = this.state;
     fetch("http://localhost:4000/api/users/login",
     {
@@ -86,6 +95,11 @@ export class Login extends Component {
     })
     .then(res => res.json())
     .then(this.handleLoginResponse);
+  }
+
+  handleSubmit = (e) => {
+    console.log('logging in');
+    this.login();
     e.preventDefault();
   }
   

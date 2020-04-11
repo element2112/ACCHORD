@@ -115,6 +115,7 @@ router.post('/login', async (req, res) => {
         returnJson.user.password = user.password;
         returnJson.user.firstName = user.firstName;
         returnJson.user.lastName = user.lastName;
+        returnJson.user.bio = user.bio;
       }else{
         // handle password incorrect (no action necessary)
       }

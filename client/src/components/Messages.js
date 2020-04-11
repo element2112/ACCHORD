@@ -22,7 +22,7 @@ export class Messages extends Component {
       email: '',
       password: '',
       authenticated: false,
-      messages: ['This is a default message.']
+      messages: ['']
     }
   }
 

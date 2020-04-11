@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Row } from 'react-bootstrap'
 import queryString from 'query-string'
 import Playlist from './Playlist';
-import { Spinner, Form, Col, Carousel } from 'react-bootstrap'
+import { Spinner, Carousel } from 'react-bootstrap'
 import create_playlist from '../services/create_playlist'
 import addTracks from '../services/addTracks'
 import spotLogin from '../services/spotLogin'
@@ -24,9 +24,10 @@ export default class LoginSpot extends Component {
       market: 'US',
       uris: [],
       loading: false,
-      chord1: '',
-      chord2: '',
-      chord3: '',
+      chord1: '1',
+      chord2: '1',
+      chord3: '1',
+      chord4: '1',
       storage: [],
       length: 0
     }
@@ -36,6 +37,7 @@ export default class LoginSpot extends Component {
     this.handleChord1Change = this.handleChord1Change.bind(this);
     this.handleChord2Change = this.handleChord2Change.bind(this);
     this.handleChord3Change = this.handleChord3Change.bind(this);
+    this.handleChord4Change = this.handleChord4Change.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getAlert = this.getAlert.bind(this);
     // this.showHistory = this.showHistory.bind(this)
@@ -55,14 +57,17 @@ export default class LoginSpot extends Component {
   async handleChord3Change(e) {
     e.preventDefault();
     this.setState({ chord3: e.target.value })
-    // console.log(this.state.chord1)
+  }
+  async handleChord4Change(e) {
+    e.preventDefault();
+    this.setState({ chord4: e.target.value })
   }
 
-  async handleSubmit(e) {
-    e.preventDefault();
+  async handleSubmit() {
+    //e.preventDefault();
     console.log(this.state);
 
-    const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3]);
+    const send = await send_playlist([this.state.chord1, this.state.chord2, this.state.chord3, this.state.chord4]);
 
     const art_arr = [];
     const track_arr = [];
@@ -94,7 +99,7 @@ export default class LoginSpot extends Component {
       await fetch(`https://api.spotify.com/v1/search?q=track:${this.state.tracks[i]}%20artist:${this.state.artists[i]}&type=track`, {
       headers: { 'Authorization': 'Bearer ' + this.state.spotifyToken, 'Content-Type': 'application/json' }
       }).then((res) => res.json())
-        .then(data => !this.state.trackIDs.includes(data.tracks.items[0].id) ? this.setState({ trackIDs: [...this.state.trackIDs, data.tracks.items[0].id], uris: [...this.state.uris, data.tracks.items[0].uri] }) : console.log('duplicate tracks detected'))
+        .then(data => data.tracks.items.length==0? console.log('song '+ this.state.tracks[i] +'::'+ this.state.artists[i] +' not found in spotify') : !this.state.trackIDs.includes(data.tracks.items[0].id) ? this.setState({ trackIDs: [...this.state.trackIDs, data.tracks.items[0].id], uris: [...this.state.uris, data.tracks.items[0].uri] }) : console.log('duplicate tracks detected'))
         .catch((err) => console.log('Cant create a playlist at this time. Make sure you are logged into spotify: ' + err))
     }
   }
@@ -117,7 +122,7 @@ export default class LoginSpot extends Component {
 
     // creating playlist
     try {
-      const create = await create_playlist(this.state.spotifyToken)
+      const create = await create_playlist(this.state.spotifyToken, this.state.chord1+"->"+this.state.chord2+"->"+this.state.chord3+"->"+this.state.chord4)
       this.setState({ playlistID: create.id, link: create.external_urls.spotify })
       this.setState({ storage: [... this.state.storage, this.state.link] })
       this.setState({ length: this.state.storage.length })
@@ -131,10 +136,11 @@ export default class LoginSpot extends Component {
       
       this.setState({ playlistID: add.snapshot_id})
       this.setState({ loading: false })
-      this.setState({ chord1: '', chord2: '', chord3: '' })
+      this.setState({ chord1: '1', chord2: '1', chord3: '1' , chord4: '1' })
 
     } catch (err) {
       console.log('error creating playlist, make sure you are logged into spotify')
+      this.setState({ loading: false })
       alert("error creating playlist, make sure you are logged into spotify")
     }
     
@@ -150,26 +156,46 @@ export default class LoginSpot extends Component {
     {
       alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1} -> ${this.state.chord2}`)
     }
-    else
+    else if (this.state.chord4 === '')
     {
       alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1} -> ${this.state.chord2} -> ${this.state.chord3}`)
     }
-    
+    else
+    {
+      alert(`GET YOUR PLAYLIST NOW! You've chosen ${this.state.chord1} -> ${this.state.chord2} -> ${this.state.chord3} -> ${this.state.chord4}`)
+    }
+    this.handleSubmit();
   }
-
+  renderHistory(i) {
+    if (this.state.length >=2) {
+      return (<Carousel>
+      {(this.state.length >= 2) ?
+        (<Carousel.Item style={{ alignItems: "center" }}>
+        <Playlist playlists={this.state.storage[this.state.length-2]}/>
+        </Carousel.Item>) : undefined
+      }
+      {(this.state.length >= 3) ?
+        (<Carousel.Item style={{ alignItems: "center" }}>
+        <Playlist playlists={this.state.storage[this.state.length-3]}/>
+        </Carousel.Item>) : undefined
+      }
+      </Carousel>)
+    }
+    return;
+  }
   // if loading is set to false, then render the embedded playlist
   // if loading is set to true, render a loading spinner
   render() {
     if (!this.state.loading)
     {
       return (
-        <Row>
-          <Col style={{ marginTop: "200px" }}>
+        <div width="50%">
+          <Row style={{margin: "10px", justifyContent: "center"}}>
             <Playlist playlists={this.state.link} /> 
-            <Button id="loginSee" onClick={() => {window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}}>Login with Spotify</Button>
-            <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
-            <Form data-testid="chordSubmit" onSubmit={this.handleSubmit}>
-              <select onClick={this.handleChord1Change}>
+            <Button id="loginSee" style={{margin: "10px"}} onClick={() => {window.location = window.location.href.includes('localhost') ? 'http://localhost:8888/spotifylogin' : 'https://acchord-backend.herokuapp.com/spotifylogin'}}>Login with Spotify</Button>
+          </Row>
+          <Row style={{margin: "10px", width: "30rem", justifyContent: "center"}}>
+              <select id="chord1" onClick={this.handleChord1Change}>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -178,7 +204,7 @@ export default class LoginSpot extends Component {
                     <option>6</option>
                     <option>7</option>
               </select>
-              <select onClick={this.handleChord2Change}>
+              <select id="chord2" onClick={this.handleChord2Change}>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -187,7 +213,7 @@ export default class LoginSpot extends Component {
                     <option>6</option>
                     <option>7</option>
               </select>
-              <select onClick={this.handleChord3Change}>
+              <select id="chord3" onClick={this.handleChord3Change}>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -196,20 +222,24 @@ export default class LoginSpot extends Component {
                     <option>6</option>
                     <option>7</option>
               </select>
-              <Button type="submit" onClick={this.getAlert}>Submit</Button>
-            </Form> 
-          </Col>
-          <Col>
-            <Carousel>
-              <Carousel.Item style={{ alignItems: "center" }}>
-                <Playlist playlists={this.state.storage[this.state.length-2]}/>
-              </Carousel.Item>
-              <Carousel.Item>
-                <Playlist playlists={this.state.storage[this.state.length-3]}/>
-              </Carousel.Item>
-            </Carousel>
-          </Col>
-        </Row>
+              <select id="chord4" onClick={this.handleChord4Change}>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+              </select>
+              <pre>   </pre>
+              <Button onClick={this.getAlert}>Submit</Button>
+              <pre>   </pre>
+              <Button data-testid="handleList" id="playlists" onClick={this.handlePlaylists}>New Playlist</Button>
+          </Row>
+          <Row>
+            {this.renderHistory()}
+          </Row>
+        </div>
       )
     }
     else {

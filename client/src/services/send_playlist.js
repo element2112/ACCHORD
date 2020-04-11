@@ -22,8 +22,6 @@ async function send_playlist(progression) {
     }),
   })
 
-  console.log('res: ' + res);
-
   return res.json();
 }
 
