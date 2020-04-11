@@ -36,9 +36,9 @@ export class Example extends Component {
   render() {
     return (
       <>
-        <Col>
-          <Card id='example'>
-            <Card.Body>
+        <div className="example">
+          <Card style={{ width: '40rem', border: "rounded", margin: "10px"}}>
+            <Card.Body id='example'>
               <Card.Title>Not sure what progressions to use? Try these!</Card.Title>
                 1->5->6->4 (most popular)
                 <ul>
@@ -63,7 +63,7 @@ export class Example extends Component {
                 </ul>
             </Card.Body>
           </Card>
-        </Col>
+        </div>
       </>
     )
   }

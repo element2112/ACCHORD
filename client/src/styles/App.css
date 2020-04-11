@@ -62,14 +62,11 @@ h1 {
   height: 50%;
 }
 .card {
-  color: #333;
+  color: #899;
   background-color: #333;
 }
-.card-body{
-  color: #888;
-}
 .card-title{
-  color: #DB7;
+  color: #FC7;
   font-weight: 600;
 }
 
@@ -82,8 +79,8 @@ h1 {
 
 .navbar{
   background-color: #185;
-  background-image:  url("../images/banner.png");
   color: white;
+  background-image:  url("../images/banner.png");
 }
 
 body {
@@ -92,3 +89,18 @@ body {
   background-repeat: none;
   background-position: center;
 }
+
+#example {
+  background-image: url("../images/background2.png");
+  background-repeat: none;
+  background-position: center;
+}
+#spotify {
+  background-image: url("../images/spotifybg.png");
+  background-repeat: none;
+  background-position: center;
+}
+.spotifylogo {
+  background-image: url("../images/background2.png");
+}
+

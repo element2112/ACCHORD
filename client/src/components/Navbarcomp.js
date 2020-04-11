@@ -25,7 +25,7 @@ function Navbarcomp() {
   return (
     <>
       <Navbar>
-        <Navbar.Brand style={{color: "#DB7", fontWeight: "500"}} href="#home">My Acchord Home</Navbar.Brand>
+        <Navbar.Brand style={{color: "#FD7", fontWeight: "500"}} href="#home">My Acchord Home</Navbar.Brand>
         <Nav data-testid="nav">
           <Nav.Link style={{color: "#999"}} href={"/dashboard"+"?access_token=" + sessionStorage.getItem('token')}>Home</Nav.Link>
           <Nav.Link style={{color: "#999"}} href={"/profile"+"?access_token=" + sessionStorage.getItem('token')}>Profile</Nav.Link>
