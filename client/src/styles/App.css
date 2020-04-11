@@ -62,7 +62,7 @@ h1 {
   height: 50%;
 }
 .card {
-  color: #899;
+  color: white;
   background-color: #333;
 }
 .card-title{
@@ -102,6 +102,7 @@ body {
   background-image: url("../images/spotifybg.png");
   background-repeat: none;
   background-position: center;
+  color: white;
 }
 
 .spotifylogo {

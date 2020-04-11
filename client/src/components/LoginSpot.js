@@ -24,10 +24,10 @@ export default class LoginSpot extends Component {
       market: 'US',
       uris: [],
       loading: false,
-      chord1: '1',
-      chord2: '1',
-      chord3: '1',
-      chord4: '1',
+      chord1: '',
+      chord2: '',
+      chord3: '',
+      chord4: '',
       storage: [],
       length: 0
     }
@@ -136,7 +136,7 @@ export default class LoginSpot extends Component {
       
       this.setState({ playlistID: add.snapshot_id})
       this.setState({ loading: false })
-      this.setState({ chord1: '1', chord2: '1', chord3: '1' , chord4: '1' })
+      this.setState({ chord1: '', chord2: '', chord3: '' , chord4: '' })
 
     } catch (err) {
       console.log('error creating playlist, make sure you are logged into spotify')
@@ -196,6 +196,7 @@ export default class LoginSpot extends Component {
           </Row>
           <Row style={{margin: "10px", width: "30rem", justifyContent: "center"}}>
               <select id="chord1" onClick={this.handleChord1Change}>
+                    <option></option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -205,6 +206,7 @@ export default class LoginSpot extends Component {
                     <option>7</option>
               </select>
               <select id="chord2" onClick={this.handleChord2Change}>
+                    <option></option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -214,6 +216,7 @@ export default class LoginSpot extends Component {
                     <option>7</option>
               </select>
               <select id="chord3" onClick={this.handleChord3Change}>
+                    <option></option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -223,6 +226,7 @@ export default class LoginSpot extends Component {
                     <option>7</option>
               </select>
               <select id="chord4" onClick={this.handleChord4Change}>
+                    <option></option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
