@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Row } from 'react-bootstrap'
+import { Button, Row, Col } from 'react-bootstrap'
 import queryString from 'query-string'
 import Playlist from './Playlist';
 import { Spinner, Carousel } from 'react-bootstrap'
@@ -167,19 +167,19 @@ export default class LoginSpot extends Component {
     this.handleSubmit();
   }
   renderHistory(i) {
-    if (this.state.length >=2) {
-      return (<Carousel>
-      {(this.state.length >= 2) ?
-        (<Carousel.Item style={{ alignItems: "center" }}>
-        <Playlist playlists={this.state.storage[this.state.length-2]}/>
-        </Carousel.Item>) : undefined
-      }
-      {(this.state.length >= 3) ?
-        (<Carousel.Item style={{ alignItems: "center" }}>
-        <Playlist playlists={this.state.storage[this.state.length-3]}/>
-        </Carousel.Item>) : undefined
-      }
-      </Carousel>)
+    if (this.state.length >= 2) {
+      return (
+        <Col>
+          <Carousel>
+            <Carousel.Item style={{ alignItems: "center" }}>
+              <Playlist playlists={this.state.storage[this.state.length-2]}/>
+            </Carousel.Item>
+            <Carousel.Item>
+              <Playlist playlists={this.state.storage[this.state.length-3]}/>
+            </Carousel.Item>
+          </Carousel>
+        </Col>
+      )
     }
     return;
   }
