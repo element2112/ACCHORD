@@ -36,38 +36,34 @@ export class Example extends Component {
   render() {
     return (
       <>
-        <Col>
-          <Card id='example'>
-            <Card.Body>
+        <div className="example">
+          <Card style={{ width: '40rem', border: "rounded", margin: "10px"}}>
+            <Card.Body id='example'>
               <Card.Title>Not sure what progressions to use? Try these!</Card.Title>
-              <Card.Text>
-                 <p>
-                    1->5->6 (most popular)
-                    <ul>
-                        <li>'Someone Like You' by Adele</li>
-                        <li>'Girlfriend' by Avril Lavigne</li>
-                        <li>'Living On A Prayer' by Bon Jovi</li>
-                        <li>'Africa' by Toto</li>
-                    </ul>
-                    6->5->4
-                    <ul>
-                        <li>'My Heart Will Go On' by Celine Dion</li>
-                        <li>'Girls Just Want To Have Fun' by Cyndi Lauper</li>
-                        <li>'Titanium' by David Guetta feat. Sia</li>
-                        <li>'Beat It' by Michael Jackson</li>
-                    </ul>
-                    1->6->4
-                    <ul>
-                        <li>'She's Everything' by Brad Paisley</li>
-                        <li>'Stand By Me' by Ben E King</li>
-                        <li>'All I Want For Christmas Is You' by Mariah Carey</li>
-                        <li>'Every Breath You Take' by The Police</li>
-                    </ul>
-                 </p>
-              </Card.Text>
+                1->5->6->4 (most popular)
+                <ul>
+                    <li>'Someone Like You' by Adele</li>
+                    <li>'Girlfriend' by Avril Lavigne</li>
+                    <li>'Living On A Prayer' by Bon Jovi</li>
+                    <li>'Africa' by Toto</li>
+                </ul>
+                6->5->4->5
+                <ul>
+                    <li>'My Heart Will Go On' by Celine Dion</li>
+                    <li>'Girls Just Want To Have Fun' by Cyndi Lauper</li>
+                    <li>'Titanium' by David Guetta feat. Sia</li>
+                    <li>'Beat It' by Michael Jackson</li>
+                </ul>
+                1->6->4->5
+                <ul>
+                    <li>'She's Everything' by Brad Paisley</li>
+                    <li>'Stand By Me' by Ben E King</li>
+                    <li>'All I Want For Christmas Is You' by Mariah Carey</li>
+                    <li>'Every Breath You Take' by The Police</li>
+                </ul>
             </Card.Body>
           </Card>
-        </Col>
+        </div>
       </>
     )
   }
